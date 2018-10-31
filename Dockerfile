@@ -3,7 +3,7 @@ MAINTAINER alexander.todorov@ayagasha.com
 
 WORKDIR /app
 # Externalize source jar name
-COPY build/docker/kubernetes-devops.jar ./java-app.jar
+COPY build/docker/playground.jar ./java-app.jar
 
 EXPOSE 8080
 
