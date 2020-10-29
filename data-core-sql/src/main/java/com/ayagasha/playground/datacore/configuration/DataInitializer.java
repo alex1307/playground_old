@@ -1,7 +1,7 @@
-package com.ayagasha.parking.datacore.configuration;
+package com.ayagasha.playground.datacore.configuration;
 
-import com.ayagasha.parking.datacore.model.Reservation;
-import com.ayagasha.parking.datacore.repository.ReservationRepository;
+import com.ayagasha.playground.datacore.model.Reservation;
+import com.ayagasha.playground.datacore.repository.ReservationRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.event.ApplicationReadyEvent;

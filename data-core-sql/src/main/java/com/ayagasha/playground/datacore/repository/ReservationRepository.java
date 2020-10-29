@@ -1,6 +1,6 @@
-package com.ayagasha.parking.datacore.repository;
+package com.ayagasha.playground.datacore.repository;
 
-import com.ayagasha.parking.datacore.model.Reservation;
+import com.ayagasha.playground.datacore.model.Reservation;
 import org.springframework.data.r2dbc.repository.Query;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import reactor.core.publisher.Flux;

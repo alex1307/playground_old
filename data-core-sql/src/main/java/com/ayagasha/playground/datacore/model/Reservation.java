@@ -1,4 +1,4 @@
-package com.ayagasha.parking.datacore.model;
+package com.ayagasha.playground.datacore.model;
 
 import lombok.Builder;
 import lombok.Data;
