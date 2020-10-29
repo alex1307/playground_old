@@ -1,0 +1,12 @@
+spring:
+  data:
+    mongodb:
+      user: reservation
+      password: pw4reservation
+      uri: mongodb://reservation:pw4reservation@localhost:27017/reservation
+
+  r2dbc:
+    schema: PLAYGROUND
+    url: r2dbc:postgres://localhost:5432/ticketless
+    username: playground
+    password: pw4play
