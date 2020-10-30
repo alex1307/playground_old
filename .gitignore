@@ -27,3 +27,5 @@ nbdist/
 *DS_Store*
 /*/target
 /*/.idea
+/*/.mvn
+/*/volumes
