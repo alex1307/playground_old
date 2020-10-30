@@ -1,0 +1,33 @@
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/ticketless
+    username: developer
+    password: pw4dev
+
+  liquibase:
+    url: jdbc:postgresql://localhost:5432/ticketless
+    change-log: classpath:liquibase/master.yml
+    user: developer
+    password: pw4dev
+    default-schema: INFRASTRUCTURE
+    liquibase-schema: INFRASTRUCTURE
+
+
+logging:
+  pattern:
+    console: '%green(infrastructure) - %d{HH:mm:ss.SSS} - %highlight([%thread]) %-5level %logger{45} - %yellow(%msg%n%throwable)'
+    file: '%green(infrastructure) - %d{HH:mm:ss.SSS} - [%thread] %-5level %logger{45} - %yellow(%msg%n)'
+  level:
+    org:
+      liquibase: DEBUG
+      hibernate:
+        SQL: TRACE
+      springframework: INFO
+    com:
+      ayagasha: DEBUG
+
+
+server:
+  port: 8077

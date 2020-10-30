@@ -1,0 +1,471 @@
+databaseChangeLog:
+
+  ###################################################################################################
+  ###
+  ### CV_MERCHANT_PORTAL DDL STATEMENTS
+  ###
+  ###################################################################################################
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0001_id_generator.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0002_merchant.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0003_address.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0004_service_contract.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0005_shop.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0006_person.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0007_market_place.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0008_country_thresholds.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0009_article.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0010_bank_details.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0011_merchant_rm_tables.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0012_contact.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0013_currency.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0014_customer.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0017_vat_country_rule.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0018_merchant_threshold.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0019_notifications.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0020_company_info.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0021_merchant_preferences.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0022_merchant_warehouse.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0041_shop_rm_tables.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0042_shop_rm_warehouse_tables.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0043_add_columns_to_bank_details.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0044_add_columns_to_address.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0045_drop_columns.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0046_rename_columns.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0047_dml_change_addresses.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0048_s4hana.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0049_user_preferences.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0050_user_preferences.yml
+  - include:
+      file: classpath:liquibase/schema/merchant-portal/0052_fix_schema.yml
+
+  ###################################################################################################
+  ###
+  ### CV_ORDER_MANAGEMENT DDL STATEMENTS
+  ###
+  ###################################################################################################
+  - include:
+      file: classpath:liquibase/schema/order-management/0001_address.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0002_customer.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0003_preferences.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0004_fraud.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0005_order_item.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0006_order.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0007_order_option.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0008_rm_shops.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0009_id_generator.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0010_v_shop.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0011_v_merchant_country_transacations.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0012_alter_order.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0013_alter_order_item.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0023_rm_primayr_keys.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0024_country_distribution.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0025_payments.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0026_add_shipping_type_to_order.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0027_CHANGE_TYPE.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0028_v_merchant_country_transacations.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0029_street_number_null.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0030_v_s4hana.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0031_shipping.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0032_t_s4hana_orders.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0033_add_material_to_order_item.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0034_allow_null.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0035_order_request.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0036_shipping_v_1_1_0.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0037_invoice_v_1_1_0.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0038_customer_model_1_1_0.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0039_payment_v_1_1_0.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0040_preferences_v_1_1_0.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0041_processing_status_v_1_1_0.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0042_v_merchant_country_transacations.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0043_country_distribution.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0044_merchant_callback_uri.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0045_CHANGE_TYPE.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0046_rename_column.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0047_departure_country_and_zip.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0048_add_columns.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0049_remove_hash_code.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0050_allow_null.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0051_drop_rm_order_shop.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0052_drop_unique_constraint.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0053_t_refunded_order.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0054_remove_refunded_amount.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0055_modify_t_order_request.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0056_callback.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0057_add_columns_t_order_request.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0058_add_columns_t_payment.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0059_add_columns_t_payment.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0060_drop_columns_t_payment.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0061_status_tables.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0063_drop_t_refunded_order.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0064_add_columns_t_order_item.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0065_add_default_value.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0066_FIX_VIEW_V_MERCHANT_COUNTRY_TRANSACTIONS.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0067_ORDER_ITEMS.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0068_SALES_ORDER_NUMBER.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0069_V_COUNTRY_DISTRIBUTION.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0070_CLEAN_UP.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0071_T_SUPPLIER.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0072_drop_not_null_T_SUPPLIER.yml
+  - include:
+      file: classpath:liquibase/schema/order-management/0073_add_columns_t_s4hana_orders.yml
+
+  ###################################################################################################
+  ###
+  ### CV_CONFIGURATION DDL STATEMENTS
+  ###
+  ###################################################################################################
+  - include:
+      file: classpath:liquibase/schema/configuration/001_tenant.yml
+  - include:
+      file: classpath:liquibase/schema/configuration/002_configuration.yml
+  - include:
+      file: classpath:liquibase/schema/configuration/003_shop.yml
+  - include:
+      file: classpath:liquibase/schema/configuration/007_renametimestampfields.yml
+  - include:
+      file: classpath:liquibase/schema/configuration/009_taxcodetype.yml
+  - include:
+      file: classpath:liquibase/schema/configuration/010_taxcodes_taxrate.yml
+  - include:
+      file: classpath:liquibase/schema/configuration/011_industry.yml
+  - include:
+      file: classpath:liquibase/schema/configuration/012_region.yml
+  - include:
+      file: classpath:liquibase/schema/configuration/013_assortment.yml
+  - include:
+      file: classpath:liquibase/schema/configuration/014_assortment_item.yml
+  - include:
+      file: classpath:liquibase/schema/configuration/015_country.yml
+  - include:
+      file: classpath:liquibase/schema/configuration/016_currency.yml
+  - include:
+      file: classpath:liquibase/schema/configuration/017_language.yml
+  - include:
+      file: classpath:liquibase/schema/configuration/019_hrbnumber.yml
+  - include:
+      file: classpath:liquibase/schema/configuration/020_fix_sequence.yml
+  - include:
+      file: classpath:liquibase/schema/configuration/021_tax_combination.yml
+  - include:
+      file: classpath:liquibase/schema/configuration/022_reconciliation_account.yml
+  - include:
+      file: classpath:liquibase/schema/configuration/023_alter_taxcodes.yml
+  - include:
+      file: classpath:liquibase/schema/configuration/024_drop_tax_combination.yml
+  - include:
+      file: classpath:liquibase/schema/configuration/025_alter_taxcodes.yml
+  - include:
+      file: classpath:liquibase/schema/configuration/026_yn_country.yml
+
+  ###################################################################################################
+  ###
+  ### CV_TAXING DDL STATEMENTS
+  ###
+  ###################################################################################################
+
+  - include:
+      file: classpath:liquibase/schema/taxing/0001_sequences.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0002_t_clearvatid_taxcode.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0003_t_category.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0004_t_category_text.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0005_t_clearvatid_vatrate.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0006_t_product.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0007_t_product_clearvatid.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0008_t_vatrate.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0009_t_display_request.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0010_t_tax_exemption.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0011_dml_statements.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0012_tax_rule_files.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0013_rename_t_tacode_to_v_taxcode.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0014_fix_taxing_tables.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0015_fix_taxing_tables.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0016_fix_taxing_tables.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0017_v_tax_code.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0018_fix_product_sequence.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0019_add_validation_reason_column.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0020_v_shop.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0021_t_cv_checkvatid_response.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0022_t_product_clearvatid_changes.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0023_seq_product_clearvatid_audit.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0024_t_product_clearvatid_audit.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0025_t_gtid_clearvatid.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0026_IT_704_changes.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0027_IT_704_changes.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0028_v_tax_code.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0029_changes_t_clearvatid_taxcode.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0030_v_country.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0031_t_clearvatid_taxcode_audit.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0032_requester_id_column.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0033_request_column.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0035_t_product_wto_number_changes.yml
+  - include:
+      file: classpath:liquibase/schema/taxing/0036_t_cv_checkvatid_response_change_column_type.yml
+
+  ###################################################################################################
+  ###
+  ### CV_INFRASTRUCTURE DDL STATEMENTS
+  ###
+  ###################################################################################################
+
+  - include:
+      file: classpath:liquibase/schema/metadata/0001_id_generator.yml
+  - include:
+      file: classpath:liquibase/schema/metadata/0002_metadata.yml
+
+
+  ###################################################################################################
+  ###
+  ### Z_PLENTY DDL STATEMENTS
+  ###
+  ###################################################################################################
+
+  - include:
+      file: classpath:liquibase/schema/plenty-market/0001_order_amount.yml
+  - include:
+      file: classpath:liquibase/schema/plenty-market/0002_order_items.yml
+  - include:
+      file: classpath:liquibase/schema/plenty-market/0003_orders.yml
+  - include:
+      file: classpath:liquibase/schema/plenty-market/0004_sequences.yml
+  - include:
+      file: classpath:liquibase/schema/plenty-market/0005_file_log.yml
+  - include:
+      file: classpath:liquibase/schema/plenty-market/0006_v_country_distribution.yml
+  - include:
+      file: classpath:liquibase/schema/plenty-market/0007_v_country_tresholds.yml
+  - include:
+      file: classpath:liquibase/schema/plenty-market/0008_change_bigint2decimal.yml
+  - include:
+      file: classpath:liquibase/schema/plenty-market/0009_datetime_column_for_orders.yml
+  - include:
+      file: classpath:liquibase/schema/plenty-market/0010_v_country_tresholds.yml
+  - include:
+      file: classpath:liquibase/schema/plenty-market/0011_v_country_distribution.yml
+  - include:
+      file: classpath:liquibase/schema/plenty-market/0012_add_column_t_order.yml
+  - include:
+      file: classpath:liquibase/schema/plenty-market/0013_merchant_mapping.yml
+  - include:
+      file: classpath:liquibase/schema/plenty-market/0014_scheduler.yml
+  - include:
+      file: classpath:liquibase/schema/plenty-market/0015_v_country_tresholds.yml
+  - include:
+      file: classpath:liquibase/schema/plenty-market/0016_v_country_tresholds.yml
+  - include:
+      file: classpath:liquibase/schema/plenty-market/0017_v_country_tresholds.yml
+  - include:
+      file: classpath:liquibase/schema/plenty-market/0018_v_country_tresholds.yml
+  - include:
+      file: classpath:liquibase/schema/plenty-market/0019_configuration.yml
+  - include:
+      file: classpath:liquibase/schema/plenty-market/0020_seq_scheduler.yml
+  - include:
+      file: classpath:liquibase/schema/plenty-market/0021_add_warehouses_columns.yml
+  - include:
+      file: classpath:liquibase/schema/plenty-market/0022_add_data_origin_columns.yml
+
+  ###################################################################################################
+  ###
+  ### VIEWS CREATE/DROP STATEMENTS
+  ###
+  ###################################################################################################
+
+  - include:
+      file: classpath:liquibase/schema/views/0001_v_tax_codes.yml
+  - include:
+      file: classpath:liquibase/schema/views/0002_v_product_number.yml
+  - include:
+      file: classpath:liquibase/schema/views/0003_v_tax_codes.yml
+  - include:
+      file: classpath:liquibase/schema/views/0005_v_tax_codes.yml
+  - include:
+      file: classpath:liquibase/schema/views/0006_V_COUNTRY_DISTRIBUTION.yml
+  - include:
+      file: classpath:liquibase/schema/views/0007_V_MERCHANT_COUNTRY_TRANSACTIONS.yml
+  - include:
+      file: classpath:liquibase/schema/views/0008_v_plenty_country_tresholds.yml
+  - include:
+      file: classpath:liquibase/schema/views/0009_v_plenty_merchant.yml
+  - include:
+      file: classpath:liquibase/schema/views/0010_s4hana.yml
+  - include:
+      file: classpath:liquibase/schema/views/0011_v_plenty_country_tresholds_add_totals_in_eur.yml
+  - include:
+      file: classpath:liquibase/schema/views/0012_v_merchant_country_transactions_add_totals_in_eur.yml
+  - include:
+      file: classpath:liquibase/schema/views/0013_filtering_v_plenty_country_tresholds.yml
+  - include:
+      file: classpath:liquibase/schema/views/0014_v_plenty_country_tresholds_fix_performance.yml
+  - include:
+      file: classpath:liquibase/schema/views/0015_v_merchant_country_transactions_fix_performance.yml
+  - include:
+      file: classpath:liquibase/schema/views/0016_v_plenty_country_tresholds_fix_performance.yml
+
+###################################################################################################
+###
+### SPRINT 1.4
+###
+###################################################################################################
+      
+  - include:
+      file: classpath:liquibase/schema/taxing/0037_t_material_sync.xml
+  - include:
+      file: classpath:liquibase/schema/taxing/0038_t_clearvatid_taxcode_audit_fix.xml
+  - include:
+      file: classpath:liquibase/schema/sprint-1.4/20201014_add_updated_on_at_z_plenty_t_file_log.yml
+  - include:
+      file: classpath:liquibase/schema/sprint-1.4/202010141206_t_merchant_package.xml
+  - include:
+      file: classpath:liquibase/schema/sprint-1.4/202010151624_t_business_package.xml
+
+## REVERT checkvat requestDate from timestamp to string
+  - include:
+      file: classpath:liquibase/schema/taxing/0039_t_checkvatid_revert_column_date_to_string.xml
+  - include:
+      file: classpath:liquibase/schema/taxing/202010221140_t_checkvatid_revert_column_string_to_date.xml
+  - include:
+      file: classpath:liquibase/schema/sprint-1.4/202010200004_create_t_job_status_log_table.yml
+
+#  - include:
+#      file: classpath:liquibase/schema/sprint-1.4/202010140900_cv_configuration_nvarchar_test.xml
+#  - include:
+#      file: classpath:liquibase/schema/sprint-1.4/202010140900_cv_configuration_nvarchar.xml
+#  - include:
+#      file: classpath:liquibase/schema/sprint-1.4/202010141000_cv_infrastructure_nvarchar.xml
+#  - include:
+#      file: classpath:liquibase/schema/sprint-1.4/202010141100_cv_merchant_portal_nvarchar.xml
+#  - include:
+#      file: classpath:liquibase/schema/sprint-1.4/202010141400_cv_order_management_nvarchar.xml
+#  - include:
+#      file: classpath:liquibase/schema/sprint-1.4/202010141600_cv_taxing_nvarchar.xml
+#  - include:
+#      file: classpath:liquibase/schema/sprint-1.4/202010150900_z_plenty_nvarchar.xml
+#      
+#  - include:
+#      file: classpath:liquibase/schema/sprint-1.4/202010271700_z_plenty_nvarchar_postponed_migration.xml
+      
+      

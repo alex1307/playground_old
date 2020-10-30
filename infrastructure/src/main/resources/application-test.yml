@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:mydb;DB_CLOSE_ON_EXIT=FALSE;INIT=CREATE SCHEMA IF NOT EXISTS INFRASTRUCTURE\; CREATE SCHEMA IF NOT EXISTS PLAYGROUND;
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-test-query: SELECT 1 FROM DUAL
+      minimum-idle: 1
+      maximum-pool-size: 10
+      pool-name: transactional
+
+  liquibase:
+    url: jdbc:h2:mem:mydb;DB_CLOSE_ON_EXIT=FALSE;INIT=CREATE SCHEMA IF NOT EXISTS INFRASTRUCTURE\; CREATE SCHEMA IF NOT EXISTS PLAYGROUND;
+    change-log: classpath:liquibase/master-test.yml
+    default-schema: INFRASTRUCTURE
+    liquibase-schema: INFRASTRUCTURE
+    user: sa
+    password:
+
+logging:
+  level:
+    org:
+      springframework: INFO
+      hibernate: DEBUG
+    liquibase: DEBUG
+    com:
+      ayagasha: DEBUG

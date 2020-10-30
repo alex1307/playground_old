@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: "playground_001"
+      author: ayagasha
+      comment: "Create RESERVATION table"
+      changes:
+        - createTable:
+            tableName: RESERVATION
+            schemaName: PLAYGROUND
+            columns:
+              - column:
+                  name: ID
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: NAME
+                  type: varchar(255)
+                  constraints:
+                    primaryKey: false
+                    nullable: false
+                    unique: true
+        -   addAutoIncrement:
+              schemaName: PLAYGROUND
+              columnDataType: BIGINT
+              columnName: ID
+              generationType: ALWAYS
+              incrementBy: 1
+              startWith: 100
+              tableName: RESERVATION

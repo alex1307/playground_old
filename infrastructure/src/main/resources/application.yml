@@ -1,0 +1,34 @@
+spring:
+  http:
+    encoding:
+      enabled: true
+      force: true
+      charset: UTF-8
+  jmx:
+    enabled: false
+    default-domain: infrastructure
+
+management:
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoints:
+    loggers:
+      enabled: true
+    web:
+      base-path: /management
+      exposure:
+        include: "*"
+
+swagger:
+  title: Ayagasha playground REST APIs
+  version: @version@
+  description: CV Infrastructure APIs
+  terms: Terms
+  compnay: Ayagasha
+  email: alexander.todorov@ayagasha.com
+  web-site: www.ayagasha.com
+  license-text: License
+  license-url: www.ayagasha.com/license
+  basic-path: /documentation
