@@ -1,1 +1,0 @@
-Java root project folder
