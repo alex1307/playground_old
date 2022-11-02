@@ -1,0 +1,18 @@
+{
+    "sourceFile": "apps/udp_srv/erlang_ls.config",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1639128545756,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1639128545756,
+            "name": "Commit-0",
+            "content": "apps_dirs:\n  - \"_build/default/lib/*\"\ninclude_dirs:\n  - \"_build/default/lib/*/include\"\n  - \"include\""
+        }
+    ]
+}

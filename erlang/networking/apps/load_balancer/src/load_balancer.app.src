@@ -1,0 +1,30 @@
+%%%-------------------------------------------------------------------
+%%% @author alex
+%%% @copyright (C) 2021, <COMPANY>
+%%% @doc
+%%%
+%%% @end
+%%% Created : 27. Jul 2021 15:28
+%%%-------------------------------------------------------------------
+{application, load_balancer, [
+  {description, "load balancer app"},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+    kernel,
+    stdlib,
+    service_manager,
+    udp_srv
+  ]},
+  {mod, {load_balancer, []}},
+  {env, [
+    {
+      hosts, [
+      {server1, {0, 0, 0, 0}},
+      {server2, {10, 51, 9, 21}},
+      {server3, {10, 51, 9, 31}},
+      {server4, {10, 51, 9, 241}}
+    ]
+    }
+  ]}
+]}.

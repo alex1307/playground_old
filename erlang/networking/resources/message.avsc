@@ -1,0 +1,7 @@
+{
+    "type": "record", "name":"message", "namespace": "com.ayagasha.avro",
+    "fields":[
+        {"name": "id", "type": "int"},
+        {"name": "value", "type": "bytes"}
+    ]
+}

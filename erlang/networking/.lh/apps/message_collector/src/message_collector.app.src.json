@@ -1,0 +1,22 @@
+{
+    "sourceFile": "apps/message_collector/src/message_collector.app.src",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1639127326288,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1639127332088,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n %%% @end\n %%% Created : 27. Jul 2021 15:13\n %%%-------------------------------------------------------------------\n {application, message_collector, [\n-  {description, \"\"},\n+  {description, \"message collector\"},\n   {vsn, \"1\"},\n   {registered, []},\n   {applications, [\n     kernel,\n"
+                }
+            ],
+            "date": 1639127326288,
+            "name": "Commit-0",
+            "content": "%%%-------------------------------------------------------------------\n%%% @author alex\n%%% @copyright (C) 2021, <COMPANY>\n%%% @doc\n%%%\n%%% @end\n%%% Created : 27. Jul 2021 15:13\n%%%-------------------------------------------------------------------\n{application, message_collector, [\n  {description, \"\"},\n  {vsn, \"1\"},\n  {registered, []},\n  {applications, [\n    kernel,\n    stdlib,\n    service_manager,\n    udp_srv,\n    load_balancer\n  ]},\n  {mod, {message_collector, []}},\n  {env, []}\n]}."
+        }
+    ]
+}

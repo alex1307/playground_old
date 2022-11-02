@@ -1,0 +1,26 @@
+{
+    "sourceFile": "apps/message_collector/src/message_collector.erl",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1639127241867,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1639127276185,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n -module(message_collector).\n -author(\"alex\").\n \n -behaviour(application).\n-\n+-include_lib(\"utils/include/servers.hrl\").\n %% Application callbacks\n -export([start/2,\n   stop/1]).\n \n@@ -34,9 +34,9 @@\n     StartArgs :: term()) ->\n   {ok, pid()} |\n   {ok, pid(), State :: term()} |\n   {error, Reason :: term()}).\n--include_lib(\"utils/include/servers.hrl\").\n+\n start(_StartType, _StartArgs) ->\n   app_supervisor:start_child(?MESSAGE_COLLECTOR_SUP, message_collector_srv, start_link, [?MESSAGE_COLLECTOR_SRV]),\n   lager:info(\"message collector service started successfully. Supervisor: ~p, gen_server: ~p\",\n     [?MESSAGE_COLLECTOR_SUP, ?MESSAGE_COLLECTOR_SRV]),\n"
+                },
+                {
+                    "date": 1639127281697,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,9 +34,8 @@\n     StartArgs :: term()) ->\n   {ok, pid()} |\n   {ok, pid(), State :: term()} |\n   {error, Reason :: term()}).\n-\n start(_StartType, _StartArgs) ->\n   app_supervisor:start_child(?MESSAGE_COLLECTOR_SUP, message_collector_srv, start_link, [?MESSAGE_COLLECTOR_SRV]),\n   lager:info(\"message collector service started successfully. Supervisor: ~p, gen_server: ~p\",\n     [?MESSAGE_COLLECTOR_SUP, ?MESSAGE_COLLECTOR_SRV]),\n"
+                }
+            ],
+            "date": 1639127241867,
+            "name": "Commit-0",
+            "content": "%%%-------------------------------------------------------------------\n%%% @author alex\n%%% @copyright (C) 2021, <COMPANY>\n%%% @doc\n%%%\n%%% @end\n%%% Created : 27. Jul 2021 15:12\n%%%-------------------------------------------------------------------\n-module(message_collector).\n-author(\"alex\").\n\n-behaviour(application).\n\n%% Application callbacks\n-export([start/2,\n  stop/1]).\n\n%%%===================================================================\n%%% Application callbacks\n%%%===================================================================\n\n%%--------------------------------------------------------------------\n%% @private\n%% @doc\n%% This function is called whenever an application is started using\n%% application:start/[1,2], and should start the processes of the\n%% application. If the application is structured according to the OTP\n%% design principles as a supervision tree, this means starting the\n%% top supervisor of the tree.\n%%\n%% @end\n%%--------------------------------------------------------------------\n-spec(start(StartType :: normal | {takeover, node()} | {failover, node()},\n    StartArgs :: term()) ->\n  {ok, pid()} |\n  {ok, pid(), State :: term()} |\n  {error, Reason :: term()}).\n-include_lib(\"utils/include/servers.hrl\").\nstart(_StartType, _StartArgs) ->\n  app_supervisor:start_child(?MESSAGE_COLLECTOR_SUP, message_collector_srv, start_link, [?MESSAGE_COLLECTOR_SRV]),\n  lager:info(\"message collector service started successfully. Supervisor: ~p, gen_server: ~p\",\n    [?MESSAGE_COLLECTOR_SUP, ?MESSAGE_COLLECTOR_SRV]),\n  {ok, self()}.\n\n%%--------------------------------------------------------------------\n%% @private\n%% @doc\n%% This function is called whenever an application has stopped. It\n%% is intended to be the opposite of Module:start/2 and should do\n%% any necessary cleaning up. The return value is ignored.\n%%\n%% @end\n%%--------------------------------------------------------------------\n-spec(stop(State :: term()) -> term()).\nstop(_State) ->\n  ok.\n\n%%%===================================================================\n%%% Internal functions\n%%%===================================================================\n"
+        }
+    ]
+}

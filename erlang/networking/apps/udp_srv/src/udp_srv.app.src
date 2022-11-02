@@ -1,0 +1,38 @@
+
+%%%-------------------------------------------------------------------
+%%% @author Alexander Todorov(alexander.todorov@ayagasha.com)
+%%% @copyright (C) 2020, Ayagasha Enterprises Ltd.
+%%% Company Ayagasha Enterprises Ltd.
+%%% Created On: 11-Dec-2020
+%%% @doc
+%%%
+%%% @end
+%%%-------------------------------------------------------------------
+{application, udp_srv, [
+  {description, "cqrs micro services app"},
+  {vsn, "1.0"},
+  {registered, []},
+  {applications, [
+    kernel,
+    stdlib,
+    sasl,
+    jiffy,
+    erlavro,
+    elli,
+    uuid,
+    lager,
+    utils,
+    service_manager,
+    handlers
+  ]},
+  {mod, {udp_srv, []}},
+  {env, [
+    {
+      hosts, [
+      {server1, {0,   0,   0,  0}},
+      {server2, {10, 51,   9,  21}},
+      {server3, {10, 51,   9,  31}},
+      {server4, {10, 51,   9,  241}}
+    ]},
+    {port, 5663}]}
+]}.

@@ -1,0 +1,33 @@
+
+%%%-------------------------------------------------------------------
+%%% @author Alexander Todorov(alexander.todorov@ayagasha.com)
+%%% @copyright (C) 2020, Ayagasha Enterprises Ltd.
+%%% Company Ayagasha Enterprises Ltd.
+%%% Created On: 11-Dec-2020
+%%% @doc
+%%%
+%%% @end
+%%%-------------------------------------------------------------------
+{application, main, [
+  {description, "networking app"},
+  {vsn, "1.0"},
+  {registered, []},
+  {applications, [
+    kernel,
+    stdlib,
+    sasl,
+    jiffy,
+    erlavro,
+    elli,
+    uuid,
+    lager,
+    utils,
+    service_manager,
+    handlers,
+    http_server_app,
+    udp_srv,
+    load_balancer,
+    message_collector
+  ]},
+  {mod, {main, []}}]
+}.

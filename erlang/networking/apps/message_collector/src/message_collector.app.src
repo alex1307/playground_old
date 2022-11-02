@@ -1,0 +1,22 @@
+%%%-------------------------------------------------------------------
+%%% @author alex
+%%% @copyright (C) 2021, <COMPANY>
+%%% @doc
+%%%
+%%% @end
+%%% Created : 27. Jul 2021 15:13
+%%%-------------------------------------------------------------------
+{application, message_collector, [
+  {description, "message collector"},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+    kernel,
+    stdlib,
+    service_manager,
+    udp_srv,
+    load_balancer
+  ]},
+  {mod, {message_collector, []}},
+  {env, []}
+]}.

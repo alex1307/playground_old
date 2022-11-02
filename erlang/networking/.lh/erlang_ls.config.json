@@ -1,0 +1,22 @@
+{
+    "sourceFile": "erlang_ls.config",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1639131551423,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1639131596235,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,9 @@\n+apps_dirs:\n+  - \"apps/*\"\n+deps_dirs:\n+  - \"_build/default/lib/*\"\n+include_dirs:\n+  - \"apps\"\n+  - \"apps/*/include\"\n+  - \"_build/default/lib/\"\n+  - \"_build/default/lib/*/include\"\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1639131551423,
+            "name": "Commit-0",
+            "content": ""
+        }
+    ]
+}

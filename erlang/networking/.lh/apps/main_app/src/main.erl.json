@@ -1,0 +1,18 @@
+{
+    "sourceFile": "apps/main_app/src/main.erl",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1639131402764,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1639131402764,
+            "name": "Commit-0",
+            "content": "%%%-------------------------------------------------------------------\n%%% @author Alexander Todorov(alexander.todorov@ayagasha.com)\n%%% @copyright (C) 2020, Ayagasha Enterprises Ltd.\n%%% Company Ayagasha Enterprises Ltd.\n%%% Created On: 11-Dec-2020\n%%% @doc\n%%%\n%%% @end\n%%%-------------------------------------------------------------------\n-module(main).\n-author(\"Alexander Todorov(alexander.todorov@ayagasha.com)\").\n\n-behaviour(application).\n-include_lib(\"../utils/include/servers.hrl\").\n\n%% Application callbacks\n-export([\n  start/2,\n  stop/1]).\n\n%%%===================================================================\n%%% Application callbacks\n%%%===================================================================\n\n%%--------------------------------------------------------------------\n%% @private\n%% @doc\n%% This function is called whenever an application is started using\n%% application:start/[1,2], and should start the processes of the\n%% application. If the application is structured according to the OTP\n%% design principles as a supervision tree, this means starting the\n%% top supervisor of the tree.\n%%\n%% @end\n%%--------------------------------------------------------------------\n-spec(start(StartType :: normal | {takeover, node()} | {failover, node()},\n    StartArgs :: term()) ->\n  {ok, pid()} |\n  {ok, pid(), State :: term()} |\n  {error, Reason :: term()}).\nstart(_StartType, _StartArgs) ->\n  lager:info(\"Starting main app\"),\n  lager:info(\"=== STARTED: SUCCESS ===\"),\n  {ok, self()}.\n\nprint_cheat_sheet() ->\n  lager:info(\"====================================== Useful commands ======================================\"),\n  lager:info(\"OUT_SRV = ~p\", [?OUTGOING_MESSAGE_COUNTER_SRV]),\n  lager:info(\"IN_SRV = ~p\", [?INCOMING_MESSAGE_COUNTER_SRV]),\n  lager:info(\"F = fun(Server, Message) -> gen_server:call(Server, {message, Message}) end.\"),\n  lager:info(\"M = scenarios:create_message_with_size(2047).\"),\n  lager:info(\"W = fun(Server, Message, Iterations) -> lists:foreach(fun(_) ->  F(Server, Message) end, lists:seq(1, Iterations)) end.\"),\n  lager:info(\"S = fun(Server, Message, Iterations) -> spawn(fun() -> W(Server, Message, Iterations) end) end.\"),\n  lager:info(\"S(worker1, M, 100000), S(worker2, M, 100000), S(worker3, M, 100000)\"),\n  lager:info(\"=============================================================================================\").\n\n%%--------------------------------------------------------------------\n%% @private\n%% @doc\n%% This function is called whenever an application has stopped. It\n%% is intended to be the opposite of Module:start/2 and should do\n%% any necessary cleaning up. The return value is ignored.\n%%\n%% @end\n%%--------------------------------------------------------------------\n-spec(stop(State :: term()) -> term()).\nstop(_State) ->\n  ok.\n\n%%%===================================================================\n%%% Internal functions\n%%%===================================================================\n"
+        }
+    ]
+}

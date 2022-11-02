@@ -1,0 +1,11 @@
+{
+    "type": "record", "name":"message_orig", "namespace": "com.ayagasha.avro",
+    "fields":[
+        {"name": "from", "type": "bytes"},
+        {"name": "to", "type": "bytes"},
+        {"name": "subject", "type": "bytes"},
+        {"name": "body", "type": "bytes"},
+        {"name": "id", "type": ["bytes"]},
+        {"name": "attachment", "type": ["null", "string"], "default":"null"}
+    ]
+}

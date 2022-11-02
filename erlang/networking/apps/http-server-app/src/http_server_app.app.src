@@ -1,0 +1,22 @@
+{application, http_server_app,
+ [
+  {description, "An OTP application"},
+  {vsn, "1.0"},
+  {registered, []},
+  {mod, {http_server_app, []}},
+  {applications,
+   [kernel,
+    stdlib,
+    sasl,
+    ssl,
+    lager,
+    jwerl,
+    service_manager,
+    message_collector
+   ]},
+  {env,[{http_port, 3444}, {https_port, 3443}]},
+  {modules, []},
+
+  {licenses, ["Apache 2.0"]},
+  {links, []}
+ ]}.

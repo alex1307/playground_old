@@ -1,0 +1,28 @@
+
+%%%-------------------------------------------------------------------
+%%% @author Alexander Todorov(alexander.todorov@ayagasha.com)
+%%% @copyright (C) 2020, Ayagasha Enterprises Ltd.
+%%% Company Ayagasha Enterprises Ltd.
+%%% Created On: 11-Dec-2020
+%%% @doc
+%%%
+%%% @end
+%%%-------------------------------------------------------------------
+{application, handlers, [
+  {description, "handlers"},
+  {vsn, "1.0"},
+  {registered, []},
+  {applications, [
+    kernel,
+    stdlib,
+    sasl,
+    lager,
+    jiffy,
+    erlavro,
+    uuid,
+    utils,
+    service_manager
+  ]},
+  {mod, {handlers, []}},
+  {env, [{avro_schema_dir , "./apps/handlers/resources"}]}
+]}.

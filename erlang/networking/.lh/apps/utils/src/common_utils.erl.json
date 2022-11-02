@@ -1,0 +1,18 @@
+{
+    "sourceFile": "apps/utils/src/common_utils.erl",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1639126641986,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1639126641986,
+            "name": "Commit-0",
+            "content": "\n%%%-------------------------------------------------------------------\n%%% @author Alexander Todorov(alexander.todorov@ayagasha.com)\n%%% @copyright (C) 2020, Ayagasha Enterprises Ltd.\n%%% Company Ayagasha Enterprises Ltd.\n%%% Created On: 21-Aug-2020\n%%% @doc\n%%%\n%%% @end\n%%%-------------------------------------------------------------------\n-module(common_utils).\n-author(\"Alexander Todorov(alexander.todorov@ayagasha.com)\").\n\n-include(\"constants.hrl\").\n\n%% API\n-export([get_uuid/0]).\n\n\n-spec(get_uuid() -> string()).\nget_uuid() ->\n  uuid:uuid_to_string(uuid:get_v4()).\n\n\n\n\n"
+        }
+    ]
+}

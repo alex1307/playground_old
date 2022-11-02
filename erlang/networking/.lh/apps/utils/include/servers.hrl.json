@@ -1,0 +1,18 @@
+{
+    "sourceFile": "apps/utils/include/servers.hrl",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1639131686738,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1639131686738,
+            "name": "Commit-0",
+            "content": "%%%-------------------------------------------------------------------\n%%% @author alex\n%%% @copyright (C) 2021, <COMPANY>\n%%% @doc\n%%%\n%%% @end\n%%% Created : 06. Aug 2021 16:02\n%%%-------------------------------------------------------------------\n-author(\"alex\").\n\n-define(MESSAGE_COLLECTOR_SRV, collector_srv).\n-define(MESSAGE_COLLECTOR_SUP, collector_sup).\n\n-define(WORKER1_SRV, worker1).\n-define(WORKER2_SRV, worker2).\n-define(WORKER3_SRV, worker3).\n-define(WORKER4_SRV, worker4).\n-define(WORKER5_SRV, worker5).\n-define(WORKER6_SRV, worker6).\n\n-define(WORKER1_SUP, sup_worker1).\n-define(WORKER2_SUP, sup_worker2).\n-define(WORKER3_SUP, sup_worker3).\n-define(WORKER4_SUP, sup_worker4).\n-define(WORKER5_SUP, sup_worker5).\n-define(WORKER6_SUP, sup_worker6).\n\n-define(ROOT_LB, root_lb).\n-define(ROOT_LB_SUP, sup_lb_root).\n\n-define(INCOMING_MESSAGE_COUNTER_SRV, incoming_counter_srv).\n-define(OUTGOING_MESSAGE_COUNTER_SRV, outgoing_counter_srv).\n"
+        }
+    ]
+}

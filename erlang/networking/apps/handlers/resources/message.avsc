@@ -1,0 +1,85 @@
+{
+  "type": "record",
+  "name": "message",
+  "namespace": "ayagasha.messages",
+  "fields": [
+    {
+      "name": "uuid",
+      "type": "string"
+    },
+    {
+      "name": "from",
+      "type": {
+        "type": "record",
+        "name": "contact",
+        "namespace": "ayagasha.messages",
+        "fields": [
+          {
+            "name": "first_name",
+            "type": "string"
+          },
+          {
+            "name": "last_name",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "created_at",
+      "type": "long",
+      "logicalType": "timestamp-millis"
+    },
+    {
+      "name": "subject",
+      "type": "string",
+      "default": "None"
+    },
+    {
+      "name": "body",
+      "type": "string",
+      "default": "None"
+    },
+    {
+      "name": "recipients",
+      "type": {
+        "type": "array",
+        "items": "ayagasha.messages.contact",
+        "default": []
+      }
+    },
+    {
+      "name": "attachments",
+      "type": {
+        "type": "array",
+        "default": [],
+        "items": {
+          "type": "record",
+          "name": "attachment",
+          "fields": [
+            {
+              "name": "message_id",
+              "type": "string"
+            },
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "file_type",
+              "type": "string"
+            },
+            {
+              "name": "payload",
+              "type": "bytes"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

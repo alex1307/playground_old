@@ -1,0 +1,22 @@
+{
+  "uuid": "b7cc9b97-d242-4439-b61a-363d6dd7d499",
+  "from": {
+    "first_name": "Alexander",
+    "last_name": "Todorov",
+    "email": "ato@eclear.com"
+  },
+  "created_at": 1619021027485,
+  "subject": "Subject",
+  "body": "Urgent...",
+  "recipients": [{
+    "first_name": "Marcin",
+    "last_name": "Calka",
+    "email": "mca@eclear.com"
+  }],
+  "attachments": [{
+    "message_id": "123",
+    "name": "don't.download.me",
+    "file_type": "zip",
+    "payload": [88, 99, 110, 107]
+  }]
+}
