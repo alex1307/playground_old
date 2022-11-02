@@ -1,2 +1,2 @@
 # playground
-DevOps playground
+Ayagasha gJRE (Golang/Java/Rust/Erlang) playground.
