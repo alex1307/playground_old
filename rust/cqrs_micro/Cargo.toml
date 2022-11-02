@@ -1,0 +1,17 @@
+[workspace]
+
+members = [
+	"service_main",
+	"commons_lib",
+	"auth_service",
+	"auth_model",
+	"domain_model",
+	"mapper",
+	"rest_api_actix"
+]
+[profile.dev]
+opt-level = 3
+
+[profile.release]
+opt-level = "z"
+

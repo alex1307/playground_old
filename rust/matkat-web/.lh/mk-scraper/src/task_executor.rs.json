@@ -1,0 +1,474 @@
+{
+    "sourceFile": "mk-scraper/src/task_executor.rs",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 114,
+            "patches": [
+                {
+                    "date": 1641985643778,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1641985720539,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,8 +27,9 @@\n     }\n }\n \n pub async fn server_loop(max: i32) {\n+    println!(\"Server is started...\");\n     let reciver = CURRENT_HANDLER.with(|f| f.receiver.clone());\n     let mut message_counter = 0;\n     loop {\n         match reciver.recv_timeout(Duration::from_secs(1)) {\n@@ -98,8 +99,10 @@\n         let f = vec![c1, c2, c3, c4];\n         \n         let _ = futures::future::join_all(f);\n \n+\n+\n         unsafe {\n             assert_eq!(1, counter);\n         }\n \n"
+                },
+                {
+                    "date": 1641985799141,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -99,10 +99,10 @@\n         let f = vec![c1, c2, c3, c4];\n         \n         let _ = futures::future::join_all(f);\n \n+        sleep(Duration::from_secs(5));\n \n-\n         unsafe {\n             assert_eq!(1, counter);\n         }\n \n"
+                },
+                {
+                    "date": 1641985813319,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -59,9 +59,9 @@\n }\n \n #[cfg(test)]\n mod task_executor_tests {\n-    use std::thread;\n+    use std::thread::{self, sleep};\n \n     use crate::task_executor::counter;\n \n     use super::{CURRENT_HANDLER, server_loop, client};\n"
+                },
+                {
+                    "date": 1641985822506,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -59,9 +59,9 @@\n }\n \n #[cfg(test)]\n mod task_executor_tests {\n-    use std::thread::{self, sleep};\n+    use std::{thread::{self, sleep}, time::Duration};\n \n     use crate::task_executor::counter;\n \n     use super::{CURRENT_HANDLER, server_loop, client};\n"
+                },
+                {
+                    "date": 1641985861020,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -92,9 +92,9 @@\n         let c2 = client(2);\n         let c3 = client(3);\n         let c4 = client(4);\n \n-\n+        println(\"starting server.....\");\n         let _res = server.join().unwrap();\n \n         let f = vec![c1, c2, c3, c4];\n         \n"
+                },
+                {
+                    "date": 1641985871369,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -92,9 +92,9 @@\n         let c2 = client(2);\n         let c3 = client(3);\n         let c4 = client(4);\n \n-        println(\"starting server.....\");\n+        println!(\"starting server.....\");\n         let _res = server.join().unwrap();\n \n         let f = vec![c1, c2, c3, c4];\n         \n"
+                },
+                {
+                    "date": 1641985948242,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -86,9 +86,12 @@\n         unsafe {\n             assert_eq!(1, counter);\n         }\n \n-        let server = thread::spawn(||server_loop(3));\n+\n+        \n+\n+        let server = tokio::spawn({server_loop(3);});\n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n         let c4 = client(4);\n"
+                },
+                {
+                    "date": 1641985958436,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -98,9 +98,9 @@\n \n         println!(\"starting server.....\");\n         let _res = server.join().unwrap();\n \n-        let f = vec![c1, c2, c3, c4];\n+        let f = vec![server, c1, c2, c3, c4];\n         \n         let _ = futures::future::join_all(f);\n \n         sleep(Duration::from_secs(5));\n"
+                },
+                {
+                    "date": 1641985994772,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -98,11 +98,12 @@\n \n         println!(\"starting server.....\");\n         let _res = server.join().unwrap();\n \n-        let f = vec![server, c1, c2, c3, c4];\n+        let f = vec![c1, c2, c3, c4];\n+        let _ = futures::future::join(server);\n+        let _ = futures::future::join_all(f);\n         \n-        let _ = futures::future::join_all(f);\n \n         sleep(Duration::from_secs(5));\n \n         unsafe {\n"
+                },
+                {
+                    "date": 1641986014663,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -99,9 +99,9 @@\n         println!(\"starting server.....\");\n         let _res = server.join().unwrap();\n \n         let f = vec![c1, c2, c3, c4];\n-        let _ = futures::future::join(server);\n+        let _ = futures::future::join(server_loop(3));\n         let _ = futures::future::join_all(f);\n         \n \n         sleep(Duration::from_secs(5));\n"
+                },
+                {
+                    "date": 1641986057251,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,9 +26,9 @@\n         }\n     }\n }\n \n-pub async fn server_loop(max: i32) {\n+pub fn server_loop(max: i32) {\n     println!(\"Server is started...\");\n     let reciver = CURRENT_HANDLER.with(|f| f.receiver.clone());\n     let mut message_counter = 0;\n     loop {\n"
+                },
+                {
+                    "date": 1641986069008,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,9 +26,9 @@\n         }\n     }\n }\n \n-pub fn server_loop(max: i32) {\n+pub async fn server_loop(max: i32) {\n     println!(\"Server is started...\");\n     let reciver = CURRENT_HANDLER.with(|f| f.receiver.clone());\n     let mut message_counter = 0;\n     loop {\n"
+                },
+                {
+                    "date": 1641986082552,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -96,9 +96,9 @@\n         let c3 = client(3);\n         let c4 = client(4);\n \n         println!(\"starting server.....\");\n-        let _res = server.join().unwrap();\n+        \n \n         let f = vec![c1, c2, c3, c4];\n         let _ = futures::future::join(server_loop(3));\n         let _ = futures::future::join_all(f);\n"
+                },
+                {
+                    "date": 1641986091284,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -89,9 +89,8 @@\n \n \n         \n \n-        let server = tokio::spawn({server_loop(3);});\n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n         let c4 = client(4);\n@@ -99,9 +98,8 @@\n         println!(\"starting server.....\");\n         \n \n         let f = vec![c1, c2, c3, c4];\n-        let _ = futures::future::join(server_loop(3));\n         let _ = futures::future::join_all(f);\n         \n \n         sleep(Duration::from_secs(5));\n"
+                },
+                {
+                    "date": 1641986120693,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,8 +52,9 @@\n     }\n }\n \n pub async fn client(id: i32) {\n+    println!(\"client #{} is started\", id);\n     let sender = CURRENT_HANDLER.with(|f| f.sender.clone());\n     let msg = format!(\"Hello. I am #{}\", id);\n     sender.send(msg.as_bytes().to_vec()).unwrap();\n }\n"
+                },
+                {
+                    "date": 1641986189955,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -88,9 +88,9 @@\n             assert_eq!(1, counter);\n         }\n \n \n-        \n+        tokio::spawn({client(111);});\n \n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n"
+                },
+                {
+                    "date": 1641986204088,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -88,9 +88,9 @@\n             assert_eq!(1, counter);\n         }\n \n \n-        tokio::spawn({client(111);});\n+        let c = tokio::spawn({client(111);});\n \n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n"
+                },
+                {
+                    "date": 1641986211124,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -88,9 +88,9 @@\n             assert_eq!(1, counter);\n         }\n \n \n-        let c = tokio::spawn({client(111);});\n+        let c = tokio::spawn(async {client(111);});\n \n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n"
+                },
+                {
+                    "date": 1641986222939,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -88,9 +88,9 @@\n             assert_eq!(1, counter);\n         }\n \n \n-        let c = tokio::spawn(async {client(111);});\n+        let c = tokio::spawn(async {client(111)});\n \n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n"
+                },
+                {
+                    "date": 1641986256693,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -89,9 +89,9 @@\n         }\n \n \n         let c = tokio::spawn(async {client(111)});\n-\n+        futures::future::TryJoin(c);\n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n         let c4 = client(4);\n"
+                },
+                {
+                    "date": 1641986277735,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -89,9 +89,9 @@\n         }\n \n \n         let c = tokio::spawn(async {client(111)});\n-        futures::future::TryJoin(c);\n+        futures::future::join(c);\n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n         let c4 = client(4);\n"
+                },
+                {
+                    "date": 1641986286283,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -89,9 +89,9 @@\n         }\n \n \n         let c = tokio::spawn(async {client(111)});\n-        futures::future::join(c);\n+        futures::future::join(c).unwrap();\n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n         let c4 = client(4);\n"
+                },
+                {
+                    "date": 1641986378227,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -89,9 +89,9 @@\n         }\n \n \n         let c = tokio::spawn(async {client(111)});\n-        futures::future::join(c).unwrap();\n+        \n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n         let c4 = client(4);\n"
+                },
+                {
+                    "date": 1641986405331,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -88,9 +88,9 @@\n             assert_eq!(1, counter);\n         }\n \n \n-        let c = tokio::spawn(async {client(111)});\n+        let c = tokio::spawn(async {client(111).await});\n         \n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n"
+                },
+                {
+                    "date": 1641986600810,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,10 +81,10 @@\n             assert_eq!(1, counter);\n         }\n     }\n \n-    #[tokio::test]\n-    async fn singleton_test2() {\n+    #[test]\n+    fn singleton_test2() {\n         unsafe {\n             assert_eq!(1, counter);\n         }\n \n"
+                },
+                {
+                    "date": 1641986627720,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,10 +81,10 @@\n             assert_eq!(1, counter);\n         }\n     }\n \n-    #[test]\n-    fn singleton_test2() {\n+    #[tokio::test]\n+    async fn singleton_test2() {\n         unsafe {\n             assert_eq!(1, counter);\n         }\n \n"
+                },
+                {
+                    "date": 1641986663361,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -88,9 +88,9 @@\n             assert_eq!(1, counter);\n         }\n \n \n-        let c = tokio::spawn(async {client(111).await});\n+        let c = tokio::spawn(async {client(111).await;});\n         \n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n"
+                },
+                {
+                    "date": 1641986689414,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -88,9 +88,9 @@\n             assert_eq!(1, counter);\n         }\n \n \n-        let c = tokio::spawn(async {client(111).await;});\n+        let c = tokio::spawn(async move {client(111).await;});\n         \n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n"
+                },
+                {
+                    "date": 1641986729782,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,9 +60,9 @@\n }\n \n #[cfg(test)]\n mod task_executor_tests {\n-    use std::{thread::{self, sleep}, time::Duration};\n+    use std::{thread::sleep, time::Duration};\n \n     use crate::task_executor::counter;\n \n     use super::{CURRENT_HANDLER, server_loop, client};\n"
+                },
+                {
+                    "date": 1641986846252,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -89,9 +89,9 @@\n         }\n \n \n         let c = tokio::spawn(async move {client(111).await;});\n-        \n+        thread::spawn(|| client(222));\n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n         let c4 = client(4);\n"
+                },
+                {
+                    "date": 1641986888118,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -89,9 +89,10 @@\n         }\n \n \n         let c = tokio::spawn(async move {client(111).await;});\n-        thread::spawn(|| client(222));\n+        let a = thread::spawn(|| client(222));\n+        a.join().unwrap();\n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n         let c4 = client(4);\n"
+                },
+                {
+                    "date": 1641986987385,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,9 +60,9 @@\n }\n \n #[cfg(test)]\n mod task_executor_tests {\n-    use std::{thread::sleep, time::Duration};\n+    use std::{thread::{sleep, self}, time::Duration};\n \n     use crate::task_executor::counter;\n \n     use super::{CURRENT_HANDLER, server_loop, client};\n@@ -89,9 +89,9 @@\n         }\n \n \n         let c = tokio::spawn(async move {client(111).await;});\n-        let a = thread::spawn(|| client(222));\n+        let a = thread::spawn(|| println!(\"hello\"));\n         a.join().unwrap();\n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n"
+                },
+                {
+                    "date": 1641987047509,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -58,8 +58,12 @@\n     let msg = format!(\"Hello. I am #{}\", id);\n     sender.send(msg.as_bytes().to_vec()).unwrap();\n }\n \n+pub async fn ddd() {\n+    println!(\"testing\");\n+}\n+\n #[cfg(test)]\n mod task_executor_tests {\n     use std::{thread::{sleep, self}, time::Duration};\n \n"
+                },
+                {
+                    "date": 1641987065412,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -93,9 +93,9 @@\n         }\n \n \n         let c = tokio::spawn(async move {client(111).await;});\n-        let a = thread::spawn(|| println!(\"hello\"));\n+        let a = thread::spawn(|| {println!(\"hello\"); ddd();});\n         a.join().unwrap();\n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n"
+                },
+                {
+                    "date": 1641987089834,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -66,9 +66,9 @@\n #[cfg(test)]\n mod task_executor_tests {\n     use std::{thread::{sleep, self}, time::Duration};\n \n-    use crate::task_executor::counter;\n+    use crate::task_executor::{counter, ddd};\n \n     use super::{CURRENT_HANDLER, server_loop, client};\n \n     #[tokio::test]\n"
+                },
+                {
+                    "date": 1641987119965,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -93,9 +93,9 @@\n         }\n \n \n         let c = tokio::spawn(async move {client(111).await;});\n-        let a = thread::spawn(|| {println!(\"hello\"); ddd();});\n+        let a = thread::spawn(|| {println!(\"hello\"); ddd();println!(\"finished\");});\n         a.join().unwrap();\n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n"
+                },
+                {
+                    "date": 1641987137634,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -93,9 +93,9 @@\n         }\n \n \n         let c = tokio::spawn(async move {client(111).await;});\n-        let a = thread::spawn(|| {println!(\"hello\"); ddd();println!(\"finished\");});\n+        let a = thread::spawn(|| {println!(\"hello\"); ddd().await;println!(\"finished\");});\n         a.join().unwrap();\n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n"
+                },
+                {
+                    "date": 1641987150324,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -93,9 +93,9 @@\n         }\n \n \n         let c = tokio::spawn(async move {client(111).await;});\n-        let a = thread::spawn(|| {println!(\"hello\"); ddd().await;println!(\"finished\");});\n+        let a = thread::spawn(async || {println!(\"hello\"); ddd().await;println!(\"finished\");});\n         a.join().unwrap();\n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n"
+                },
+                {
+                    "date": 1641987165422,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -93,9 +93,9 @@\n         }\n \n \n         let c = tokio::spawn(async move {client(111).await;});\n-        let a = thread::spawn(async || {println!(\"hello\"); ddd().await;println!(\"finished\");});\n+        let a = thread::spawn(|| {println!(\"hello\"); ddd().await;println!(\"finished\");});\n         a.join().unwrap();\n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n"
+                },
+                {
+                    "date": 1641987177031,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -93,9 +93,9 @@\n         }\n \n \n         let c = tokio::spawn(async move {client(111).await;});\n-        let a = thread::spawn(|| {println!(\"hello\"); ddd().await;println!(\"finished\");});\n+        let a = thread::spawn(|| {println!(\"hello\"); ddd();println!(\"finished\");});\n         a.join().unwrap();\n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n"
+                },
+                {
+                    "date": 1641987182958,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -58,9 +58,9 @@\n     let msg = format!(\"Hello. I am #{}\", id);\n     sender.send(msg.as_bytes().to_vec()).unwrap();\n }\n \n-pub async fn ddd() {\n+pub fn ddd() {\n     println!(\"testing\");\n }\n \n #[cfg(test)]\n"
+                },
+                {
+                    "date": 1641987200491,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,8 +60,11 @@\n }\n \n pub fn ddd() {\n     println!(\"testing\");\n+    let sender = CURRENT_HANDLER.with(|f| f.sender.clone());\n+    let msg = format!(\"Hello. I am #{}\", id);\n+    sender.send(msg.as_bytes().to_vec()).unwrap();\n }\n \n #[cfg(test)]\n mod task_executor_tests {\n"
+                },
+                {
+                    "date": 1641987221684,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -61,9 +61,9 @@\n \n pub fn ddd() {\n     println!(\"testing\");\n     let sender = CURRENT_HANDLER.with(|f| f.sender.clone());\n-    let msg = format!(\"Hello. I am #{}\", id);\n+    let msg = format!(\"Hello. I am #{}\");\n     sender.send(msg.as_bytes().to_vec()).unwrap();\n }\n \n #[cfg(test)]\n"
+                },
+                {
+                    "date": 1641987227048,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -61,9 +61,9 @@\n \n pub fn ddd() {\n     println!(\"testing\");\n     let sender = CURRENT_HANDLER.with(|f| f.sender.clone());\n-    let msg = format!(\"Hello. I am #{}\");\n+    let msg = format!(\"Hello. I am #{}\", 21);\n     sender.send(msg.as_bytes().to_vec()).unwrap();\n }\n \n #[cfg(test)]\n"
+                },
+                {
+                    "date": 1641987252014,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -62,9 +62,9 @@\n pub fn ddd() {\n     println!(\"testing\");\n     let sender = CURRENT_HANDLER.with(|f| f.sender.clone());\n     let msg = format!(\"Hello. I am #{}\", 21);\n-    sender.send(msg.as_bytes().to_vec()).unwrap();\n+//    sender.send(msg.as_bytes().to_vec()).unwrap();\n }\n \n #[cfg(test)]\n mod task_executor_tests {\n"
+                },
+                {
+                    "date": 1641987565761,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -113,9 +113,9 @@\n \n         sleep(Duration::from_secs(5));\n \n         unsafe {\n-            assert_eq!(1, counter);\n+            assert_eq!(2, counter);\n         }\n \n     }\n }\n"
+                },
+                {
+                    "date": 1641987638502,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -95,9 +95,9 @@\n             assert_eq!(1, counter);\n         }\n \n \n-        let c = tokio::spawn(async move {client(111).await;});\n+        let c = tokio::spawn( {client(111).await;});\n         let a = thread::spawn(|| {println!(\"hello\"); ddd();println!(\"finished\");});\n         a.join().unwrap();\n         let c1 = client(1);\n         let c2 = client(2);\n@@ -113,9 +113,9 @@\n \n         sleep(Duration::from_secs(5));\n \n         unsafe {\n-            assert_eq!(2, counter);\n+            assert_eq!(1, counter);\n         }\n \n     }\n }\n"
+                },
+                {
+                    "date": 1641987649336,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -95,9 +95,9 @@\n             assert_eq!(1, counter);\n         }\n \n \n-        let c = tokio::spawn( {client(111).await;});\n+        let c = tokio::spawn(async {client(111).await;});\n         let a = thread::spawn(|| {println!(\"hello\"); ddd();println!(\"finished\");});\n         a.join().unwrap();\n         let c1 = client(1);\n         let c2 = client(2);\n"
+                },
+                {
+                    "date": 1641987676356,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -98,8 +98,9 @@\n \n         let c = tokio::spawn(async {client(111).await;});\n         let a = thread::spawn(|| {println!(\"hello\"); ddd();println!(\"finished\");});\n         a.join().unwrap();\n+        c.join().unwrap();\n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n         let c4 = client(4);\n"
+                },
+                {
+                    "date": 1641987690665,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -95,9 +95,9 @@\n             assert_eq!(1, counter);\n         }\n \n \n-        let c = tokio::spawn(async {client(111).await;});\n+        let c = tokio::spawn(async {client(111);});\n         let a = thread::spawn(|| {println!(\"hello\"); ddd();println!(\"finished\");});\n         a.join().unwrap();\n         c.join().unwrap();\n         let c1 = client(1);\n"
+                },
+                {
+                    "date": 1641987744145,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -98,9 +98,9 @@\n \n         let c = tokio::spawn(async {client(111);});\n         let a = thread::spawn(|| {println!(\"hello\"); ddd();println!(\"finished\");});\n         a.join().unwrap();\n-        c.join().unwrap();\n+        \n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n         let c4 = client(4);\n"
+                },
+                {
+                    "date": 1641987780873,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -114,9 +114,9 @@\n \n         sleep(Duration::from_secs(5));\n \n         unsafe {\n-            assert_eq!(1, counter);\n+            assert_eq!(2, counter);\n         }\n \n     }\n }\n"
+                },
+                {
+                    "date": 1641987868144,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -96,10 +96,16 @@\n         }\n \n \n         let c = tokio::spawn(async {client(111);});\n-        let a = thread::spawn(|| {println!(\"hello\"); ddd();println!(\"finished\");});\n-        a.join().unwrap();\n+        let a1 = thread::spawn(|| {println!(\"hello\"); ddd();println!(\"finished\");});\n+        let a2 = thread::spawn(|| {println!(\"hello\"); ddd();println!(\"finished\");});\n+        let a3 = thread::spawn(|| {println!(\"hello\"); ddd();println!(\"finished\");});\n+        let a4 = thread::spawn(|| {println!(\"hello\"); ddd();println!(\"finished\");});\n+        a1.join().unwrap();\n+        a2.join().unwrap();\n+        a3.join().unwrap();\n+        a4.join().unwrap();\n         \n         let c1 = client(1);\n         let c2 = client(2);\n         let c3 = client(3);\n"
+                },
+                {
+                    "date": 1641988795766,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,9 @@\n \n pub static mut counter: i32 = 1;\n \n thread_local! {\n+    \n     static CURRENT_HANDLER: Arc<CommandHandler> = Arc::new(Default::default());\n }\n #[derive(Debug, Clone)]\n pub struct CommandHandler {\n@@ -96,9 +97,9 @@\n         }\n \n \n         let c = tokio::spawn(async {client(111);});\n-        let a1 = thread::spawn(|| {println!(\"hello\"); ddd();println!(\"finished\");});\n+        let a1 = thread::spawn(|| {println!(\"hello\"); client(1);println!(\"finished\");});\n         let a2 = thread::spawn(|| {println!(\"hello\"); ddd();println!(\"finished\");});\n         let a3 = thread::spawn(|| {println!(\"hello\"); ddd();println!(\"finished\");});\n         let a4 = thread::spawn(|| {println!(\"hello\"); ddd();println!(\"finished\");});\n         a1.join().unwrap();\n"
+                },
+                {
+                    "date": 1641988801541,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,9 +52,9 @@\n         }\n     }\n }\n \n-pub async fn client(id: i32) {\n+pub fn client(id: i32) {\n     println!(\"client #{} is started\", id);\n     let sender = CURRENT_HANDLER.with(|f| f.sender.clone());\n     let msg = format!(\"Hello. I am #{}\", id);\n     sender.send(msg.as_bytes().to_vec()).unwrap();\n"
+                },
+                {
+                    "date": 1641988839623,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -106,22 +106,10 @@\n         a2.join().unwrap();\n         a3.join().unwrap();\n         a4.join().unwrap();\n         \n-        let c1 = client(1);\n-        let c2 = client(2);\n-        let c3 = client(3);\n-        let c4 = client(4);\n+        sleep(Duration::from_secs(1));\n \n-        println!(\"starting server.....\");\n-        \n-\n-        let f = vec![c1, c2, c3, c4];\n-        let _ = futures::future::join_all(f);\n-        \n-\n-        sleep(Duration::from_secs(5));\n-\n         unsafe {\n             assert_eq!(2, counter);\n         }\n \n"
+                },
+                {
+                    "date": 1641988904706,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -98,11 +98,11 @@\n \n \n         let c = tokio::spawn(async {client(111);});\n         let a1 = thread::spawn(|| {println!(\"hello\"); client(1);println!(\"finished\");});\n-        let a2 = thread::spawn(|| {println!(\"hello\"); ddd();println!(\"finished\");});\n-        let a3 = thread::spawn(|| {println!(\"hello\"); ddd();println!(\"finished\");});\n-        let a4 = thread::spawn(|| {println!(\"hello\"); ddd();println!(\"finished\");});\n+        let a2 = thread::spawn(|| {println!(\"hello\"); client(2);println!(\"finished\");});\n+        let a3 = thread::spawn(|| {println!(\"hello\"); client(3);println!(\"finished\");});\n+        let a4 = thread::spawn(|| {println!(\"hello\"); client(4);println!(\"finished\");});\n         a1.join().unwrap();\n         a2.join().unwrap();\n         a3.join().unwrap();\n         a4.join().unwrap();\n"
+                },
+                {
+                    "date": 1641988937777,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -105,9 +105,9 @@\n         a1.join().unwrap();\n         a2.join().unwrap();\n         a3.join().unwrap();\n         a4.join().unwrap();\n-        \n+        c.join();\n         sleep(Duration::from_secs(1));\n \n         unsafe {\n             assert_eq!(2, counter);\n"
+                },
+                {
+                    "date": 1641988964481,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -96,18 +96,18 @@\n             assert_eq!(1, counter);\n         }\n \n \n-        let c = tokio::spawn(async {client(111);});\n+        let c = tokio::spawn(async {client(111);}.await);\n         let a1 = thread::spawn(|| {println!(\"hello\"); client(1);println!(\"finished\");});\n         let a2 = thread::spawn(|| {println!(\"hello\"); client(2);println!(\"finished\");});\n         let a3 = thread::spawn(|| {println!(\"hello\"); client(3);println!(\"finished\");});\n         let a4 = thread::spawn(|| {println!(\"hello\"); client(4);println!(\"finished\");});\n         a1.join().unwrap();\n         a2.join().unwrap();\n         a3.join().unwrap();\n         a4.join().unwrap();\n-        c.join();\n+        \n         sleep(Duration::from_secs(1));\n \n         unsafe {\n             assert_eq!(2, counter);\n"
+                },
+                {
+                    "date": 1641988980689,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -96,9 +96,9 @@\n             assert_eq!(1, counter);\n         }\n \n \n-        let c = tokio::spawn(async {client(111);}.await);\n+        \n         let a1 = thread::spawn(|| {println!(\"hello\"); client(1);println!(\"finished\");});\n         let a2 = thread::spawn(|| {println!(\"hello\"); client(2);println!(\"finished\");});\n         let a3 = thread::spawn(|| {println!(\"hello\"); client(3);println!(\"finished\");});\n         let a4 = thread::spawn(|| {println!(\"hello\"); client(4);println!(\"finished\");});\n"
+                },
+                {
+                    "date": 1641989041791,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,9 @@\n pub fn client(id: i32) {\n     println!(\"client #{} is started\", id);\n     let sender = CURRENT_HANDLER.with(|f| f.sender.clone());\n     let msg = format!(\"Hello. I am #{}\", id);\n-    sender.send(msg.as_bytes().to_vec()).unwrap();\n+    sender.send_timeout(msg.as_bytes().to_vec(), Duration::from_secs(1)).unwrap();\n }\n \n pub fn ddd() {\n     println!(\"testing\");\n"
+                },
+                {
+                    "date": 1641989455556,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -101,12 +101,12 @@\n         let a1 = thread::spawn(|| {println!(\"hello\"); client(1);println!(\"finished\");});\n         let a2 = thread::spawn(|| {println!(\"hello\"); client(2);println!(\"finished\");});\n         let a3 = thread::spawn(|| {println!(\"hello\"); client(3);println!(\"finished\");});\n         let a4 = thread::spawn(|| {println!(\"hello\"); client(4);println!(\"finished\");});\n-        a1.join().unwrap();\n-        a2.join().unwrap();\n-        a3.join().unwrap();\n-        a4.join().unwrap();\n+        a1.join();\n+        a2.join();\n+        a3.join();\n+        a4.join();\n         \n         sleep(Duration::from_secs(1));\n \n         unsafe {\n"
+                },
+                {
+                    "date": 1641989495936,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -109,9 +109,9 @@\n         \n         sleep(Duration::from_secs(1));\n \n         unsafe {\n-            assert_eq!(2, counter);\n+            assert_eq!(4, counter);\n         }\n \n     }\n }\n"
+                },
+                {
+                    "date": 1641989542600,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -96,9 +96,9 @@\n             assert_eq!(1, counter);\n         }\n \n \n-        \n+        let server = thread::spawn(|| {server_loop(3)});\n         let a1 = thread::spawn(|| {println!(\"hello\"); client(1);println!(\"finished\");});\n         let a2 = thread::spawn(|| {println!(\"hello\"); client(2);println!(\"finished\");});\n         let a3 = thread::spawn(|| {println!(\"hello\"); client(3);println!(\"finished\");});\n         let a4 = thread::spawn(|| {println!(\"hello\"); client(4);println!(\"finished\");});\n"
+                },
+                {
+                    "date": 1641989557751,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -101,8 +101,9 @@\n         let a1 = thread::spawn(|| {println!(\"hello\"); client(1);println!(\"finished\");});\n         let a2 = thread::spawn(|| {println!(\"hello\"); client(2);println!(\"finished\");});\n         let a3 = thread::spawn(|| {println!(\"hello\"); client(3);println!(\"finished\");});\n         let a4 = thread::spawn(|| {println!(\"hello\"); client(4);println!(\"finished\");});\n+        server.join();\n         a1.join();\n         a2.join();\n         a3.join();\n         a4.join();\n"
+                },
+                {
+                    "date": 1641989587221,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n         }\n     }\n }\n \n-pub async fn server_loop(max: i32) {\n+pub fn server_loop(max: i32) {\n     println!(\"Server is started...\");\n     let reciver = CURRENT_HANDLER.with(|f| f.receiver.clone());\n     let mut message_counter = 0;\n     loop {\n"
+                },
+                {
+                    "date": 1641989705019,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -106,9 +106,9 @@\n         a1.join();\n         a2.join();\n         a3.join();\n         a4.join();\n-        \n+        println!(\"all started\");\n         sleep(Duration::from_secs(1));\n \n         unsafe {\n             assert_eq!(4, counter);\n"
+                },
+                {
+                    "date": 1641989712379,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -106,9 +106,9 @@\n         a1.join();\n         a2.join();\n         a3.join();\n         a4.join();\n-        println!(\"all started\");\n+        println!(\"all threads are started\");\n         sleep(Duration::from_secs(1));\n \n         unsafe {\n             assert_eq!(4, counter);\n"
+                },
+                {
+                    "date": 1641989747873,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -101,9 +101,9 @@\n         let a1 = thread::spawn(|| {println!(\"hello\"); client(1);println!(\"finished\");});\n         let a2 = thread::spawn(|| {println!(\"hello\"); client(2);println!(\"finished\");});\n         let a3 = thread::spawn(|| {println!(\"hello\"); client(3);println!(\"finished\");});\n         let a4 = thread::spawn(|| {println!(\"hello\"); client(4);println!(\"finished\");});\n-        server.join();\n+        server.join().unwrap();\n         a1.join();\n         a2.join();\n         a3.join();\n         a4.join();\n"
+                },
+                {
+                    "date": 1641998279345,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -47,9 +47,9 @@\n                     info!(\"!!! Threshold maximum messages reached: {}\", max);\n                     break;\n                 }\n             }\n-            Err(_) => continue,\n+            Err(_) => {continue}\n         }\n     }\n }\n \n"
+                },
+                {
+                    "date": 1641998305374,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,8 +31,9 @@\n pub fn server_loop(max: i32) {\n     println!(\"Server is started...\");\n     let reciver = CURRENT_HANDLER.with(|f| f.receiver.clone());\n     let mut message_counter = 0;\n+    let mut cycles = 0;\n     loop {\n         match reciver.recv_timeout(Duration::from_secs(1)) {\n             Ok(buffer) => {\n                 message_counter += 1;\n@@ -47,9 +48,12 @@\n                     info!(\"!!! Threshold maximum messages reached: {}\", max);\n                     break;\n                 }\n             }\n-            Err(_) => {continue}\n+            Err(_) => {\n+\n+                continue\n+            }\n         }\n     }\n }\n \n"
+                },
+                {
+                    "date": 1641998340263,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -49,10 +49,15 @@\n                     break;\n                 }\n             }\n             Err(_) => {\n-\n-                continue\n+                cycles += 1;\n+                if cycles < 5 {\n+                    continue\n+                } else{\n+                    break\n+                }\n+                \n             }\n         }\n     }\n }\n"
+                },
+                {
+                    "date": 1641998444678,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -104,9 +104,9 @@\n         unsafe {\n             assert_eq!(1, counter);\n         }\n \n-\n+        tokio::spawn(async || server_loop(1))\n         let server = thread::spawn(|| {server_loop(3)});\n         let a1 = thread::spawn(|| {println!(\"hello\"); client(1);println!(\"finished\");});\n         let a2 = thread::spawn(|| {println!(\"hello\"); client(2);println!(\"finished\");});\n         let a3 = thread::spawn(|| {println!(\"hello\"); client(3);println!(\"finished\");});\n@@ -119,9 +119,9 @@\n         println!(\"all threads are started\");\n         sleep(Duration::from_secs(1));\n \n         unsafe {\n-            assert_eq!(4, counter);\n+            assert_eq!(6, counter);\n         }\n \n     }\n }\n"
+                },
+                {
+                    "date": 1641998460438,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -104,9 +104,9 @@\n         unsafe {\n             assert_eq!(1, counter);\n         }\n \n-        tokio::spawn(async || server_loop(1))\n+        tokio::spawn(async { server_loop(1)});\n         let server = thread::spawn(|| {server_loop(3)});\n         let a1 = thread::spawn(|| {println!(\"hello\"); client(1);println!(\"finished\");});\n         let a2 = thread::spawn(|| {println!(\"hello\"); client(2);println!(\"finished\");});\n         let a3 = thread::spawn(|| {println!(\"hello\"); client(3);println!(\"finished\");});\n"
+                },
+                {
+                    "date": 1641998631416,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -104,9 +104,9 @@\n         unsafe {\n             assert_eq!(1, counter);\n         }\n \n-        tokio::spawn(async { server_loop(1)});\n+        tokio::spawn(async { server_loop(1) }.await);\n         let server = thread::spawn(|| {server_loop(3)});\n         let a1 = thread::spawn(|| {println!(\"hello\"); client(1);println!(\"finished\");});\n         let a2 = thread::spawn(|| {println!(\"hello\"); client(2);println!(\"finished\");});\n         let a3 = thread::spawn(|| {println!(\"hello\"); client(3);println!(\"finished\");});\n"
+                },
+                {
+                    "date": 1641998650542,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -104,9 +104,9 @@\n         unsafe {\n             assert_eq!(1, counter);\n         }\n \n-        tokio::spawn(async { server_loop(1) }.await);\n+        tokio::spawn(async { server_loop(1) });\n         let server = thread::spawn(|| {server_loop(3)});\n         let a1 = thread::spawn(|| {println!(\"hello\"); client(1);println!(\"finished\");});\n         let a2 = thread::spawn(|| {println!(\"hello\"); client(2);println!(\"finished\");});\n         let a3 = thread::spawn(|| {println!(\"hello\"); client(3);println!(\"finished\");});\n"
+                },
+                {
+                    "date": 1641998725347,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -104,9 +104,9 @@\n         unsafe {\n             assert_eq!(1, counter);\n         }\n \n-        tokio::spawn(async { server_loop(1) });\n+        tokio::spawn(async { println!(\"OK....\") });\n         let server = thread::spawn(|| {server_loop(3)});\n         let a1 = thread::spawn(|| {println!(\"hello\"); client(1);println!(\"finished\");});\n         let a2 = thread::spawn(|| {println!(\"hello\"); client(2);println!(\"finished\");});\n         let a3 = thread::spawn(|| {println!(\"hello\"); client(3);println!(\"finished\");});\n"
+                },
+                {
+                    "date": 1641998777168,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -104,9 +104,9 @@\n         unsafe {\n             assert_eq!(1, counter);\n         }\n \n-        tokio::spawn(async { println!(\"OK....\") });\n+        let r = tokio::spawn(async { println!(\"OK....\") });\n         let server = thread::spawn(|| {server_loop(3)});\n         let a1 = thread::spawn(|| {println!(\"hello\"); client(1);println!(\"finished\");});\n         let a2 = thread::spawn(|| {println!(\"hello\"); client(2);println!(\"finished\");});\n         let a3 = thread::spawn(|| {println!(\"hello\"); client(3);println!(\"finished\");});\n@@ -115,8 +115,9 @@\n         a1.join();\n         a2.join();\n         a3.join();\n         a4.join();\n+        r.await;\n         println!(\"all threads are started\");\n         sleep(Duration::from_secs(1));\n \n         unsafe {\n"
+                },
+                {
+                    "date": 1641998856163,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -115,9 +115,9 @@\n         a1.join();\n         a2.join();\n         a3.join();\n         a4.join();\n-        r.await;\n+        futures::future::join_all(vec![r]);\n         println!(\"all threads are started\");\n         sleep(Duration::from_secs(1));\n \n         unsafe {\n"
+                },
+                {
+                    "date": 1641998915492,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -115,9 +115,9 @@\n         a1.join();\n         a2.join();\n         a3.join();\n         a4.join();\n-        futures::future::join_all(vec![r]);\n+        futures::future::join_all(vec![r]).unwrap();\n         println!(\"all threads are started\");\n         sleep(Duration::from_secs(1));\n \n         unsafe {\n"
+                },
+                {
+                    "date": 1641998924196,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -115,9 +115,9 @@\n         a1.join();\n         a2.join();\n         a3.join();\n         a4.join();\n-        futures::future::join_all(vec![r]).unwrap();\n+        futures::future::join_all(vec![r]);\n         println!(\"all threads are started\");\n         sleep(Duration::from_secs(1));\n \n         unsafe {\n"
+                },
+                {
+                    "date": 1641999099670,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -104,9 +104,14 @@\n         unsafe {\n             assert_eq!(1, counter);\n         }\n \n-        let r = tokio::spawn(async { println!(\"OK....\") });\n+        for i in 0..4 {\n+            tokio::spawn(lazy(move || {\n+                println!(\"Hello from task {}\", i);\n+                Ok(())\n+            }));\n+        }\n         let server = thread::spawn(|| {server_loop(3)});\n         let a1 = thread::spawn(|| {println!(\"hello\"); client(1);println!(\"finished\");});\n         let a2 = thread::spawn(|| {println!(\"hello\"); client(2);println!(\"finished\");});\n         let a3 = thread::spawn(|| {println!(\"hello\"); client(3);println!(\"finished\");});\n@@ -115,9 +120,9 @@\n         a1.join();\n         a2.join();\n         a3.join();\n         a4.join();\n-        futures::future::join_all(vec![r]);\n+        \n         println!(\"all threads are started\");\n         sleep(Duration::from_secs(1));\n \n         unsafe {\n"
+                },
+                {
+                    "date": 1641999123286,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -79,8 +79,10 @@\n #[cfg(test)]\n mod task_executor_tests {\n     use std::{thread::{sleep, self}, time::Duration};\n \n+    use futures::future::lazy;\n+\n     use crate::task_executor::{counter, ddd};\n \n     use super::{CURRENT_HANDLER, server_loop, client};\n \n"
+                },
+                {
+                    "date": 1641999206786,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -106,14 +106,18 @@\n         unsafe {\n             assert_eq!(1, counter);\n         }\n \n-        for i in 0..4 {\n-            tokio::spawn(lazy(move || {\n-                println!(\"Hello from task {}\", i);\n-                Ok(())\n-            }));\n-        }\n+        tokio::run(lazy(|| {\n+            for i in 0..4 {\n+                tokio::spawn(lazy(move || {\n+                    println!(\"Hello from task {}\", i);\n+                    Ok(())\n+                }));\n+            }\n+        \n+            Ok(())\n+        }));\n         let server = thread::spawn(|| {server_loop(3)});\n         let a1 = thread::spawn(|| {println!(\"hello\"); client(1);println!(\"finished\");});\n         let a2 = thread::spawn(|| {println!(\"hello\"); client(2);println!(\"finished\");});\n         let a3 = thread::spawn(|| {println!(\"hello\"); client(3);println!(\"finished\");});\n"
+                },
+                {
+                    "date": 1641999248136,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -106,18 +106,15 @@\n         unsafe {\n             assert_eq!(1, counter);\n         }\n \n-        tokio::run(lazy(|| {\n+        \n             for i in 0..4 {\n                 tokio::spawn(lazy(move || {\n                     println!(\"Hello from task {}\", i);\n                     Ok(())\n                 }));\n             }\n-        \n-            Ok(())\n-        }));\n         let server = thread::spawn(|| {server_loop(3)});\n         let a1 = thread::spawn(|| {println!(\"hello\"); client(1);println!(\"finished\");});\n         let a2 = thread::spawn(|| {println!(\"hello\"); client(2);println!(\"finished\");});\n         let a3 = thread::spawn(|| {println!(\"hello\"); client(3);println!(\"finished\");});\n"
+                },
+                {
+                    "date": 1641999264008,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -108,9 +108,9 @@\n         }\n \n         \n             for i in 0..4 {\n-                tokio::spawn(lazy(move || {\n+                tokio::spawn(lazy(move |i| {\n                     println!(\"Hello from task {}\", i);\n                     Ok(())\n                 }));\n             }\n"
+                },
+                {
+                    "date": 1641999275429,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -108,9 +108,9 @@\n         }\n \n         \n             for i in 0..4 {\n-                tokio::spawn(lazy(move |i| {\n+                tokio::spawn(lazy(move |_| {\n                     println!(\"Hello from task {}\", i);\n                     Ok(())\n                 }));\n             }\n"
+                },
+                {
+                    "date": 1641999282376,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -109,10 +109,9 @@\n \n         \n             for i in 0..4 {\n                 tokio::spawn(lazy(move |_| {\n-                    println!(\"Hello from task {}\", i);\n-                    Ok(())\n+                    println!(\"Hello from task {}\", i);                    \n                 }));\n             }\n         let server = thread::spawn(|| {server_loop(3)});\n         let a1 = thread::spawn(|| {println!(\"hello\"); client(1);println!(\"finished\");});\n"
+                },
+                {
+                    "date": 1641999333956,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -107,13 +107,18 @@\n             assert_eq!(1, counter);\n         }\n \n         \n+        tokio::run(lazy(|| {\n             for i in 0..4 {\n-                tokio::spawn(lazy(move |_| {\n-                    println!(\"Hello from task {}\", i);                    \n+                tokio::spawn(lazy(move || {\n+                    println!(\"Hello from task {}\", i);\n+                    Ok(())\n                 }));\n             }\n+        \n+            Ok(())\n+        }));\n         let server = thread::spawn(|| {server_loop(3)});\n         let a1 = thread::spawn(|| {println!(\"hello\"); client(1);println!(\"finished\");});\n         let a2 = thread::spawn(|| {println!(\"hello\"); client(2);println!(\"finished\");});\n         let a3 = thread::spawn(|| {println!(\"hello\"); client(3);println!(\"finished\");});\n"
+                },
+                {
+                    "date": 1641999345837,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -107,11 +107,11 @@\n             assert_eq!(1, counter);\n         }\n \n         \n-        tokio::run(lazy(|| {\n+        tokio::run(lazy(|_| {\n             for i in 0..4 {\n-                tokio::spawn(lazy(move || {\n+                tokio::spawn(lazy(move |_| {\n                     println!(\"Hello from task {}\", i);\n                     Ok(())\n                 }));\n             }\n"
+                },
+                {
+                    "date": 1641999389030,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -107,18 +107,15 @@\n             assert_eq!(1, counter);\n         }\n \n         \n-        tokio::run(lazy(|_| {\n+        \n             for i in 0..4 {\n                 tokio::spawn(lazy(move |_| {\n                     println!(\"Hello from task {}\", i);\n                     Ok(())\n                 }));\n             }\n-        \n-            Ok(())\n-        }));\n         let server = thread::spawn(|| {server_loop(3)});\n         let a1 = thread::spawn(|| {println!(\"hello\"); client(1);println!(\"finished\");});\n         let a2 = thread::spawn(|| {println!(\"hello\"); client(2);println!(\"finished\");});\n         let a3 = thread::spawn(|| {println!(\"hello\"); client(3);println!(\"finished\");});\n"
+                },
+                {
+                    "date": 1641999395553,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,12 @@\n use std::{sync::Arc, time::Duration};\n \n use log::info;\n \n-\n pub static mut counter: i32 = 1;\n \n thread_local! {\n-    \n+\n     static CURRENT_HANDLER: Arc<CommandHandler> = Arc::new(Default::default());\n }\n #[derive(Debug, Clone)]\n pub struct CommandHandler {\n@@ -51,13 +50,12 @@\n             }\n             Err(_) => {\n                 cycles += 1;\n                 if cycles < 5 {\n-                    continue\n-                } else{\n-                    break\n+                    continue;\n+                } else {\n+                    break;\n                 }\n-                \n             }\n         }\n     }\n }\n@@ -65,27 +63,32 @@\n pub fn client(id: i32) {\n     println!(\"client #{} is started\", id);\n     let sender = CURRENT_HANDLER.with(|f| f.sender.clone());\n     let msg = format!(\"Hello. I am #{}\", id);\n-    sender.send_timeout(msg.as_bytes().to_vec(), Duration::from_secs(1)).unwrap();\n+    sender\n+        .send_timeout(msg.as_bytes().to_vec(), Duration::from_secs(1))\n+        .unwrap();\n }\n \n pub fn ddd() {\n     println!(\"testing\");\n     let sender = CURRENT_HANDLER.with(|f| f.sender.clone());\n     let msg = format!(\"Hello. I am #{}\", 21);\n-//    sender.send(msg.as_bytes().to_vec()).unwrap();\n+    //    sender.send(msg.as_bytes().to_vec()).unwrap();\n }\n \n #[cfg(test)]\n mod task_executor_tests {\n-    use std::{thread::{sleep, self}, time::Duration};\n+    use std::{\n+        thread::{self, sleep},\n+        time::Duration,\n+    };\n \n     use futures::future::lazy;\n \n     use crate::task_executor::{counter, ddd};\n \n-    use super::{CURRENT_HANDLER, server_loop, client};\n+    use super::{client, server_loop, CURRENT_HANDLER};\n \n     #[tokio::test]\n     async fn singleton_test1() {\n         unsafe {\n@@ -106,32 +109,45 @@\n         unsafe {\n             assert_eq!(1, counter);\n         }\n \n-        \n-        \n-            for i in 0..4 {\n-                tokio::spawn(lazy(move |_| {\n-                    println!(\"Hello from task {}\", i);\n-                    Ok(())\n-                }));\n-            }\n-        let server = thread::spawn(|| {server_loop(3)});\n-        let a1 = thread::spawn(|| {println!(\"hello\"); client(1);println!(\"finished\");});\n-        let a2 = thread::spawn(|| {println!(\"hello\"); client(2);println!(\"finished\");});\n-        let a3 = thread::spawn(|| {println!(\"hello\"); client(3);println!(\"finished\");});\n-        let a4 = thread::spawn(|| {println!(\"hello\"); client(4);println!(\"finished\");});\n+        for i in 0..4 {\n+            tokio::spawn(lazy(move |_| {\n+                println!(\"Hello from task {}\", i);\n+                Ok(())\n+            }));\n+        }\n+        let server = thread::spawn(|| server_loop(3));\n+        let a1 = thread::spawn(|| {\n+            println!(\"hello\");\n+            client(1);\n+            println!(\"finished\");\n+        });\n+        let a2 = thread::spawn(|| {\n+            println!(\"hello\");\n+            client(2);\n+            println!(\"finished\");\n+        });\n+        let a3 = thread::spawn(|| {\n+            println!(\"hello\");\n+            client(3);\n+            println!(\"finished\");\n+        });\n+        let a4 = thread::spawn(|| {\n+            println!(\"hello\");\n+            client(4);\n+            println!(\"finished\");\n+        });\n         server.join().unwrap();\n         a1.join();\n         a2.join();\n         a3.join();\n         a4.join();\n-        \n+\n         println!(\"all threads are started\");\n         sleep(Duration::from_secs(1));\n \n         unsafe {\n             assert_eq!(6, counter);\n         }\n-\n     }\n }\n"
+                },
+                {
+                    "date": 1641999403160,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -111,10 +111,9 @@\n         }\n \n         for i in 0..4 {\n             tokio::spawn(lazy(move |_| {\n-                println!(\"Hello from task {}\", i);\n-                Ok(())\n+                println!(\"Hello from task {}\", i);                \n             }));\n         }\n         let server = thread::spawn(|| server_loop(3));\n         let a1 = thread::spawn(|| {\n"
+                },
+                {
+                    "date": 1641999457959,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -109,13 +109,8 @@\n         unsafe {\n             assert_eq!(1, counter);\n         }\n \n-        for i in 0..4 {\n-            tokio::spawn(lazy(move |_| {\n-                println!(\"Hello from task {}\", i);                \n-            }));\n-        }\n         let server = thread::spawn(|| server_loop(3));\n         let a1 = thread::spawn(|| {\n             println!(\"hello\");\n             client(1);\n@@ -148,5 +143,13 @@\n         unsafe {\n             assert_eq!(6, counter);\n         }\n     }\n+\n+    fn test_tokio() {\n+        for i in 0..4 {\n+            tokio::spawn(lazy(move |_| {\n+                println!(\"Hello from task {}\", i);                \n+            }));\n+        }\n+    }\n }\n"
+                },
+                {
+                    "date": 1641999465872,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -144,8 +144,9 @@\n             assert_eq!(6, counter);\n         }\n     }\n \n+    #[test]\n     fn test_tokio() {\n         for i in 0..4 {\n             tokio::spawn(lazy(move |_| {\n                 println!(\"Hello from task {}\", i);                \n"
+                },
+                {
+                    "date": 1641999484092,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -145,9 +145,9 @@\n         }\n     }\n \n     #[test]\n-    fn test_tokio() {\n+    async fn test_tokio() {\n         for i in 0..4 {\n             tokio::spawn(lazy(move |_| {\n                 println!(\"Hello from task {}\", i);                \n             }));\n"
+                },
+                {
+                    "date": 1641999492828,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -144,9 +144,9 @@\n             assert_eq!(6, counter);\n         }\n     }\n \n-    #[test]\n+    #[tokio::test]\n     async fn test_tokio() {\n         for i in 0..4 {\n             tokio::spawn(lazy(move |_| {\n                 println!(\"Hello from task {}\", i);                \n"
+                },
+                {
+                    "date": 1641999562107,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,9 +26,9 @@\n         }\n     }\n }\n \n-pub fn server_loop(max: i32) {\n+async pub fn server_loop(max: i32) {\n     println!(\"Server is started...\");\n     let reciver = CURRENT_HANDLER.with(|f| f.receiver.clone());\n     let mut message_counter = 0;\n     let mut cycles = 0;\n"
+                },
+                {
+                    "date": 1641999568693,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,10 +25,9 @@\n             receiver: rx,\n         }\n     }\n }\n-\n-async pub fn server_loop(max: i32) {\n+pub async fn server_loop(max: i32) {\n     println!(\"Server is started...\");\n     let reciver = CURRENT_HANDLER.with(|f| f.receiver.clone());\n     let mut message_counter = 0;\n     let mut cycles = 0;\n"
+                },
+                {
+                    "date": 1641999611435,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -108,9 +108,9 @@\n         unsafe {\n             assert_eq!(1, counter);\n         }\n \n-        let server = thread::spawn(|| server_loop(3));\n+        tokio::spawn(async{server_loop(3).await});\n         let a1 = thread::spawn(|| {\n             println!(\"hello\");\n             client(1);\n             println!(\"finished\");\n"
+                },
+                {
+                    "date": 1641999635248,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -129,9 +129,8 @@\n             println!(\"hello\");\n             client(4);\n             println!(\"finished\");\n         });\n-        server.join().unwrap();\n         a1.join();\n         a2.join();\n         a3.join();\n         a4.join();\n"
+                },
+                {
+                    "date": 1641999703489,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -108,9 +108,9 @@\n         unsafe {\n             assert_eq!(1, counter);\n         }\n \n-        tokio::spawn(async{server_loop(3).await});\n+        tokio::spawn(async{server_loop(3)}.await);\n         let a1 = thread::spawn(|| {\n             println!(\"hello\");\n             client(1);\n             println!(\"finished\");\n"
+                },
+                {
+                    "date": 1641999828332,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -108,9 +108,9 @@\n         unsafe {\n             assert_eq!(1, counter);\n         }\n \n-        tokio::spawn(async{server_loop(3)}.await);\n+        \n         let a1 = thread::spawn(|| {\n             println!(\"hello\");\n             client(1);\n             println!(\"finished\");\n@@ -147,8 +147,8 @@\n     async fn test_tokio() {\n         for i in 0..4 {\n             tokio::spawn(lazy(move |_| {\n                 println!(\"Hello from task {}\", i);                \n-            }));\n+            }).await);\n         }\n     }\n }\n"
+                },
+                {
+                    "date": 1641999836822,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -147,8 +147,8 @@\n     async fn test_tokio() {\n         for i in 0..4 {\n             tokio::spawn(lazy(move |_| {\n                 println!(\"Hello from task {}\", i);                \n-            }).await);\n+            }));\n         }\n     }\n }\n"
+                },
+                {
+                    "date": 1641999867849,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -149,6 +149,7 @@\n             tokio::spawn(lazy(move |_| {\n                 println!(\"Hello from task {}\", i);                \n             }));\n         }\n+        sleep(Duration::from_secs(2));\n     }\n }\n"
+                },
+                {
+                    "date": 1641999966518,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -144,12 +144,14 @@\n     }\n \n     #[tokio::test]\n     async fn test_tokio() {\n+        println!(\"started\");\n         for i in 0..4 {\n             tokio::spawn(lazy(move |_| {\n                 println!(\"Hello from task {}\", i);                \n             }));\n         }\n         sleep(Duration::from_secs(2));\n+        println!(\"finished\");\n     }\n }\n"
+                },
+                {
+                    "date": 1641999995076,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -145,8 +145,9 @@\n \n     #[tokio::test]\n     async fn test_tokio() {\n         println!(\"started\");\n+        let mut v = vec![];\n         for i in 0..4 {\n             tokio::spawn(lazy(move |_| {\n                 println!(\"Hello from task {}\", i);                \n             }));\n"
+                },
+                {
+                    "date": 1642000005201,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -147,11 +147,11 @@\n     async fn test_tokio() {\n         println!(\"started\");\n         let mut v = vec![];\n         for i in 0..4 {\n-            tokio::spawn(lazy(move |_| {\n+            v.push(tokio::spawn(lazy(move |_| {\n                 println!(\"Hello from task {}\", i);                \n-            }));\n+            })));\n         }\n         sleep(Duration::from_secs(2));\n         println!(\"finished\");\n     }\n"
+                },
+                {
+                    "date": 1642000011357,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,9 +81,9 @@\n         thread::{self, sleep},\n         time::Duration,\n     };\n \n-    use futures::future::lazy;\n+    use futures::future::{lazy, join_all};\n \n     use crate::task_executor::{counter, ddd};\n \n     use super::{client, server_loop, CURRENT_HANDLER};\n@@ -151,8 +151,9 @@\n             v.push(tokio::spawn(lazy(move |_| {\n                 println!(\"Hello from task {}\", i);                \n             })));\n         }\n+        join_all(v);\n         sleep(Duration::from_secs(2));\n         println!(\"finished\");\n     }\n }\n"
+                },
+                {
+                    "date": 1642000044393,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -151,9 +151,9 @@\n             v.push(tokio::spawn(lazy(move |_| {\n                 println!(\"Hello from task {}\", i);                \n             })));\n         }\n-        join_all(v);\n+        future::futures::join_all(v);\n         sleep(Duration::from_secs(2));\n         println!(\"finished\");\n     }\n }\n"
+                },
+                {
+                    "date": 1642000064160,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -78,9 +78,9 @@\n #[cfg(test)]\n mod task_executor_tests {\n     use std::{\n         thread::{self, sleep},\n-        time::Duration,\n+        time::Duration, future,\n     };\n \n     use futures::future::{lazy, join_all};\n \n@@ -151,9 +151,9 @@\n             v.push(tokio::spawn(lazy(move |_| {\n                 println!(\"Hello from task {}\", i);                \n             })));\n         }\n-        future::futures::join_all(v);\n+        futures::future::join_all(v);\n         sleep(Duration::from_secs(2));\n         println!(\"finished\");\n     }\n }\n"
+                },
+                {
+                    "date": 1642000104222,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -151,9 +151,9 @@\n             v.push(tokio::spawn(lazy(move |_| {\n                 println!(\"Hello from task {}\", i);                \n             })));\n         }\n-        futures::future::join_all(v);\n+        futures::future::join_all(v).await;\n         sleep(Duration::from_secs(2));\n         println!(\"finished\");\n     }\n }\n"
+                },
+                {
+                    "date": 1642000140862,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -152,8 +152,9 @@\n                 println!(\"Hello from task {}\", i);                \n             })));\n         }\n         futures::future::join_all(v).await;\n+        println!(\"awaiting\");\n         sleep(Duration::from_secs(2));\n         println!(\"finished\");\n     }\n }\n"
+                },
+                {
+                    "date": 1642000162559,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -152,9 +152,6 @@\n                 println!(\"Hello from task {}\", i);                \n             })));\n         }\n         futures::future::join_all(v).await;\n-        println!(\"awaiting\");\n-        sleep(Duration::from_secs(2));\n-        println!(\"finished\");\n     }\n }\n"
+                }
+            ],
+            "date": 1641985643778,
+            "name": "Commit-0",
+            "content": "use std::{sync::Arc, time::Duration};\n\nuse log::info;\n\n\npub static mut counter: i32 = 1;\n\nthread_local! {\n    static CURRENT_HANDLER: Arc<CommandHandler> = Arc::new(Default::default());\n}\n#[derive(Debug, Clone)]\npub struct CommandHandler {\n    sender: crossbeam::channel::Sender<Vec<u8>>,\n    receiver: crossbeam::channel::Receiver<Vec<u8>>,\n}\n\nimpl Default for CommandHandler {\n    fn default() -> Self {\n        let (tx, rx) = crossbeam::channel::bounded(0);\n        unsafe {\n            counter += 1;\n        }\n        Self {\n            sender: tx,\n            receiver: rx,\n        }\n    }\n}\n\npub async fn server_loop(max: i32) {\n    let reciver = CURRENT_HANDLER.with(|f| f.receiver.clone());\n    let mut message_counter = 0;\n    loop {\n        match reciver.recv_timeout(Duration::from_secs(1)) {\n            Ok(buffer) => {\n                message_counter += 1;\n                info!(\n                    \" => Message number #{}: {}\",\n                    message_counter,\n                    String::from_utf8_lossy(&buffer)\n                );\n                if message_counter < max {\n                    continue;\n                } else {\n                    info!(\"!!! Threshold maximum messages reached: {}\", max);\n                    break;\n                }\n            }\n            Err(_) => continue,\n        }\n    }\n}\n\npub async fn client(id: i32) {\n    let sender = CURRENT_HANDLER.with(|f| f.sender.clone());\n    let msg = format!(\"Hello. I am #{}\", id);\n    sender.send(msg.as_bytes().to_vec()).unwrap();\n}\n\n#[cfg(test)]\nmod task_executor_tests {\n    use std::thread;\n\n    use crate::task_executor::counter;\n\n    use super::{CURRENT_HANDLER, server_loop, client};\n\n    #[tokio::test]\n    async fn singleton_test1() {\n        unsafe {\n            assert_eq!(1, counter);\n        }\n\n        let _f = tokio::spawn(async move {\n            let _ = CURRENT_HANDLER;\n        })\n        .await;\n        unsafe {\n            assert_eq!(1, counter);\n        }\n    }\n\n    #[tokio::test]\n    async fn singleton_test2() {\n        unsafe {\n            assert_eq!(1, counter);\n        }\n\n        let server = thread::spawn(||server_loop(3));\n        let c1 = client(1);\n        let c2 = client(2);\n        let c3 = client(3);\n        let c4 = client(4);\n\n\n        let _res = server.join().unwrap();\n\n        let f = vec![c1, c2, c3, c4];\n        \n        let _ = futures::future::join_all(f);\n\n        unsafe {\n            assert_eq!(1, counter);\n        }\n\n    }\n}\n"
+        }
+    ]
+}

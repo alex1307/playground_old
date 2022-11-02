@@ -1,0 +1,66 @@
+{
+    "sourceFile": "executor/Cargo.toml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 12,
+            "patches": [
+                {
+                    "date": 1642081399680,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1642081530146,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,5 +6,6 @@\n \n \n [dependencies]\n common_libs = {path = \"../common_libs\"}\n-log = { version = \"*\" }\n\\ No newline at end of file\n+log = { version = \"*\" }\n+lazy_static = {version = \"*\"}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642081802081,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,5 +7,6 @@\n \n [dependencies]\n common_libs = {path = \"../common_libs\"}\n log = { version = \"*\" }\n-lazy_static = {version = \"*\"}\n\\ No newline at end of file\n+lazy_static = {version = \"*\"}\n+crossbeam = {version = \"*\"}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642086745496,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,5 +8,6 @@\n [dependencies]\n common_libs = {path = \"../common_libs\"}\n log = { version = \"*\" }\n lazy_static = {version = \"*\"}\n-crossbeam = {version = \"*\"}\n\\ No newline at end of file\n+crossbeam = {version = \"*\"}\n+serde = { version = \"*\" }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642092037797,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,5 +9,6 @@\n common_libs = {path = \"../common_libs\"}\n log = { version = \"*\" }\n lazy_static = {version = \"*\"}\n crossbeam = {version = \"*\"}\n-serde = { version = \"*\" }\n\\ No newline at end of file\n+serde = { version = \"*\" }\n+serde_json = { version = \"*\" }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1643881188203,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,8 +6,9 @@\n \n \n [dependencies]\n common_libs = {path = \"../common_libs\"}\n+mk_scraper = {path = \"../mk-scraper\"}\n log = { version = \"*\" }\n lazy_static = {version = \"*\"}\n crossbeam = {version = \"*\"}\n serde = { version = \"*\" }\n"
+                },
+                {
+                    "date": 1643883813433,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,5 +11,6 @@\n log = { version = \"*\" }\n lazy_static = {version = \"*\"}\n crossbeam = {version = \"*\"}\n serde = { version = \"*\" }\n-serde_json = { version = \"*\" }\n\\ No newline at end of file\n+serde_json = { version = \"*\" }\n+futures = {version = \"*\"}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1643884594245,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,5 +12,6 @@\n lazy_static = {version = \"*\"}\n crossbeam = {version = \"*\"}\n serde = { version = \"*\" }\n serde_json = { version = \"*\" }\n-futures = {version = \"*\"}\n\\ No newline at end of file\n+futures = {version = \"*\"}\n+async-trait = \"*\"\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1643884604552,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,5 +13,5 @@\n crossbeam = {version = \"*\"}\n serde = { version = \"*\" }\n serde_json = { version = \"*\" }\n futures = {version = \"*\"}\n-async-trait = \"*\"\n\\ No newline at end of file\n+async-trait = {version = \"*\"}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1643906460768,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,5 +13,6 @@\n crossbeam = {version = \"*\"}\n serde = { version = \"*\" }\n serde_json = { version = \"*\" }\n futures = {version = \"*\"}\n-async-trait = {version = \"*\"}\n\\ No newline at end of file\n+async-trait = {version = \"*\"}\n+tokio = { version = \"*\"}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1643906978424,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,5 +14,5 @@\n serde = { version = \"*\" }\n serde_json = { version = \"*\" }\n futures = {version = \"*\"}\n async-trait = {version = \"*\"}\n-tokio = { version = \"*\"}\n\\ No newline at end of file\n+tokio = { version = \"*\" features = \"full\"}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1643906986731,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,5 +14,5 @@\n serde = { version = \"*\" }\n serde_json = { version = \"*\" }\n futures = {version = \"*\"}\n async-trait = {version = \"*\"}\n-tokio = { version = \"*\" features = \"full\"}\n\\ No newline at end of file\n+tokio = { version = \"*\" features = [\"full\"]}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1643907002949,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,5 +14,5 @@\n serde = { version = \"*\" }\n serde_json = { version = \"*\" }\n futures = {version = \"*\"}\n async-trait = {version = \"*\"}\n-tokio = { version = \"*\" features = [\"full\"]}\n\\ No newline at end of file\n+tokio = { version = \"*\", features = [\"full\"]}\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1642081399680,
+            "name": "Commit-0",
+            "content": "[package]\nname = \"executor\"\nversion = \"1.0.0\"\nauthors = [\"Ayagasha <alexander.todorov@ayagasha.com>\"]\nedition = \"2018\"\n\n\n[dependencies]\ncommon_libs = {path = \"../common_libs\"}\nlog = { version = \"*\" }"
+        }
+    ]
+}

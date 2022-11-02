@@ -1,0 +1,54 @@
+{
+    "sourceFile": "Cargo.toml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 9,
+            "patches": [
+                {
+                    "date": 1641556877577,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1641558554558,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,10 +4,5 @@\n \t\"starter\",\n \t\"common_libs\",\n \t\"common-utils\",\n \t\"scraper\"\n-]\n-[profile.dev]\n-opt-level = 3\n-\n-[profile.release]\n-opt-level = \"z\"\n\\ No newline at end of file\n+]\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641558658246,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,7 +2,6 @@\n \n members = [\n \t\"starter\",\n \t\"common_libs\",\n-\t\"common-utils\",\n \t\"scraper\"\n ]\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641810881374,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,6 +2,7 @@\n \n members = [\n \t\"starter\",\n \t\"common_libs\",\n-\t\"scraper\"\n+\t\"scraper\", \n+\t\"http-srv\"\n ]\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641979050850,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,7 +2,7 @@\n \n members = [\n \t\"starter\",\n \t\"common_libs\",\n-\t\"scraper\", \n+\t\"mk_scraper\", \n \t\"http-srv\"\n ]\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641979061006,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,7 +2,7 @@\n \n members = [\n \t\"starter\",\n \t\"common_libs\",\n-\t\"mk_scraper\", \n+\t\"scraper\", \n \t\"http-srv\"\n ]\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641984570873,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,7 +2,7 @@\n \n members = [\n \t\"starter\",\n \t\"common_libs\",\n-\t\"scraper\", \n+\t\"mk_scraper\", \n \t\"http-srv\"\n ]\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641984779337,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,7 +2,7 @@\n \n members = [\n \t\"starter\",\n \t\"common_libs\",\n-\t\"mk_scraper\", \n+\t\"mk-scraper\", \n \t\"http-srv\"\n ]\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641985057871,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,7 +2,7 @@\n \n members = [\n \t\"starter\",\n \t\"common_libs\",\n-\t\"mk-scraper\", \n+\t\"mk-scraper\",\n \t\"http-srv\"\n ]\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642081430871,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,6 +3,7 @@\n members = [\n \t\"starter\",\n \t\"common_libs\",\n \t\"mk-scraper\",\n+\t\"executor\",\n \t\"http-srv\"\n ]\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1641556877577,
+            "name": "Commit-0",
+            "content": "[workspace]\n\nmembers = [\n\t\"starter\",\n\t\"common_libs\",\n\t\"common-utils\",\n\t\"scraper\"\n]\n[profile.dev]\nopt-level = 3\n\n[profile.release]\nopt-level = \"z\""
+        }
+    ]
+}

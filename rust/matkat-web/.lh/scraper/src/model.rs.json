@@ -1,0 +1,22 @@
+{
+    "sourceFile": "scraper/src/model.rs",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1641795646577,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1641795806282,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,6 @@\n+use serde::Serialize;\n+\n #[derive(Debug, Serialize, Deserialize, Clone)]\n pub enum Dictionary {\n     Collins,\n     Cambridge,\n"
+                }
+            ],
+            "date": 1641795646577,
+            "name": "Commit-0",
+            "content": "#[derive(Debug, Serialize, Deserialize, Clone)]\npub enum Dictionary {\n    Collins,\n    Cambridge,\n    Oxford,\n    Undefined,\n}\n\nimpl From<String> for Dictionary {\n    fn from(source: String) -> Self {\n        match source.to_lowercase().trim() {\n            \"cambridge\" => Dictionary::Cambridge,\n            \"collins\" => Dictionary::Collins,\n            \"oxford\" => Dictionary::Oxford,\n            _ => Dictionary::Undefined,\n        }\n    }\n}\n\n#[derive(Debug, Serialize, Deserialize, Clone)]\npub struct DictionaryEntry {\n    pub source: Dictionary,\n    pub url: String,\n    pub word: String,\n    pub mp3_link: Option<String>,\n    pub file: Option<String>,\n    pub definitions: Vec<String>,\n}"
+        }
+    ]
+}

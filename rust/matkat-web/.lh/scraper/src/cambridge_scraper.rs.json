@@ -1,0 +1,34 @@
+{
+    "sourceFile": "scraper/src/cambridge_scraper.rs",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1641796363938,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1641796377018,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+use common_libs::files::file_name;\n use log::error;\n \n \n \n"
+                },
+                {
+                    "date": 1641796390961,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -100,10 +100,9 @@\n }\n \n #[cfg(test)]\n mod cambridge_unit_tests {\n-    use crate::scraper::cambridge_scraper;\n-\n+    \n     #[tokio::test]\n     async fn cambridge_scraper_not_found_test() {\n         let res = cambridge_scraper::scrape(r#\"amisega\"#).await;\n         assert!(res.is_none());\n"
+                },
+                {
+                    "date": 1641796405096,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -100,8 +100,10 @@\n }\n \n #[cfg(test)]\n mod cambridge_unit_tests {\n+    use crate::cambridge_scraper;\n+\n     \n     #[tokio::test]\n     async fn cambridge_scraper_not_found_test() {\n         let res = cambridge_scraper::scrape(r#\"amisega\"#).await;\n"
+                },
+                {
+                    "date": 1641979027239,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,10 @@\n use log::error;\n \n \n \n+use crate::constants::HTML_EXT;\n+\n use super::{\n     description, download_from_url, elements, first_element, mp3_element, mp3_element_to_url,\n     to_url, wget, DictionaryEntry,\n };\n"
+                }
+            ],
+            "date": 1641796363938,
+            "name": "Commit-0",
+            "content": "use log::error;\n\n\n\nuse super::{\n    description, download_from_url, elements, first_element, mp3_element, mp3_element_to_url,\n    to_url, wget, DictionaryEntry,\n};\nconst BASE_URL: &str = r#\"https://dictionary.cambridge.org\"#;\nconst URL: &str = r#\"https://dictionary.cambridge.org/dictionary/english/\"#;\npub const MP3_QUERY: &str = r#\"source[type=\"audio/mpeg\"]\"#;\npub const MP3_START_WITH: &str = r#\"/media\"#;\npub const DEFINITION_QUERY: &str = r#\"div[class=\"def ddef_d db\"]\"#;\n\nfn mp3_url(html: &str) -> Option<String> {\n    let element = mp3_element(MP3_QUERY, &html);\n\n    if element.is_none() {\n        return None;\n    }\n\n    let url = mp3_element_to_url(&element.unwrap(), MP3_START_WITH);\n\n    if url.is_none() {\n        return None;\n    }\n\n    let mut mp3_url = String::from(BASE_URL);\n    mp3_url.push_str(&url.unwrap());\n    Some(mp3_url)\n}\n\nfn to_definitions(html: &str) -> Vec<String> {\n    let definitions = elements(DEFINITION_QUERY, &html, true);\n    definitions\n        .into_iter()\n        .map(|e| description(e))\n        .filter(Option::is_some)\n        .map(Option::unwrap)\n        .collect()\n}\n\npub async fn scrape(word: &str) -> Option<DictionaryEntry> {\n    if word.trim().is_empty() || word.trim().len() < 3 {\n        error!(\"word.min.lenght.is.3\");\n        return None;\n    }\n    let url = to_url(URL, word);\n    let html = match download_from_url(&url).await {\n        Ok(content) => content,\n        Err(_err) => {\n            error!(\"failed.to.read.from.url: {}\", url);\n            let file_name = file_name(\"download/tmp/cambridge\", word, HTML_EXT);\n            match wget(&url, &file_name) {\n                Ok(html) => html,\n                Err(_err) => {\n                    error!(\"resource.not.found: {}\", url);\n                    return None;\n                }\n            }\n        }\n    };\n\n    let mp3_link = mp3_url(&html);\n    let definitions = to_definitions(&html);\n\n    if mp3_link.is_none() || definitions.is_empty() {\n        return None;\n    }\n\n    let mut found = first_element(\n        r#\"div[class=\"di-title\"] h2[class=\"headword tw-bw dhw dpos-h_hw \"] b\"#,\n        &html,\n        true,\n    );\n\n    if found.is_none() {\n        found = first_element(\n            r#\"div[class=\"di-title\"] h2[class=\"headword tw-bw dhw dpos-h_hw \"] span\"#,\n            &html,\n            true,\n        );\n    }\n\n\n    let word = match found {\n        Some(v) => v,\n        None => word.to_lowercase()\n    };\n\n    Some(DictionaryEntry {\n        source: super::Dictionary::Cambridge,\n        word: word.clone().to_lowercase(),\n        url: to_url(URL, &word),\n        mp3_link,\n        definitions,\n        file: None,\n    })\n}\n\n#[cfg(test)]\nmod cambridge_unit_tests {\n    use crate::scraper::cambridge_scraper;\n\n    #[tokio::test]\n    async fn cambridge_scraper_not_found_test() {\n        let res = cambridge_scraper::scrape(r#\"amisega\"#).await;\n        assert!(res.is_none());\n\n\n        let res = cambridge_scraper::scrape(r#\"undertaken\"#).await;\n        assert!(res.is_none());\n    }\n\n    #[tokio::test]\n    async fn cambridge_fail_test() {\n        let res = cambridge_scraper::scrape(r#\"undertake\"#).await;\n        assert!(res.is_some());\n        println!(\n            \"found: {}\",\n            serde_json::to_string_pretty(&res.unwrap()).unwrap()\n        );\n    }\n\n    #[tokio::test]\n    async fn cambridge_scraper_test() {\n        let words = vec![r#\"wind up\"#, \n            r#\"bail out\"#,\n            r#\"endorsement\"#];\n        for w in words {\n            let res = cambridge_scraper::scrape(w).await;\n            assert!(res.is_some());\n            println!(\n                \"found: {}\",\n                serde_json::to_string_pretty(&res.unwrap()).unwrap()\n            );\n        }    \n        \n    }\n}\n"
+        }
+    ]
+}

@@ -1,0 +1,58 @@
+{
+    "sourceFile": "starter/src/main.rs",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 10,
+            "patches": [
+                {
+                    "date": 1641557063268,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1641557086411,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n use commons_lib;\n \n fn main() {\n     commons_lib::configure_log4rs();\n-    rest_api_actix::start_actix();\n+    info!(\"Started.\");\n }\n"
+                },
+                {
+                    "date": 1641557097487,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-use commons_lib;\n+use common_libs;\n \n fn main() {\n     commons_lib::configure_log4rs();\n     info!(\"Started.\");\n"
+                },
+                {
+                    "date": 1641557104009,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n use common_libs;\n \n fn main() {\n-    commons_lib::configure_log4rs();\n+    common_libs::configure_log4rs();\n     info!(\"Started.\");\n }\n"
+                },
+                {
+                    "date": 1641557144134,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,7 @@\n use common_libs;\n+use log::{debug, error, info, warn};\n+use log4rs;\n \n fn main() {\n     common_libs::configure_log4rs();\n     info!(\"Started.\");\n"
+                },
+                {
+                    "date": 1641557397073,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n use common_libs;\n use log::{debug, error, info, warn};\n-use log4rs;\n \n+\n fn main() {\n     common_libs::configure_log4rs();\n     info!(\"Started.\");\n }\n"
+                },
+                {
+                    "date": 1641557631872,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,7 @@\n use common_libs;\n-use log::{debug, error, info, warn};\n \n \n+\n fn main() {\n     common_libs::configure_log4rs();\n-    info!(\"Started.\");\n }\n"
+                },
+                {
+                    "date": 1641557774284,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n use common_libs;\n+ \n \n \n-\n fn main() {\n     common_libs::configure_log4rs();\n }\n"
+                },
+                {
+                    "date": 1641559366334,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,5 +3,6 @@\n \n \n fn main() {\n     common_libs::configure_log4rs();\n+    info!(\"\");\n }\n"
+                },
+                {
+                    "date": 1641559384200,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n use common_libs;\n- \n+use log::info;\n \n \n fn main() {\n     common_libs::configure_log4rs();\n"
+                },
+                {
+                    "date": 1641559392819,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,6 +3,6 @@\n \n \n fn main() {\n     common_libs::configure_log4rs();\n-    info!(\"\");\n+    info!(\"you did it.\");\n }\n"
+                }
+            ],
+            "date": 1641557063268,
+            "name": "Commit-0",
+            "content": "use commons_lib;\n\nfn main() {\n    commons_lib::configure_log4rs();\n    rest_api_actix::start_actix();\n}\n"
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+{
+    "sourceFile": "rest_api_actix/Cargo.toml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1646918046717,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1646918385623,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,16 +10,16 @@\n mapper = {path = \"../mapper\"}\n domain_model = {path = \"../domain_model\"}\n auth_service = {path = \"../auth_service\"}\n auth_model = {path = \"../auth_model\" }\n-futures = {}\n-serde = { features = [\"derive\"] }\n-serde_json = {}\n-log = { features = [\"max_level_warn\", \"release_max_level_warn\"] }\n-log4rs = { }\n+futures = {version = \"*\"}\n+serde = { version = \"*\", features = [\"derive\"] }\n+serde_json = {version = \"*\"}\n+log = { version = \"*\", features = [\"max_level_warn\", \"release_max_level_warn\"] }\n+log4rs = { version = \"*\"}\n \n actix-web = { version = \"3\", features = [\"openssl\"] }\n-actix-web-httpauth = \"0.5.1\"\n+actix-web-httpauth = \"0.6.0\"\n actix-rt = \"2.2.0\"\n actix-service = \"2.0.0\"\n actix-cors = \"0.5.4\"\n openssl = \"0.10.36\"\n"
+                },
+                {
+                    "date": 1646918394775,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n serde_json = {version = \"*\"}\n log = { version = \"*\", features = [\"max_level_warn\", \"release_max_level_warn\"] }\n log4rs = { version = \"*\"}\n \n-actix-web = { version = \"3\", features = [\"openssl\"] }\n+actix-web = { version = \"4.0.1\", features = [\"openssl\"] }\n actix-web-httpauth = \"0.6.0\"\n actix-rt = \"2.2.0\"\n actix-service = \"2.0.0\"\n actix-cors = \"0.5.4\"\n"
+                }
+            ],
+            "date": 1646918046717,
+            "name": "Commit-0",
+            "content": "[package]\nname = \"rest_api_actix\"\nversion = \"0.1.0\"\nauthors = [\"Ayagasha <alexander.todorov@ayagasha.com>\"]\nedition = \"2021\"\n\n# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html\n\n[dependencies]\nmapper = {path = \"../mapper\"}\ndomain_model = {path = \"../domain_model\"}\nauth_service = {path = \"../auth_service\"}\nauth_model = {path = \"../auth_model\" }\nfutures = {}\nserde = { features = [\"derive\"] }\nserde_json = {}\nlog = { features = [\"max_level_warn\", \"release_max_level_warn\"] }\nlog4rs = { }\n\nactix-web = { version = \"3\", features = [\"openssl\"] }\nactix-web-httpauth = \"0.5.1\"\nactix-rt = \"2.2.0\"\nactix-service = \"2.0.0\"\nactix-cors = \"0.5.4\"\nopenssl = \"0.10.36\"\nhttp = \"0.2.5\""
+        }
+    ]
+}

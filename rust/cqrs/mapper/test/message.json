@@ -1,0 +1,22 @@
+{
+  "uuid": "b7cc9b97-d242-4439-b61a-363d6dd7d499",
+  "from": {
+    "first_name": "Alexander",
+    "last_name": "Popov",
+    "email": "off@eclear.com"
+  },
+  "created_at": 1619021027485,
+  "subject": "Subject",
+  "body": "what a body....",
+  "recipients": [{
+    "first_name": "Oliver",
+    "last_name": "Port",
+    "email": "007@eclear.com"
+  }],
+  "attachments": [{
+    "message_id": "b7cc9b97-d242-4439-b61a-363d6dd7d488",
+    "name": "dondownload.me",
+    "file_type": "zip",
+    "payload": [88, 99, 110, 107, 77, 78, 99, 100, 120, 110, 88, 77,88, 99, 110, 107, 77, 78, 99, 100, 120, 110, 88, 77,88, 99, 110, 107, 77, 78, 99, 100, 120, 110, 88, 77]
+  }]
+}

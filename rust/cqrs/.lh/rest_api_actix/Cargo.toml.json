@@ -1,0 +1,18 @@
+{
+    "sourceFile": "rest_api_actix/Cargo.toml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1641810404951,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1641810404951,
+            "name": "Commit-0",
+            "content": "[package]\nname = \"rest_api_actix\"\nversion = \"0.1.0\"\nauthors = [\"Ayagasha <alexander.todorov@ayagasha.com>\"]\nedition = \"2018\"\n\n# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html\n\n[dependencies]\nmapper = {path = \"../mapper\"}\ndomain_model = {path = \"../domain_model\"}\nauth_service = {path = \"../auth_service\"}\nauth_model = {path = \"../auth_model\" }\ncommand_service = {path = \"../command_service\"}\nfutures = {}\nserde = { features = [\"derive\"] }\nserde_json = {}\nlog = { features = [\"max_level_warn\", \"release_max_level_warn\"] }\nlog4rs = { }\n\nactix-web = { version = \"3\", features = [\"openssl\"] }\nactix-web-httpauth = \"0.5.1\"\nactix-rt = \"2.5.1\"\nactix-service = \"2.0.2\"\nactix-cors = \"0.5.4\"\nopenssl = \"0.10.33\"\nhttp = \"0.2.3\""
+        }
+    ]
+}

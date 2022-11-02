@@ -1,0 +1,19 @@
+[package]
+name = "auth_service"
+version = "0.1.0"
+authors = ["Ayagasha <alexander.todorov@ayagasha.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+commons_lib = {path = "../commons_lib" }
+auth_model = {path = "../auth_model" }
+serial_test = {}
+inner = {}
+serde = { features = ["derive"] }
+serde_json = { }
+rust-crypto = { }
+chrono = {features = ["serde"] }
+jsonwebtoken = { }
+lazy_static = { }

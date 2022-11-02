@@ -1,0 +1,198 @@
+{
+    "sourceFile": "common_libs/src/utils.rs",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 45,
+            "patches": [
+                {
+                    "date": 1641560419312,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1641560487051,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -49,20 +49,4 @@\n     trimmed = trimmed.to_lowercase();\n     trimmed = trimmed.replace(SINGLE_TAB, replacement.clone());\n     trimmed\n }\n-\n-pub fn mp3_file_name(folder: &str, pattern: &str) -> String {\n-    let mut file_name = String::from(folder);\n-    /*\n-    @TODO\n-    check whether folder does exist and whether it is a valid directory\n-    */\n-    if !folder.ends_with(\"/\") {\n-        file_name.push_str(\"/\")\n-    }\n-    file_name.push_str(pattern);\n-    if !file_name.ends_with(MP3_EXT) {\n-        file_name.push_str(MP3_EXT);\n-    }\n-    file_name\n-}\n"
+                },
+                {
+                    "date": 1641560493525,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,8 @@\n use rand::seq::SliceRandom;\n use rand::thread_rng;\n use std::iter::FromIterator;\n \n-use crate::MP3_EXT;\n-\n const DOUBLE_TABS: &str = \"  \";\n const SINGLE_TAB: &str = \" \";\n \n pub fn random_in_range(n: usize) -> Vec<usize> {\n"
+                },
+                {
+                    "date": 1642323402856,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -47,4 +47,6 @@\n     trimmed = trimmed.to_lowercase();\n     trimmed = trimmed.replace(SINGLE_TAB, replacement.clone());\n     trimmed\n }\n+\n+pub fn from_binary(source: Vec<u8>) ->;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642323441041,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+use rand::rngs::adapter::ReseedingRng;\n use rand::seq::SliceRandom;\n use rand::thread_rng;\n use std::iter::FromIterator;\n \n@@ -48,5 +49,7 @@\n     trimmed = trimmed.replace(SINGLE_TAB, replacement.clone());\n     trimmed\n }\n \n-pub fn from_binary(source: Vec<u8>) ->;\n\\ No newline at end of file\n+pub fn from_binary<T>(source: Vec<u8>) -> Result<T> {\n+\n+};\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642323450187,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,10 @@\n use rand::seq::SliceRandom;\n use rand::thread_rng;\n use std::iter::FromIterator;\n \n+use crate::error::AppResult;\n+\n const DOUBLE_TABS: &str = \"  \";\n const SINGLE_TAB: &str = \" \";\n \n pub fn random_in_range(n: usize) -> Vec<usize> {\n@@ -49,7 +51,7 @@\n     trimmed = trimmed.replace(SINGLE_TAB, replacement.clone());\n     trimmed\n }\n \n-pub fn from_binary<T>(source: Vec<u8>) -> Result<T> {\n+pub fn from_binary<T>(source: Vec<u8>) -> AppResult<T> {\n \n };\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642323460928,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,6 +52,6 @@\n     trimmed\n }\n \n pub fn from_binary<T>(source: Vec<u8>) -> AppResult<T> {\n-\n+    Ok(T);\n };\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642323489772,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,6 +52,24 @@\n     trimmed\n }\n \n pub fn from_binary<T>(source: Vec<u8>) -> AppResult<T> {\n-    Ok(T);\n+    f binary.is_empty() {\n+        error!(\"file.[{}]is.empty\", file_name.as_ref());\n+        return None;\n+    }\n+    let string = match String::from_utf8(binary) {\n+        Ok(utf8) => utf8,\n+        Err(err) => {\n+            error!(\"file.[{}]is.not.readable. Err: {}\", file_name.as_ref(), err);\n+            return None;\n+        }\n+    };\n+    match serde_json::from_str::<T>(&string) {\n+        Ok(json) => Some(json),\n+        Err(err) => {\n+            error!(\"deserialization.failed.for: {}. Err: {}\", file_name.as_ref(), err);\n+            None\n+        }\n+    }\n+    Ok(T)\n };\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642323495199,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,10 +51,10 @@\n     trimmed = trimmed.replace(SINGLE_TAB, replacement.clone());\n     trimmed\n }\n \n-pub fn from_binary<T>(source: Vec<u8>) -> AppResult<T> {\n-    f binary.is_empty() {\n+pub fn from_binary<T>(binary: Vec<u8>) -> AppResult<T> {\n+    if binary.is_empty() {\n         error!(\"file.[{}]is.empty\", file_name.as_ref());\n         return None;\n     }\n     let string = match String::from_utf8(binary) {\n"
+                },
+                {
+                    "date": 1642323534276,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,9 +63,10 @@\n             error!(\"file.[{}]is.not.readable. Err: {}\", file_name.as_ref(), err);\n             return None;\n         }\n     };\n-    match serde_json::from_str::<T>(&string) {\n+    match serde_json::from_str::<T>(&string) where\n+    T: ?Sized + DeserializeOwned,{\n         Ok(json) => Some(json),\n         Err(err) => {\n             error!(\"deserialization.failed.for: {}. Err: {}\", file_name.as_ref(), err);\n             None\n"
+                },
+                {
+                    "date": 1642323549150,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,10 +63,11 @@\n             error!(\"file.[{}]is.not.readable. Err: {}\", file_name.as_ref(), err);\n             return None;\n         }\n     };\n-    match serde_json::from_str::<T>(&string) where\n-    T: ?Sized + DeserializeOwned,{\n+    match serde_json::from_str::<T>(&string) -> T where\n+    T: ?Sized + DeserializeOwned\n+    {\n         Ok(json) => Some(json),\n         Err(err) => {\n             error!(\"deserialization.failed.for: {}. Err: {}\", file_name.as_ref(), err);\n             None\n"
+                },
+                {
+                    "date": 1642323561447,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,9 +64,9 @@\n             return None;\n         }\n     };\n     match serde_json::from_str::<T>(&string) -> T where\n-    T: ?Sized + DeserializeOwned\n+    T: ?Sized + DeserializeOwned,\n     {\n         Ok(json) => Some(json),\n         Err(err) => {\n             error!(\"deserialization.failed.for: {}. Err: {}\", file_name.as_ref(), err);\n"
+                },
+                {
+                    "date": 1642323583495,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,9 +63,9 @@\n             error!(\"file.[{}]is.not.readable. Err: {}\", file_name.as_ref(), err);\n             return None;\n         }\n     };\n-    match serde_json::from_str::<T>(&string) -> T where\n+    match serde_json::from_str::<T>(&string) -> AppResult<T> where\n     T: ?Sized + DeserializeOwned,\n     {\n         Ok(json) => Some(json),\n         Err(err) => {\n"
+                },
+                {
+                    "date": 1642323599033,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,10 +63,10 @@\n             error!(\"file.[{}]is.not.readable. Err: {}\", file_name.as_ref(), err);\n             return None;\n         }\n     };\n-    match serde_json::from_str::<T>(&string) -> AppResult<T> where\n-    T: ?Sized + DeserializeOwned,\n+    match serde_json::from_str::<T>(&string) -> AppResult<T>\n+        whereT: ?Sized + DeserializeOwned,\n     {\n         Ok(json) => Some(json),\n         Err(err) => {\n             error!(\"deserialization.failed.for: {}. Err: {}\", file_name.as_ref(), err);\n"
+                },
+                {
+                    "date": 1642323604955,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -73,5 +73,5 @@\n             None\n         }\n     }\n     Ok(T)\n-};\n\\ No newline at end of file\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642323644379,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,22 +51,10 @@\n     trimmed = trimmed.replace(SINGLE_TAB, replacement.clone());\n     trimmed\n }\n \n-pub fn from_binary<T>(binary: Vec<u8>) -> AppResult<T> {\n-    if binary.is_empty() {\n-        error!(\"file.[{}]is.empty\", file_name.as_ref());\n-        return None;\n-    }\n-    let string = match String::from_utf8(binary) {\n-        Ok(utf8) => utf8,\n-        Err(err) => {\n-            error!(\"file.[{}]is.not.readable. Err: {}\", file_name.as_ref(), err);\n-            return None;\n-        }\n-    };\n-    match serde_json::from_str::<T>(&string) -> AppResult<T>\n-        whereT: ?Sized + DeserializeOwned,\n+pub fn from_binary<T>(binary: Vec<u8>) -> AppResult<T>\n+    whereT: ?Sized + DeserializeOwned,\n     {\n         Ok(json) => Some(json),\n         Err(err) => {\n             error!(\"deserialization.failed.for: {}. Err: {}\", file_name.as_ref(), err);\n"
+                },
+                {
+                    "date": 1642323660992,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -53,13 +53,7 @@\n }\n \n pub fn from_binary<T>(binary: Vec<u8>) -> AppResult<T>\n     whereT: ?Sized + DeserializeOwned,\n-    {\n-        Ok(json) => Some(json),\n-        Err(err) => {\n-            error!(\"deserialization.failed.for: {}. Err: {}\", file_name.as_ref(), err);\n-            None\n-        }\n-    }\n+{\n     Ok(T)\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642323668267,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n use rand::rngs::adapter::ReseedingRng;\n use rand::seq::SliceRandom;\n use rand::thread_rng;\n+use serde::de::DeserializeOwned;\n use std::iter::FromIterator;\n \n use crate::error::AppResult;\n \n"
+                },
+                {
+                    "date": 1642323700609,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -53,8 +53,8 @@\n     trimmed\n }\n \n pub fn from_binary<T>(binary: Vec<u8>) -> AppResult<T>\n-    whereT: ?Sized + DeserializeOwned,\n+where T: ?Sized + DeserializeOwned,\n {\n     Ok(T)\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642323714127,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -53,8 +53,8 @@\n     trimmed\n }\n \n pub fn from_binary<T>(binary: Vec<u8>) -> AppResult<T>\n-where T: ?Sized + DeserializeOwned,\n+    where T: ?Sized + DeserializeOwned,\n {\n     Ok(T)\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642323744727,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -55,6 +55,25 @@\n \n pub fn from_binary<T>(binary: Vec<u8>) -> AppResult<T>\n     where T: ?Sized + DeserializeOwned,\n {\n+    \n+    if binary.is_empty() {\n+        error!(\"file.[{}]is.empty\", file_name.as_ref());\n+        return None;\n+    }\n+    let string = match String::from_utf8(binary) {\n+        Ok(utf8) => utf8,\n+        Err(err) => {\n+            error!(\"file.[{}]is.not.readable. Err: {}\", file_name.as_ref(), err);\n+            return None;\n+        }\n+    };\n+    match serde_json::from_str::<T>(&string) {\n+        Ok(json) => Some(json),\n+        Err(err) => {\n+            error!(\"deserialization.failed.for: {}. Err: {}\", file_name.as_ref(), err);\n+            None\n+        }\n+    }\n     Ok(T)\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642323769104,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,20 +60,15 @@\n     if binary.is_empty() {\n         error!(\"file.[{}]is.empty\", file_name.as_ref());\n         return None;\n     }\n+    \n     let string = match String::from_utf8(binary) {\n         Ok(utf8) => utf8,\n         Err(err) => {\n             error!(\"file.[{}]is.not.readable. Err: {}\", file_name.as_ref(), err);\n             return None;\n         }\n     };\n-    match serde_json::from_str::<T>(&string) {\n-        Ok(json) => Some(json),\n-        Err(err) => {\n-            error!(\"deserialization.failed.for: {}. Err: {}\", file_name.as_ref(), err);\n-            None\n-        }\n-    }\n+    serde_json::from_str::<T>(&string)\n     Ok(T)\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642323784761,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -69,6 +69,5 @@\n             return None;\n         }\n     };\n     serde_json::from_str::<T>(&string)\n-    Ok(T)\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642323791858,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+use log::error;\n use rand::rngs::adapter::ReseedingRng;\n use rand::seq::SliceRandom;\n use rand::thread_rng;\n use serde::de::DeserializeOwned;\n"
+                },
+                {
+                    "date": 1642333300132,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -59,15 +59,15 @@\n {\n     \n     if binary.is_empty() {\n         error!(\"file.[{}]is.empty\", file_name.as_ref());\n-        return None;\n+        return Err();\n     }\n     \n     let string = match String::from_utf8(binary) {\n         Ok(utf8) => utf8,\n         Err(err) => {\n-            error!(\"file.[{}]is.not.readable. Err: {}\", file_name.as_ref(), err);\n+            error!(\"failed.parsing.binary => Err: {}\",  err);\n             return None;\n         }\n     };\n     serde_json::from_str::<T>(&string)\n"
+                },
+                {
+                    "date": 1642333373711,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n use rand::thread_rng;\n use serde::de::DeserializeOwned;\n use std::iter::FromIterator;\n \n-use crate::error::AppResult;\n+use crate::error::{AppResult, RuntimeResult};\n \n const DOUBLE_TABS: &str = \"  \";\n const SINGLE_TAB: &str = \" \";\n \n@@ -53,9 +53,9 @@\n     trimmed = trimmed.replace(SINGLE_TAB, replacement.clone());\n     trimmed\n }\n \n-pub fn from_binary<T>(binary: Vec<u8>) -> AppResult<T>\n+pub fn from_binary<T>(binary: Vec<u8>) -> RuntimeResult<T>\n     where T: ?Sized + DeserializeOwned,\n {\n     \n     if binary.is_empty() {\n@@ -65,9 +65,9 @@\n     \n     let string = match String::from_utf8(binary) {\n         Ok(utf8) => utf8,\n         Err(err) => {\n-            error!(\"failed.parsing.binary => Err: {}\",  err);\n+            error!(\"failed.parsing.binary => Err: {}\", err);\n             return None;\n         }\n     };\n     serde_json::from_str::<T>(&string)\n"
+                },
+                {
+                    "date": 1642333411887,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n use rand::thread_rng;\n use serde::de::DeserializeOwned;\n use std::iter::FromIterator;\n \n-use crate::error::{AppResult, RuntimeResult};\n+use crate::error::{AppResult, RuntimeResult, RuntimeError};\n \n const DOUBLE_TABS: &str = \"  \";\n const SINGLE_TAB: &str = \" \";\n \n@@ -58,10 +58,12 @@\n     where T: ?Sized + DeserializeOwned,\n {\n     \n     if binary.is_empty() {\n-        error!(\"file.[{}]is.empty\", file_name.as_ref());\n-        return Err();\n+        error!(\"binary.empty\");\n+        return Err(RuntimeError{\n+            message: \n+        });\n     }\n     \n     let string = match String::from_utf8(binary) {\n         Ok(utf8) => utf8,\n"
+                },
+                {
+                    "date": 1642333440230,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,9 +60,10 @@\n     \n     if binary.is_empty() {\n         error!(\"binary.empty\");\n         return Err(RuntimeError{\n-            message: \n+            message: \"binary.empty\",\n+            error_type: crate::error::RuntimeErrorType::InvalidData\n         });\n     }\n     \n     let string = match String::from_utf8(binary) {\n"
+                },
+                {
+                    "date": 1642333460710,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -58,11 +58,12 @@\n     where T: ?Sized + DeserializeOwned,\n {\n     \n     if binary.is_empty() {\n+\n         error!(\"binary.empty\");\n         return Err(RuntimeError{\n-            message: \"binary.empty\",\n+            message: \"binary.empty\".to_string(),\n             error_type: crate::error::RuntimeErrorType::InvalidData\n         });\n     }\n     \n"
+                },
+                {
+                    "date": 1642333476648,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -58,9 +58,8 @@\n     where T: ?Sized + DeserializeOwned,\n {\n     \n     if binary.is_empty() {\n-\n         error!(\"binary.empty\");\n         return Err(RuntimeError{\n             message: \"binary.empty\".to_string(),\n             error_type: crate::error::RuntimeErrorType::InvalidData\n@@ -70,9 +69,12 @@\n     let string = match String::from_utf8(binary) {\n         Ok(utf8) => utf8,\n         Err(err) => {\n             error!(\"failed.parsing.binary => Err: {}\", err);\n-            return None;\n+            return return Err(RuntimeError{\n+                message: \"binary.empty\".to_string(),\n+                error_type: crate::error::RuntimeErrorType::InvalidData\n+            });;\n         }\n     };\n     serde_json::from_str::<T>(&string)\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642333495943,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -69,10 +69,10 @@\n     let string = match String::from_utf8(binary) {\n         Ok(utf8) => utf8,\n         Err(err) => {\n             error!(\"failed.parsing.binary => Err: {}\", err);\n-            return return Err(RuntimeError{\n-                message: \"binary.empty\".to_string(),\n+            return Err(RuntimeError{\n+                message: \"invalid.binary\".to_string(),\n                 error_type: crate::error::RuntimeErrorType::InvalidData\n             });;\n         }\n     };\n"
+                },
+                {
+                    "date": 1642333508717,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -72,9 +72,9 @@\n             error!(\"failed.parsing.binary => Err: {}\", err);\n             return Err(RuntimeError{\n                 message: \"invalid.binary\".to_string(),\n                 error_type: crate::error::RuntimeErrorType::InvalidData\n-            });;\n+            })\n         }\n     };\n     serde_json::from_str::<T>(&string)\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642525824222,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -72,9 +72,9 @@\n             error!(\"failed.parsing.binary => Err: {}\", err);\n             return Err(RuntimeError{\n                 message: \"invalid.binary\".to_string(),\n                 error_type: crate::error::RuntimeErrorType::InvalidData\n-            })\n+            });\n         }\n     };\n     serde_json::from_str::<T>(&string)\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642526853102,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -75,6 +75,6 @@\n                 error_type: crate::error::RuntimeErrorType::InvalidData\n             });\n         }\n     };\n-    serde_json::from_str::<T>(&string)\n+    serde_json::from_str::<T>(&string)?\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642526863190,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -75,6 +75,6 @@\n                 error_type: crate::error::RuntimeErrorType::InvalidData\n             });\n         }\n     };\n-    serde_json::from_str::<T>(&string)?\n+    OK(serde_json::from_str::<T>(&string)?)\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642526869083,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -75,6 +75,6 @@\n                 error_type: crate::error::RuntimeErrorType::InvalidData\n             });\n         }\n     };\n-    OK(serde_json::from_str::<T>(&string)?)\n+    Ok(serde_json::from_str::<T>(&string)?)\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642526917405,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -75,6 +75,6 @@\n                 error_type: crate::error::RuntimeErrorType::InvalidData\n             });\n         }\n     };\n-    Ok(serde_json::from_str::<T>(&string)?)\n+    serde_json::from_str::<T>(&string)\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642526924255,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -75,6 +75,6 @@\n                 error_type: crate::error::RuntimeErrorType::InvalidData\n             });\n         }\n     };\n-    serde_json::from_str::<T>(&string)\n+    serde_json::from_str::<T>(&string);\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642526930009,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -75,6 +75,6 @@\n                 error_type: crate::error::RuntimeErrorType::InvalidData\n             });\n         }\n     };\n-    serde_json::from_str::<T>(&string);\n+    serde_json::from_str::<T>(&string)\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642526938870,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -53,9 +53,9 @@\n     trimmed = trimmed.replace(SINGLE_TAB, replacement.clone());\n     trimmed\n }\n \n-pub fn from_binary<T>(binary: Vec<u8>) -> RuntimeResult<T>\n+pub fn from_binary<T>(binary: Vec<u8>) -> Result<T, RuntimeError>\n     where T: ?Sized + DeserializeOwned,\n {\n     \n     if binary.is_empty() {\n"
+                },
+                {
+                    "date": 1642527002319,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n use rand::thread_rng;\n use serde::de::DeserializeOwned;\n use std::iter::FromIterator;\n \n-use crate::error::{AppResult, RuntimeResult, RuntimeError};\n+use crate::error::{RuntimeResult, RuntimeError};\n \n const DOUBLE_TABS: &str = \"  \";\n const SINGLE_TAB: &str = \" \";\n \n"
+                },
+                {
+                    "date": 1642527014124,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -53,9 +53,9 @@\n     trimmed = trimmed.replace(SINGLE_TAB, replacement.clone());\n     trimmed\n }\n \n-pub fn from_binary<T>(binary: Vec<u8>) -> Result<T, RuntimeError>\n+pub fn from_binary<T>(binary: Vec<u8>) -> RuntimeResult<T>\n     where T: ?Sized + DeserializeOwned,\n {\n     \n     if binary.is_empty() {\n"
+                },
+                {
+                    "date": 1642527116156,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -75,6 +75,7 @@\n                 error_type: crate::error::RuntimeErrorType::InvalidData\n             });\n         }\n     };\n-    serde_json::from_str::<T>(&string)\n+    let t = serde_json::from_str::<T>(&string)?;\n+    Ok(t)\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642527149689,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -75,7 +75,6 @@\n                 error_type: crate::error::RuntimeErrorType::InvalidData\n             });\n         }\n     };\n-    let t = serde_json::from_str::<T>(&string)?;\n-    Ok(t)\n+    OK(serde_json::from_str::<T>(&string)?)\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1642527156978,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -75,6 +75,6 @@\n                 error_type: crate::error::RuntimeErrorType::InvalidData\n             });\n         }\n     };\n-    OK(serde_json::from_str::<T>(&string)?)\n+    Ok(serde_json::from_str::<T>(&string)?)\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1643652686500,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,5 @@\n use log::error;\n-use rand::rngs::adapter::ReseedingRng;\n use rand::seq::SliceRandom;\n use rand::thread_rng;\n use serde::de::DeserializeOwned;\n use std::iter::FromIterator;\n"
+                }
+            ],
+            "date": 1641560419312,
+            "name": "Commit-0",
+            "content": "use rand::seq::SliceRandom;\nuse rand::thread_rng;\nuse std::iter::FromIterator;\n\nuse crate::MP3_EXT;\n\nconst DOUBLE_TABS: &str = \"  \";\nconst SINGLE_TAB: &str = \" \";\n\npub fn random_in_range(n: usize) -> Vec<usize> {\n    let mut vec: Vec<usize> = (0..n).collect();\n    vec.shuffle(&mut thread_rng());\n    println!(\"{:?}\", vec);\n    vec\n}\n\npub fn shuffle<T: Clone>(source: Box<Vec<T>>) -> Vec<T> {\n    let mut rng = rand::thread_rng();\n    let mut shuffled = Vec::from_iter(source.iter().cloned());\n    shuffled.shuffle(&mut rng);\n    shuffled\n}\n\npub fn shuffle_descriptions(source: &mut Vec<String>) -> Vec<String> {\n    let size = source.len();\n    let shuffled_idx = random_in_range(size);\n    let mut shuffled_descriptions = Vec::new();\n    for idx in shuffled_idx.into_iter() {\n        match source.get(idx) {\n            None => continue,\n            Some(desc) => {\n                shuffled_descriptions.push(desc.clone());\n            }\n        }\n    }\n    shuffled_descriptions\n}\n\npub fn trim_tabs <T: AsRef<str>> (source: T) -> String {\n    let mut trimmed = String::from(source.as_ref());\n    while trimmed.contains(DOUBLE_TABS) {\n        trimmed =  trimmed.replace(DOUBLE_TABS, SINGLE_TAB);\n    }\n    trimmed.trim().to_string()\n}\n\npub fn replace_tabs<T: AsRef<str>>(source: T, replacement: &str) -> String {\n    let mut trimmed = trim_tabs(source);\n    trimmed = trimmed.to_lowercase();\n    trimmed = trimmed.replace(SINGLE_TAB, replacement.clone());\n    trimmed\n}\n\npub fn mp3_file_name(folder: &str, pattern: &str) -> String {\n    let mut file_name = String::from(folder);\n    /*\n    @TODO\n    check whether folder does exist and whether it is a valid directory\n    */\n    if !folder.ends_with(\"/\") {\n        file_name.push_str(\"/\")\n    }\n    file_name.push_str(pattern);\n    if !file_name.ends_with(MP3_EXT) {\n        file_name.push_str(MP3_EXT);\n    }\n    file_name\n}\n"
+        }
+    ]
+}

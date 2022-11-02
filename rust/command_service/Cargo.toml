@@ -1,0 +1,16 @@
+[package]
+name = "command_service"
+version = "0.1.0"
+authors = ["Ayagasha <alexander.todorov@ayagasha.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rdkafka = "0.26.0"
+clap = "2.33.3"
+futures = "0.3.12"
+rand = "0.8.3"
+log = { version = "0.4", features = ["max_level_debug", "max_level_debug"] }
+log4rs = "1.0.0"
+tokio = { version = "1", features = ["full"] }

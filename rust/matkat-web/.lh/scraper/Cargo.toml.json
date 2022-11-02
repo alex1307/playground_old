@@ -1,0 +1,86 @@
+{
+    "sourceFile": "scraper/Cargo.toml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 17,
+            "patches": [
+                {
+                    "date": 1641556525919,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1641556646799,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,7 +3,10 @@\n version = \"1.0.0\"\n authors = [\"Ayagasha <alexander.todorov@ayagasha.com>\"]\n edition = \"2018\"\n \n+[lib]\n+name = \"scraper\"\n+path = \"src/lib.rs\"\n \n [dependencies]\n commons_lib = {path = \"../common-libs\"}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641556800481,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,5 +8,5 @@\n name = \"scraper\"\n path = \"src/lib.rs\"\n \n [dependencies]\n-commons_lib = {path = \"../common-libs\"}\n\\ No newline at end of file\n+common_libs = {path = \"../common_libs\"}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641794979703,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,5 +8,7 @@\n name = \"scraper\"\n path = \"src/lib.rs\"\n \n [dependencies]\n-common_libs = {path = \"../common_libs\"}\n\\ No newline at end of file\n+common_libs = {path = \"../common_libs\"}\n+log = {}\n+reqwest = {}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641795321461,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,5 +10,6 @@\n \n [dependencies]\n common_libs = {path = \"../common_libs\"}\n log = {}\n-reqwest = {}\n\\ No newline at end of file\n+reqwest = {}\n+itertools = {}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641795368533,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,5 +11,6 @@\n [dependencies]\n common_libs = {path = \"../common_libs\"}\n log = {}\n reqwest = {}\n-itertools = {}\n\\ No newline at end of file\n+itertools = {}\n+scraper = {}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641795733905,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,5 +12,6 @@\n common_libs = {path = \"../common_libs\"}\n log = {}\n reqwest = {}\n itertools = {}\n-scraper = {}\n\\ No newline at end of file\n+scraper = {}\n+serde = {}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641795963026,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,5 +13,6 @@\n log = {}\n reqwest = {}\n itertools = {}\n scraper = {}\n-serde = {}\n\\ No newline at end of file\n+serde = {}\n+tokio = {}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641796198117,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,5 +14,6 @@\n reqwest = {}\n itertools = {}\n scraper = {}\n serde = {}\n-tokio = {}\n\\ No newline at end of file\n+tokio = {}\n+serde_json = {}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641798627086,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n path = \"src/lib.rs\"\n \n [dependencies]\n common_libs = {path = \"../common_libs\"}\n-log = {}\n+log = {version = \"*\"}\n reqwest = {}\n itertools = {}\n scraper = {}\n serde = {}\n"
+                },
+                {
+                    "date": 1641798664827,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,11 +9,11 @@\n path = \"src/lib.rs\"\n \n [dependencies]\n common_libs = {path = \"../common_libs\"}\n-log = {version = \"*\"}\n-reqwest = {}\n-itertools = {}\n-scraper = {}\n-serde = {}\n-tokio = {}\n-serde_json = {}\n\\ No newline at end of file\n+log = { version = \"*\" }\n+reqwest = { version = \"*\" }\n+itertools = { version = \"*\" }\n+scraper = { version = \"*\" }\n+serde = { version = \"*\" }\n+tokio = { version = \"*\" }\n+serde_json = { version = \"*\" }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641829692837,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,5 +15,6 @@\n itertools = { version = \"*\" }\n scraper = { version = \"*\" }\n serde = { version = \"*\" }\n tokio = { version = \"*\" }\n-serde_json = { version = \"*\" }\n\\ No newline at end of file\n+serde_json = { version = \"*\" }\n+features = {version = \"*\"}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641831147837,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,5 +16,5 @@\n scraper = { version = \"*\" }\n serde = { version = \"*\" }\n tokio = { version = \"*\" }\n serde_json = { version = \"*\" }\n-features = {version = \"*\"}\n\\ No newline at end of file\n+futures = {version = \"*\"}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641886278091,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,5 +16,6 @@\n scraper = { version = \"*\" }\n serde = { version = \"*\" }\n tokio = { version = \"*\" }\n serde_json = { version = \"*\" }\n-futures = {version = \"*\"}\n\\ No newline at end of file\n+futures = {version = \"*\"}\n+crossbeam = {version = \"*\"}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641978881743,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n common_libs = {path = \"../common_libs\"}\n log = { version = \"*\" }\n reqwest = { version = \"*\" }\n itertools = { version = \"*\" }\n-scraper = { version = \"*\" }\n+ext_scraper = { version = \"*\" }\n serde = { version = \"*\" }\n tokio = { version = \"*\" }\n serde_json = { version = \"*\" }\n futures = {version = \"*\"}\n"
+                },
+                {
+                    "date": 1641978888109,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n common_libs = {path = \"../common_libs\"}\n log = { version = \"*\" }\n reqwest = { version = \"*\" }\n itertools = { version = \"*\" }\n-ext_scraper = { version = \"*\" }\n+scraper = { version = \"*\" }\n serde = { version = \"*\" }\n tokio = { version = \"*\" }\n serde_json = { version = \"*\" }\n futures = {version = \"*\"}\n"
+                },
+                {
+                    "date": 1641978922692,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n authors = [\"Ayagasha <alexander.todorov@ayagasha.com>\"]\n edition = \"2018\"\n \n [lib]\n-name = \"scraper\"\n+name = \"mk_scraper\"\n path = \"src/lib.rs\"\n \n [dependencies]\n common_libs = {path = \"../common_libs\"}\n"
+                },
+                {
+                    "date": 1641978928759,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n [package]\n-name = \"scraper\"\n+name = \"mk_scraper\"\n version = \"1.0.0\"\n authors = [\"Ayagasha <alexander.todorov@ayagasha.com>\"]\n edition = \"2018\"\n \n"
+                }
+            ],
+            "date": 1641556525919,
+            "name": "Commit-0",
+            "content": "[package]\nname = \"scraper\"\nversion = \"1.0.0\"\nauthors = [\"Ayagasha <alexander.todorov@ayagasha.com>\"]\nedition = \"2018\"\n\n\n[dependencies]\ncommons_lib = {path = \"../common-libs\"}"
+        }
+    ]
+}

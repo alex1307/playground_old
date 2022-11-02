@@ -1,0 +1,15 @@
+[package]
+name = "service_main"
+version = "0.1.0"
+authors = ["Ayagasha <alexander.todorov@ayagasha.com>"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+commons_lib = {path="../commons_lib"}
+auth_model = {path="../auth_model"}
+auth_service = {path="../auth_service"}
+domain_model = {path = "../domain_model"}
+mapper = {path = "../mapper"}
+rest_api_actix = {path = "../rest_api_actix"}

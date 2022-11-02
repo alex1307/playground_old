@@ -1,0 +1,18 @@
+{
+    "sourceFile": "common-libs/Cargo.toml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1641556744828,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1641556744828,
+            "name": "Commit-0",
+            "content": "[package]\nname = \"common_libs\"\nversion = \"1.0.0\"\nauthors = [\"Ayagasha <alexander.todorov@ayagasha.com>\"]\nedition = \"2018\"\n\n\n\n[dependencies]\nclap = {version = \"2.33.4\", features = [\"yaml\"]}\nserde = { version = \"1.0\", features = [\"derive\"] }\nrand = \"0.8.4\"\ninner = \"0.1.1\"\nserde_json = \"1.0.68\"\nchrono = { version = \"0.4\", features = [\"serde\"] }\ntokio = { version = \"1\", features = [\"full\"] }\ncrossbeam = \"0.8.1\"\nfutures = \"0.3.17\"\nasync-std = \"1.10.0\"\nreqwest = {version = \"0.11.7\"}\nrodio = \"0.14.0\"\nscraper = \"0.12.0\"\nitertools = \"0.10.1\"\nansi_term = \"0.12.1\"\nlog = { version = \"0.4\", features = [\"max_level_info\", \"release_max_level_info\"] }\nlog4rs = \"1.0.0\""
+        }
+    ]
+}

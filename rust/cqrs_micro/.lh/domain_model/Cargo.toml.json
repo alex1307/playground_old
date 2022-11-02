@@ -1,0 +1,26 @@
+{
+    "sourceFile": "domain_model/Cargo.toml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1646918014548,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1646918195732,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,8 @@\n # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html\n \n [dependencies]\n serde = {features = [\"derive\"] }\n-serde_json = {}\n-chrono = { features = [\"serde\"] }\n+serde_json = {version = \"*\",}\n+chrono = { version = \"*\", features = [\"serde\"] }\n uuid = { features = [\"serde\", \"v4\"] }\n \n"
+                },
+                {
+                    "date": 1646918201426,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n \n # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html\n \n [dependencies]\n-serde = {features = [\"derive\"] }\n-serde_json = {version = \"*\",}\n+serde = {fversion = \"*\",eatures = [\"derive\"] }\n+serde_json = {version = \"*\"}\n chrono = { version = \"*\", features = [\"serde\"] }\n-uuid = { features = [\"serde\", \"v4\"] }\n+uuid = { version = \"*\",features = [\"serde\", \"v4\"] }\n \n"
+                }
+            ],
+            "date": 1646918014548,
+            "name": "Commit-0",
+            "content": "[package]\nname = \"domain_model\"\nversion = \"0.1.0\"\nauthors = [\"Ayagasha <alexander.todorov@ayagasha.com>\"]\nedition = \"2021\"\n\n# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html\n\n[dependencies]\nserde = {features = [\"derive\"] }\nserde_json = {}\nchrono = { features = [\"serde\"] }\nuuid = { features = [\"serde\", \"v4\"] }\n\n"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "sourceFile": "auth_service/Cargo.toml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1646918027254,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1646918267899,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,12 +8,12 @@\n \n [dependencies]\n commons_lib = {path = \"../commons_lib\" }\n auth_model = {path = \"../auth_model\" }\n-serial_test = {}\n-inner = {}\n-serde = { features = [\"derive\"] }\n-serde_json = { }\n-rust-crypto = { }\n-chrono = {features = [\"serde\"] }\n-jsonwebtoken = { }\n-lazy_static = { }\n\\ No newline at end of file\n+serial_test = {version = \"*\"}\n+inner = {version = \"*\"}\n+serde = { version = \"*\",features = [\"derive\"] }\n+serde_json = {version = \"*\" }\n+rust-crypto = { version = \"*\"}\n+chrono = {version = \"*\",features = [\"serde\"] }\n+jsonwebtoken = {version = \"*\" }\n+lazy_static = { version = \"*\"}\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1646918027254,
+            "name": "Commit-0",
+            "content": "[package]\nname = \"auth_service\"\nversion = \"0.1.0\"\nauthors = [\"Ayagasha <alexander.todorov@ayagasha.com>\"]\nedition = \"2021\"\n\n# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html\n\n[dependencies]\ncommons_lib = {path = \"../commons_lib\" }\nauth_model = {path = \"../auth_model\" }\nserial_test = {}\ninner = {}\nserde = { features = [\"derive\"] }\nserde_json = { }\nrust-crypto = { }\nchrono = {features = [\"serde\"] }\njsonwebtoken = { }\nlazy_static = { }"
+        }
+    ]
+}

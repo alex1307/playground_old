@@ -1,0 +1,18 @@
+{
+    "sourceFile": "scraper/src/constants.rs",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1641795151680,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1641795151680,
+            "name": "Commit-0",
+            "content": "pub const INVALID: &str = \"invalid\";\npub const SEARCH_FOR: &str = \"search suggestions for\";\npub const NO_RESULTS: &str = \"sorry, no results for\";\npub const PAGE_NOT_FOUND: &str = \"page not found\";\npub const BROWSE_DICTIONARY: &str = \"browse the english dictionary\";\npub const NOT_FOUND: [&str; 4] = [NO_RESULTS, PAGE_NOT_FOUND, SEARCH_FOR, BROWSE_DICTIONARY];\n\npub const JSON_EXT: &str = \".json\";\npub const MP3_EXT: &str = \".mp3\";\npub const HTML_EXT: &str = \".html\";\npub const USER_AGENT: &str = r#\"'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15'\"#;\npub const MAX_32_MB: usize = 1000000;"
+        }
+    ]
+}

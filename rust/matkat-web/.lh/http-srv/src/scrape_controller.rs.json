@@ -1,0 +1,202 @@
+{
+    "sourceFile": "http-srv/src/scrape_controller.rs",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 46,
+            "patches": [
+                {
+                    "date": 1641810673994,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1641810697755,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,2 @@\n+use actix_web::{get, HttpResponse, post, web};\n+use actix_web::web::{get, Buf};\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641810734403,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,2 +1,5 @@\n use actix_web::{get, HttpResponse, post, web};\n-use actix_web::web::{get, Buf};\n\\ No newline at end of file\n+use actix_web::web::{get, Buf};\n+\n+#[post(\"/\")]\n+pub fn download()\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641810774243,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n use actix_web::{get, HttpResponse, post, web};\n use actix_web::web::{get, Buf};\n \n #[post(\"/\")]\n-pub fn download()\n\\ No newline at end of file\n+pub fn download(web::Json<RegisterDTO>)\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641810807600,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n use actix_web::{get, HttpResponse, post, web};\n use actix_web::web::{get, Buf};\n \n #[post(\"/\")]\n-pub fn download(web::Json<RegisterDTO>)\n\\ No newline at end of file\n+pub fn download(words::Json<UserRequestDto>)\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641810824281,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n use actix_web::{get, HttpResponse, post, web};\n use actix_web::web::{get, Buf};\n \n #[post(\"/\")]\n-pub fn download(words::Json<UserRequestDto>)\n\\ No newline at end of file\n+pub fn download(words::Json<UserRequestDto>) -> HttpResponse\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641810859843,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,7 @@\n use actix_web::{get, HttpResponse, post, web};\n use actix_web::web::{get, Buf};\n \n #[post(\"/\")]\n-pub fn download(words::Json<UserRequestDto>) -> HttpResponse\n\\ No newline at end of file\n+pub fn download(words::Json<UserRequestDto>) -> HttpResponse {\n+    \n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641812451653,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,6 +2,6 @@\n use actix_web::web::{get, Buf};\n \n #[post(\"/\")]\n pub fn download(words::Json<UserRequestDto>) -> HttpResponse {\n-    \n+    HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641812470257,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-use actix_web::{get, HttpResponse, post, web};\n+use actix_web::{post};\n use actix_web::web::{get, Buf};\n \n #[post(\"/\")]\n pub fn download(words::Json<UserRequestDto>) -> HttpResponse {\n"
+                },
+                {
+                    "date": 1641812501802,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n use actix_web::{post};\n-use actix_web::web::{get, Buf};\n \n+\n #[post(\"/\")]\n pub fn download(words::Json<UserRequestDto>) -> HttpResponse {\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641812527317,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n use actix_web::{post};\n \n \n #[post(\"/\")]\n-pub fn download(words::Json<UserRequestDto>) -> HttpResponse {\n+pub fn download(_: words::Json<UserRequestDto>) -> HttpResponse {\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641812542253,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n use actix_web::{post};\n \n \n #[post(\"/\")]\n-pub fn download(_: words::Json<UserRequestDto>) -> HttpResponse {\n+pub fn download(words::Json<UserRequestDto>) -> HttpResponse {\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641812628691,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n-use actix_web::{post};\n+use actix_web::{web, get, HttpResponse, post, web};\n+use actix_web::web::{get, Buf};\n \n-\n #[post(\"/\")]\n-pub fn download(words::Json<UserRequestDto>) -> HttpResponse {\n-    HttpResponse::Accepted().body(\"success\")\n+pub fn download(words: web::Json<UserRequestDto>) -> HttpResponse {\n+    \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641812651358,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n use actix_web::{web, get, HttpResponse, post, web};\n-use actix_web::web::{get, Buf};\n+use actix_web::web::{get, Buf, Json};\n \n #[post(\"/\")]\n pub fn download(words: web::Json<UserRequestDto>) -> HttpResponse {\n     \n"
+                },
+                {
+                    "date": 1641812657407,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n use actix_web::{web, get, HttpResponse, post, web};\n use actix_web::web::{get, Buf, Json};\n \n #[post(\"/\")]\n-pub fn download(words: web::Json<UserRequestDto>) -> HttpResponse {\n+pub fn download(words: Json<UserRequestDto>) -> HttpResponse {\n     \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641812667277,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-use actix_web::{web, get, HttpResponse, post, web};\n+use actix_web::{get, HttpResponse, post};\n use actix_web::web::{get, Buf, Json};\n \n #[post(\"/\")]\n pub fn download(words: Json<UserRequestDto>) -> HttpResponse {\n"
+                },
+                {
+                    "date": 1641812836030,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,9 @@\n-use actix_web::{get, HttpResponse, post};\n+use actix_web::{HttpResponse, post};\n use actix_web::web::{get, Buf, Json};\n \n+use crate::model::DownloadRequest;\n+\n #[post(\"/\")]\n-pub fn download(words: Json<UserRequestDto>) -> HttpResponse {\n+pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n     \n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641812849099,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,6 +4,7 @@\n use crate::model::DownloadRequest;\n \n #[post(\"/\")]\n pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n-    \n+    HttpResponse::Accepted().body(\"success\")\n+}\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641813098160,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,9 @@\n use actix_web::{HttpResponse, post};\n-use actix_web::web::{get, Buf, Json};\n+use actix_web::web::{Json};\n \n use crate::model::DownloadRequest;\n \n #[post(\"/\")]\n pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n     HttpResponse::Accepted().body(\"success\")\n-}\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641813107198,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,7 +3,7 @@\n \n use crate::model::DownloadRequest;\n \n #[post(\"/\")]\n-pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n+pub fn download(_words: Json<DownloadRequest>) -> HttpResponse {\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641813124184,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n use actix_web::{HttpResponse, post};\n-use actix_web::web::{Json};\n+use actix_web::web::Json;\n \n use crate::model::DownloadRequest;\n \n #[post(\"/\")]\n"
+                },
+                {
+                    "date": 1641832970138,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,12 @@\n use actix_web::{HttpResponse, post};\n use actix_web::web::Json;\n+use scraper::{oxford_scraper, scrape_all};\n \n use crate::model::DownloadRequest;\n \n #[post(\"/\")]\n-pub fn download(_words: Json<DownloadRequest>) -> HttpResponse {\n+pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n+    words\n+    //scrape_all()\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641833026266,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,8 @@\n use crate::model::DownloadRequest;\n \n #[post(\"/\")]\n pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n-    words\n+    words.into_inner();\n     //scrape_all()\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641833035942,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,8 @@\n use crate::model::DownloadRequest;\n \n #[post(\"/\")]\n pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n-    words.into_inner();\n+    let payload = words.into_inner();\n     //scrape_all()\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641833061287,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,12 @@\n use actix_web::{HttpResponse, post};\n-use actix_web::web::Json;\n+use actix_web::web::{Json, payload};\n use scraper::{oxford_scraper, scrape_all};\n \n use crate::model::DownloadRequest;\n \n #[post(\"/\")]\n pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n     let payload = words.into_inner();\n-    //scrape_all()\n+    scrape_all(payload.words);\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641833071716,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,7 @@\n \n #[post(\"/\")]\n pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n     let payload = words.into_inner();\n-    scrape_all(payload.words);\n+    scrape_all(payload.words).await;\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641833137522,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,7 @@\n \n #[post(\"/\")]\n pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n     let payload = words.into_inner();\n-    scrape_all(payload.words).await;\n+    tokio::spawn(async move{scrape_all(payload.words).await})\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641833180638,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,7 @@\n \n #[post(\"/\")]\n pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n     let payload = words.into_inner();\n-    tokio::spawn(async move{scrape_all(payload.words).await})\n+    tokio::spawn(async move{scrape_all(payload.words).await});\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641833195651,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,7 @@\n \n #[post(\"/\")]\n pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n     let payload = words.into_inner();\n-    tokio::spawn(async move{scrape_all(payload.words).await});\n+    tokio::spawn(async move{scrape_all(payload.words.clone).await});\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641833203343,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,7 @@\n \n #[post(\"/\")]\n pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n     let payload = words.into_inner();\n-    tokio::spawn(async move{scrape_all(payload.words.clone).await});\n+    tokio::spawn(async move{scrape_all(payload.words).await});\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641833365952,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,7 @@\n \n #[post(\"/\")]\n pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n     let payload = words.into_inner();\n-    tokio::spawn(async move{scrape_all(payload.words).await});\n+    tokio::spawn(async move{scrape_all(payload).await});\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641833388693,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,7 @@\n \n #[post(\"/\")]\n pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n     let payload = words.into_inner();\n-    tokio::spawn(async move{scrape_all(payload).await});\n+    tokio::spawn(async move{scrape_all(.words).await});\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641833396949,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,8 @@\n use crate::model::DownloadRequest;\n \n #[post(\"/\")]\n pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n-    let payload = words.into_inner();\n+    let payload = words.into_inner().words;\n     tokio::spawn(async move{scrape_all(.words).await});\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641833403602,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,7 @@\n \n #[post(\"/\")]\n pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n     let payload = words.into_inner().words;\n-    tokio::spawn(async move{scrape_all(.words).await});\n+    tokio::spawn(async move{scrape_all(payload).await});\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641833417759,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,8 @@\n use crate::model::DownloadRequest;\n \n #[post(\"/\")]\n pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n-    let payload = words.into_inner().words;\n+    let payload = words.into_inner().words.clone();\n     tokio::spawn(async move{scrape_all(payload).await});\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641833476830,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,7 @@\n \n #[post(\"/\")]\n pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n     let payload = words.into_inner().words.clone();\n-    tokio::spawn(async move{scrape_all(payload).await});\n+    async {tokio::spawn(async move{scrape_all(payload).await});}\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641833487703,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,9 @@\n \n #[post(\"/\")]\n pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n     let payload = words.into_inner().words.clone();\n-    async {tokio::spawn(async move{scrape_all(payload).await});}\n+    async {\n+        tokio::spawn(async move{scrape_all(payload).await});\n+    }.await;\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641833494149,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,7 +8,7 @@\n pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n     let payload = words.into_inner().words.clone();\n     async {\n         tokio::spawn(async move{scrape_all(payload).await});\n-    }.await;\n+    };\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641833501561,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,8 @@\n #[post(\"/\")]\n pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n     let payload = words.into_inner().words.clone();\n     async {\n-        tokio::spawn(async move{scrape_all(payload).await});\n+        tokio::spawn(async move{scrape_all(payload).await}).await;\n     };\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641833513769,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n \n #[post(\"/\")]\n pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n     let payload = words.into_inner().words.clone();\n-    async {\n+    \n         tokio::spawn(async move{scrape_all(payload).await}).await;\n-    };\n+    \n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641886300357,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,6 @@\n \n #[post(\"/\")]\n pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n     let payload = words.into_inner().words.clone();\n-    \n-        tokio::spawn(async move{scrape_all(payload).await}).await;\n-    \n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641886316397,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,7 +5,6 @@\n use crate::model::DownloadRequest;\n \n #[post(\"/\")]\n pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n-    let payload = words.into_inner().words.clone();\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641892363705,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n use actix_web::{HttpResponse, post};\n-use actix_web::web::{Json, payload};\n+use actix_web::web::{Json};\n use scraper::{oxford_scraper, scrape_all};\n \n use crate::model::DownloadRequest;\n \n"
+                },
+                {
+                    "date": 1641892368862,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n use actix_web::{HttpResponse, post};\n-use actix_web::web::{Json};\n+use actix_web::web::Json;\n use scraper::{oxford_scraper, scrape_all};\n \n use crate::model::DownloadRequest;\n \n"
+                },
+                {
+                    "date": 1641978978206,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n use actix_web::{HttpResponse, post};\n use actix_web::web::Json;\n-use scraper::{oxford_scraper, scrape_all};\n+use mk_scraper::{oxford_scraper, scrape_all};\n \n use crate::model::DownloadRequest;\n \n #[post(\"/\")]\n"
+                },
+                {
+                    "date": 1641984628179,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n use actix_web::{HttpResponse, post};\n use actix_web::web::Json;\n-use mk_scraper::{oxford_scraper, scrape_all};\n \n+\n use crate::model::DownloadRequest;\n \n #[post(\"/\")]\n pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n"
+                },
+                {
+                    "date": 1641984636269,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,7 +4,7 @@\n \n use crate::model::DownloadRequest;\n \n #[post(\"/\")]\n-pub fn download(words: Json<DownloadRequest>) -> HttpResponse {\n+pub fn download(_words: Json<DownloadRequest>) -> HttpResponse {\n     HttpResponse::Accepted().body(\"success\")\n }\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1641810673994,
+            "name": "Commit-0",
+            "content": ""
+        }
+    ]
+}

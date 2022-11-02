@@ -1,0 +1,22 @@
+{
+    "sourceFile": "service_lib/Cargo.toml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1646918074667,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1646918422309,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,6 @@\n # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html\n \n [dependencies]\n serde = {features = [\"derive\"] }\n-inner = {}\n-serde_json = {}\n\\ No newline at end of file\n+inner = {version = \"*\"}\n+serde_json = {version = \"*\"}\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1646918074667,
+            "name": "Commit-0",
+            "content": "[package]\nname = \"service_lib\"\nversion = \"0.1.0\"\nauthors = [\"Ayagasha <alexander.todorov@ayagasha.com>\"]\nedition = \"2021\"\n\n# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html\n\n[dependencies]\nserde = {features = [\"derive\"] }\ninner = {}\nserde_json = {}"
+        }
+    ]
+}

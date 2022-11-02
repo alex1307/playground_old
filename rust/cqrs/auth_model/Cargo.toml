@@ -1,0 +1,19 @@
+[package]
+name = "auth_model"
+version = "0.1.0"
+authors = ["Ayagasha <alexander.todorov@ayagasha.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+commons_lib={path = "../commons_lib"}
+rust-crypto = {}
+serde = {features = ["derive"] }
+inner = {}
+serde_json = {}
+lazy_static = { }
+chrono = { features = ["serde"] }
+serial_test = { }
+uuid = { features = ["serde", "v4"] }
+bcrypt = { }

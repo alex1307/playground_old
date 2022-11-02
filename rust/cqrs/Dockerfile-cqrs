@@ -1,0 +1,21 @@
+FROM ayagasha/librdkafka
+WORKDIR /apps/cqrs_app
+COPY ./_config_files ./_config_files/
+COPY ./Cargo.toml ./Cargo.toml
+
+COPY ./auth_model ./auth_model/
+COPY ./auth_service ./auth_service/
+COPY ./commons_lib ./commons_lib/
+COPY ./domain_model ./domain_model/
+COPY ./mapper ./mapper/
+COPY ./rest_api_actix ./rest_api_actix/
+COPY ./service_main ./service_main/
+
+EXPOSE 8044
+EXPOSE 8043
+
+RUN cargo build
+
+ENTRYPOINT ["cargo"]
+CMD ["run"]
+

@@ -1,0 +1,26 @@
+{
+    "sourceFile": "commons_lib/Cargo.toml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1646918005820,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1646918165014,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,11 +6,11 @@\n \n # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html\n \n [dependencies]\n-jsonwebtoken = \"7\"\n+jsonwebtoken = \"8.0.0\"\n futures = \"0.3.17\"\n-bcrypt = \"0.10.1\"\n+bcrypt = \"0.12.0\"\n chrono = { version = \"0.4\", features = [\"serde\"] }\n serde = { version = \"1.0\", features = [\"derive\"] }\n serde_json = \"1.0\"\n uuid = { version = \"0.8\", features = [\"serde\", \"v4\"] }\n"
+                },
+                {
+                    "date": 1646918171474,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n serde_json = \"1.0\"\n uuid = { version = \"0.8\", features = [\"serde\", \"v4\"] }\n inner = \"0.1.1\"\n lazy_static = \"1.4.0\"\n-serial_test = \"0.5.1\"\n+serial_test = \"0.6.0\"\n envfile = \"0.2.1\"\n rust-crypto = \"0.2.36\"\n avro-rs = \"0.13.0\"\n tokio = { version = \"1\", features = [\"full\"] }\n"
+                }
+            ],
+            "date": 1646918005820,
+            "name": "Commit-0",
+            "content": "[package]\nname = \"commons_lib\"\nversion = \"0.1.0\"\nauthors = [\"Ayagasha <alexander.todorov@ayagasha.com>\"]\nedition = \"2021\"\n\n# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html\n\n[dependencies]\njsonwebtoken = \"7\"\nfutures = \"0.3.17\"\nbcrypt = \"0.10.1\"\nchrono = { version = \"0.4\", features = [\"serde\"] }\nserde = { version = \"1.0\", features = [\"derive\"] }\nserde_json = \"1.0\"\nuuid = { version = \"0.8\", features = [\"serde\", \"v4\"] }\ninner = \"0.1.1\"\nlazy_static = \"1.4.0\"\nserial_test = \"0.5.1\"\nenvfile = \"0.2.1\"\nrust-crypto = \"0.2.36\"\navro-rs = \"0.13.0\"\ntokio = { version = \"1\", features = [\"full\"] }\nlog = { version = \"0.4\", features = [\"max_level_info\", \"release_max_level_warn\"] }\nlog4rs = \"1.0.0\"\n\n\n\n"
+        }
+    ]
+}

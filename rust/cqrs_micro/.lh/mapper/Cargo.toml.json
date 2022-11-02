@@ -1,0 +1,18 @@
+{
+    "sourceFile": "mapper/Cargo.toml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1646918306137,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1646918306137,
+            "name": "Commit-0",
+            "content": "[package]\nname = \"mapper\"\nversion = \"0.1.0\"\nauthors = [\"Ayagasha <alexander.todorov@ayagasha.com>\"]\nedition = \"2021\"\n\n# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html\n\n[dependencies]\ndomain_model = {path = \"../domain_model\"}\nserde = {features = [\"derive\"] }\nserde_json = {}\nchrono = { version = \"*\",features = [\"serde\"] }\nuuid = { version = \"*\",features = [\"serde\", \"v4\"] }\nserial_test = {version = \"*\"}\nlazy_static = { version = \"*\"}\navro-rs = { version = \"*\"}\ninner = {version = \"*\"}\nlog = {version = \"*\"}\nenv_logger = { version = \"*\"}"
+        }
+    ]
+}

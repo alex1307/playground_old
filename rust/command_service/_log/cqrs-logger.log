@@ -1,0 +1,215 @@
+2021-05-15T10:00:49.830787+02:00 WARN command_service - SUCCESS: Loggers are configured with dir: _log/*
+2021-05-15T10:19:02.387742+02:00 WARN command_service - SUCCESS: Loggers are configured with dir: _log/*
+2021-05-15T10:21:58.116638+02:00 WARN command_service - SUCCESS: Loggers are configured with dir: _log/*
+2021-05-15T10:22:05.543958+02:00 WARN command_service - SUCCESS: Loggers are configured with dir: _log/*
+2021-05-15T10:22:27.875034+02:00 WARN command_service - SUCCESS: Loggers are configured with dir: _log/*
+2021-05-15T10:24:38.634842+02:00 WARN command_service - SUCCESS: Loggers are configured with dir: _log/*
+2021-05-15T10:24:38.636715+02:00 INFO command_service::asynchronous_processing - Starting event loop
+2021-05-15T10:24:38.636779+02:00 INFO command_service::asynchronous_processing - Starting event loop
+2021-05-15T10:24:38.636837+02:00 INFO command_service::asynchronous_processing - Starting event loop
+2021-05-15T10:24:38.640685+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 4ms in state CONNECT)
+2021-05-15T10:24:38.640762+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 4ms in state CONNECT)
+2021-05-15T10:24:38.640862+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 3ms in state CONNECT)
+2021-05-15T10:24:38.640935+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 4ms in state CONNECT)
+2021-05-15T10:24:38.640999+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 3ms in state CONNECT)
+2021-05-15T10:24:38.641317+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 3ms in state CONNECT)
+2021-05-15T10:24:38.641382+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 4ms in state CONNECT)
+2021-05-15T10:24:38.641427+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 4ms in state CONNECT)
+2021-05-15T10:24:38.641502+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 3ms in state CONNECT)
+2021-05-15T10:24:38.641649+02:00 ERROR rdkafka::client - librdkafka: Global error: AllBrokersDown (Local: All broker connections are down): 1/1 brokers are down
+2021-05-15T10:24:38.641711+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 3ms in state CONNECT)
+2021-05-15T10:24:38.641769+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 3ms in state CONNECT)
+2021-05-15T10:24:38.641826+02:00 ERROR rdkafka::client - librdkafka: Global error: AllBrokersDown (Local: All broker connections are down): 1/1 brokers are down
+2021-05-15T10:24:38.642006+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 4ms in state CONNECT)
+2021-05-15T10:24:38.642057+02:00 ERROR rdkafka::client - librdkafka: Global error: AllBrokersDown (Local: All broker connections are down): 1/1 brokers are down
+2021-05-15T10:24:38.642133+02:00 ERROR rdkafka::client - librdkafka: Global error: AllBrokersDown (Local: All broker connections are down): 1/1 brokers are down
+2021-05-15T10:24:38.642209+02:00 ERROR rdkafka::client - librdkafka: Global error: AllBrokersDown (Local: All broker connections are down): 1/1 brokers are down
+2021-05-15T10:24:38.642380+02:00 ERROR rdkafka::client - librdkafka: Global error: AllBrokersDown (Local: All broker connections are down): 1/1 brokers are down
+2021-05-15T10:24:39.639378+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:24:39.639498+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:24:39.639600+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:24:39.639699+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:24:39.639921+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:24:39.640034+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:24:39.641995+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 1ms in state CONNECT, 1 identical error(s) suppressed)
+2021-05-15T10:24:39.642255+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 1ms in state CONNECT, 1 identical error(s) suppressed)
+2021-05-15T10:24:39.642369+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 1ms in state CONNECT, 1 identical error(s) suppressed)
+2021-05-15T10:24:39.642563+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 1ms in state CONNECT, 1 identical error(s) suppressed)
+2021-05-15T10:24:39.642671+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused (after 1ms in state CONNECT)
+2021-05-15T10:24:39.642859+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused (after 1ms in state CONNECT)
+2021-05-15T10:24:40.642264+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 1ms in state CONNECT)
+2021-05-15T10:24:40.642418+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 1ms in state CONNECT)
+2021-05-15T10:24:40.642644+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 1ms in state CONNECT)
+2021-05-15T10:24:40.642764+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 1ms in state CONNECT)
+2021-05-15T10:24:40.644556+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 3ms in state CONNECT)
+2021-05-15T10:24:40.644637+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 2ms in state CONNECT)
+2021-05-15T10:24:40.644709+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused (after 2ms in state CONNECT)
+2021-05-15T10:24:40.644792+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 3ms in state CONNECT)
+2021-05-15T10:24:40.644962+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused (after 2ms in state CONNECT)
+2021-05-15T10:24:40.645047+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 2ms in state CONNECT)
+2021-05-15T10:24:41.644283+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:24:41.644409+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:24:41.644533+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:24:41.644669+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:24:41.644901+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:24:41.645012+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:24:41.645143+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 1ms in state CONNECT, 1 identical error(s) suppressed)
+2021-05-15T10:24:41.645269+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:24:41.645742+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:24:41.645851+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused (after 1ms in state CONNECT)
+2021-05-15T10:24:41.645925+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 1ms in state CONNECT, 1 identical error(s) suppressed)
+2021-05-15T10:24:41.646407+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused (after 1ms in state CONNECT)
+2021-05-15T10:24:42.648032+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused (after 1ms in state CONNECT, 1 identical error(s) suppressed)
+2021-05-15T10:24:42.648274+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused (after 1ms in state CONNECT, 1 identical error(s) suppressed)
+2021-05-15T10:24:42.649368+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused (after 2ms in state CONNECT)
+2021-05-15T10:24:42.649590+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv6#[::1]:9092 failed: Connection refused (after 2ms in state CONNECT)
+2021-05-15T10:24:42.650139+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 3ms in state CONNECT)
+2021-05-15T10:24:42.650241+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 3ms in state CONNECT)
+2021-05-15T10:24:42.650412+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 3ms in state CONNECT)
+2021-05-15T10:24:42.650494+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/bootstrap: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 3ms in state CONNECT)
+2021-05-15T10:32:20.525687+02:00 WARN command_service - SUCCESS: Loggers are configured with dir: _log/*
+2021-05-15T10:32:20.528271+02:00 INFO command_service::asynchronous_processing - Starting event loop
+2021-05-15T10:32:20.528327+02:00 INFO command_service::asynchronous_processing - Starting event loop
+2021-05-15T10:32:20.528385+02:00 INFO command_service::asynchronous_processing - Starting event loop
+2021-05-15T10:34:20.726815+02:00 INFO command_service::asynchronous_processing - Message received: 0
+2021-05-15T10:34:20.728195+02:00 INFO command_service::asynchronous_processing - Starting expensive computation on message 0
+2021-05-15T10:34:21.435180+02:00 INFO command_service::asynchronous_processing - Message received: 1
+2021-05-15T10:34:21.435497+02:00 INFO command_service::asynchronous_processing - Starting expensive computation on message 1
+2021-05-15T10:34:22.134758+02:00 INFO command_service::asynchronous_processing - Expensive computation completed on message 0
+2021-05-15T10:34:22.301464+02:00 INFO command_service::asynchronous_processing - Message received: 2
+2021-05-15T10:34:22.301666+02:00 INFO command_service::asynchronous_processing - Starting expensive computation on message 2
+2021-05-15T10:34:22.498987+02:00 INFO command_service::asynchronous_processing - Expensive computation completed on message 2
+2021-05-15T10:34:22.654530+02:00 INFO command_service::asynchronous_processing - Expensive computation completed on message 1
+2021-05-15T10:34:22.942203+02:00 INFO command_service::asynchronous_processing - Message received: 3
+2021-05-15T10:34:22.942408+02:00 INFO command_service::asynchronous_processing - Starting expensive computation on message 3
+2021-05-15T10:34:23.837069+02:00 INFO command_service::asynchronous_processing - Expensive computation completed on message 3
+2021-05-15T10:34:26.666197+02:00 INFO command_service::asynchronous_processing - Message received: 4
+2021-05-15T10:34:26.666361+02:00 INFO command_service::asynchronous_processing - Starting expensive computation on message 4
+2021-05-15T10:34:26.956659+02:00 INFO command_service::asynchronous_processing - Message received: 5
+2021-05-15T10:34:26.956832+02:00 INFO command_service::asynchronous_processing - Starting expensive computation on message 5
+2021-05-15T10:34:27.149651+02:00 INFO command_service::asynchronous_processing - Message received: 6
+2021-05-15T10:34:27.149969+02:00 INFO command_service::asynchronous_processing - Starting expensive computation on message 6
+2021-05-15T10:34:27.317611+02:00 INFO command_service::asynchronous_processing - Message received: 7
+2021-05-15T10:34:27.317954+02:00 INFO command_service::asynchronous_processing - Starting expensive computation on message 7
+2021-05-15T10:34:27.476201+02:00 INFO command_service::asynchronous_processing - Message received: 8
+2021-05-15T10:34:27.476638+02:00 INFO command_service::asynchronous_processing - Starting expensive computation on message 8
+2021-05-15T10:34:27.535918+02:00 INFO command_service::asynchronous_processing - Expensive computation completed on message 4
+2021-05-15T10:34:27.645428+02:00 INFO command_service::asynchronous_processing - Message received: 9
+2021-05-15T10:34:27.645606+02:00 INFO command_service::asynchronous_processing - Starting expensive computation on message 9
+2021-05-15T10:34:27.800228+02:00 INFO command_service::asynchronous_processing - Message received: 10
+2021-05-15T10:34:27.800510+02:00 INFO command_service::asynchronous_processing - Starting expensive computation on message 10
+2021-05-15T10:34:28.556584+02:00 INFO command_service::asynchronous_processing - Message received: 11
+2021-05-15T10:34:28.556859+02:00 INFO command_service::asynchronous_processing - Starting expensive computation on message 11
+2021-05-15T10:34:28.864903+02:00 INFO command_service::asynchronous_processing - Expensive computation completed on message 10
+2021-05-15T10:34:28.940747+02:00 INFO command_service::asynchronous_processing - Message received: 12
+2021-05-15T10:34:28.941049+02:00 INFO command_service::asynchronous_processing - Starting expensive computation on message 12
+2021-05-15T10:34:29.106658+02:00 INFO command_service::asynchronous_processing - Message received: 13
+2021-05-15T10:34:29.106942+02:00 INFO command_service::asynchronous_processing - Starting expensive computation on message 13
+2021-05-15T10:34:29.283408+02:00 INFO command_service::asynchronous_processing - Message received: 14
+2021-05-15T10:34:29.283682+02:00 INFO command_service::asynchronous_processing - Starting expensive computation on message 14
+2021-05-15T10:34:29.456897+02:00 INFO command_service::asynchronous_processing - Message received: 15
+2021-05-15T10:34:29.457330+02:00 INFO command_service::asynchronous_processing - Starting expensive computation on message 15
+2021-05-15T10:34:29.469488+02:00 INFO command_service::asynchronous_processing - Expensive computation completed on message 12
+2021-05-15T10:34:29.631086+02:00 INFO command_service::asynchronous_processing - Message received: 16
+2021-05-15T10:34:29.631330+02:00 INFO command_service::asynchronous_processing - Starting expensive computation on message 16
+2021-05-15T10:34:29.664868+02:00 INFO command_service::asynchronous_processing - Expensive computation completed on message 15
+2021-05-15T10:34:29.791706+02:00 INFO command_service::asynchronous_processing - Message received: 17
+2021-05-15T10:34:29.791935+02:00 INFO command_service::asynchronous_processing - Starting expensive computation on message 17
+2021-05-15T10:34:30.315015+02:00 INFO command_service::asynchronous_processing - Expensive computation completed on message 5
+2021-05-15T10:34:31.502721+02:00 INFO command_service::asynchronous_processing - Expensive computation completed on message 9
+2021-05-15T10:34:31.514809+02:00 INFO command_service::asynchronous_processing - Expensive computation completed on message 6
+2021-05-15T10:34:31.687738+02:00 INFO command_service::asynchronous_processing - Expensive computation completed on message 8
+2021-05-15T10:34:31.814816+02:00 INFO command_service::asynchronous_processing - Expensive computation completed on message 7
+2021-05-15T10:34:31.839055+02:00 INFO command_service::asynchronous_processing - Expensive computation completed on message 17
+2021-05-15T10:34:31.979817+02:00 INFO command_service::asynchronous_processing - Expensive computation completed on message 14
+2021-05-15T10:34:32.086365+02:00 INFO command_service::asynchronous_processing - Expensive computation completed on message 13
+2021-05-15T10:34:32.417243+02:00 INFO command_service::asynchronous_processing - Expensive computation completed on message 11
+2021-05-15T10:34:34.319300+02:00 INFO command_service::asynchronous_processing - Expensive computation completed on message 16
+2021-05-15T10:44:17.882796+02:00 INFO librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/1: Disconnected (after 717297ms in state UP)
+2021-05-15T10:44:17.885755+02:00 INFO librdkafka - librdkafka: FAIL [thrd:GroupCoordinator]: GroupCoordinator: r-kafka:9092: Disconnected (after 716324ms in state UP)
+2021-05-15T10:44:17.886417+02:00 ERROR rdkafka::client - librdkafka: Global error: AllBrokersDown (Local: All broker connections are down): 1/1 brokers are down
+2021-05-15T10:44:17.887125+02:00 ERROR rdkafka::client - librdkafka: Global error: AllBrokersDown (Local: All broker connections are down): 1/1 brokers are down
+2021-05-15T10:44:17.887484+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/1: Disconnected (after 717297ms in state UP)
+2021-05-15T10:44:17.887638+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): GroupCoordinator: r-kafka:9092: Disconnected (after 716324ms in state UP)
+2021-05-15T10:44:17.889645+02:00 ERROR rdkafka::client - librdkafka: Global error: AllBrokersDown (Local: All broker connections are down): 1/1 brokers are down
+2021-05-15T10:44:17.889743+02:00 INFO librdkafka - librdkafka: FAIL [thrd:GroupCoordinator]: GroupCoordinator: r-kafka:9092: Disconnected (after 717255ms in state UP)
+2021-05-15T10:44:17.889823+02:00 INFO librdkafka - librdkafka: FAIL [thrd:GroupCoordinator]: GroupCoordinator: r-kafka:9092: Disconnected (after 717249ms in state UP)
+2021-05-15T10:44:17.891097+02:00 ERROR rdkafka::client - librdkafka: Global error: AllBrokersDown (Local: All broker connections are down): 2/2 brokers are down
+2021-05-15T10:44:17.891544+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): GroupCoordinator: r-kafka:9092: Disconnected (after 717255ms in state UP)
+2021-05-15T10:44:17.891821+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): GroupCoordinator: r-kafka:9092: Disconnected (after 717249ms in state UP)
+2021-05-15T10:44:17.891951+02:00 ERROR rdkafka::client - librdkafka: Global error: AllBrokersDown (Local: All broker connections are down): 2/2 brokers are down
+2021-05-15T10:44:23.157499+02:00 WARN librdkafka - librdkafka: SESSTMOUT [thrd:main]: Consumer group session timed out (in join-state steady) after 6010 ms without a successful response from the group coordinator (broker 1, last error was Success): revoking assignment and rejoining group
+2021-05-15T10:44:23.188019+02:00 WARN librdkafka - librdkafka: SESSTMOUT [thrd:main]: Consumer group session timed out (in join-state steady) after 6008 ms without a successful response from the group coordinator (broker 1, last error was Success): revoking assignment and rejoining group
+2021-05-15T10:44:23.251800+02:00 WARN librdkafka - librdkafka: SESSTMOUT [thrd:main]: Consumer group session timed out (in join-state steady) after 6014 ms without a successful response from the group coordinator (broker 1, last error was Success): revoking assignment and rejoining group
+2021-05-15T10:44:24.981069+02:00 INFO librdkafka - librdkafka: FAIL [thrd:GroupCoordinator]: GroupCoordinator: r-kafka:9092: Disconnected (after 7087ms in state APIVERSION_QUERY, 1 identical error(s) suppressed)
+2021-05-15T10:44:24.981184+02:00 INFO librdkafka - librdkafka: FAIL [thrd:GroupCoordinator]: GroupCoordinator: r-kafka:9092: Disconnected (after 7089ms in state APIVERSION_QUERY, 1 identical error(s) suppressed)
+2021-05-15T10:44:24.981592+02:00 INFO librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/1: Disconnected while requesting ApiVersion: might be caused by incorrect security.protocol configuration (connecting to a SSL listener?) or broker version is < 0.10 (see api.version.request) (after 7087ms in state APIVERSION_QUERY)
+2021-05-15T10:44:24.981747+02:00 INFO librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/1: Disconnected while requesting ApiVersion: might be caused by incorrect security.protocol configuration (connecting to a SSL listener?) or broker version is < 0.10 (see api.version.request) (after 6195ms in state APIVERSION_QUERY)
+2021-05-15T10:44:24.982523+02:00 INFO librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/1: Disconnected while requesting ApiVersion: might be caused by incorrect security.protocol configuration (connecting to a SSL listener?) or broker version is < 0.10 (see api.version.request) (after 6187ms in state APIVERSION_QUERY)
+2021-05-15T10:44:24.982592+02:00 INFO librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/1: Disconnected while requesting ApiVersion: might be caused by incorrect security.protocol configuration (connecting to a SSL listener?) or broker version is < 0.10 (see api.version.request) (after 6195ms in state APIVERSION_QUERY)
+2021-05-15T10:44:24.982657+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): GroupCoordinator: r-kafka:9092: Disconnected (after 7087ms in state APIVERSION_QUERY, 1 identical error(s) suppressed)
+2021-05-15T10:44:24.983233+02:00 INFO librdkafka - librdkafka: FAIL [thrd:GroupCoordinator]: GroupCoordinator: r-kafka:9092: Disconnected (after 7091ms in state APIVERSION_QUERY, 1 identical error(s) suppressed)
+2021-05-15T10:44:24.983308+02:00 INFO librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/1: Disconnected while requesting ApiVersion: might be caused by incorrect security.protocol configuration (connecting to a SSL listener?) or broker version is < 0.10 (see api.version.request) (after 7091ms in state APIVERSION_QUERY)
+2021-05-15T10:44:24.983378+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): GroupCoordinator: r-kafka:9092: Disconnected (after 7089ms in state APIVERSION_QUERY, 1 identical error(s) suppressed)
+2021-05-15T10:44:24.983438+02:00 INFO librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/1: Disconnected while requesting ApiVersion: might be caused by incorrect security.protocol configuration (connecting to a SSL listener?) or broker version is < 0.10 (see api.version.request) (after 7094ms in state APIVERSION_QUERY)
+2021-05-15T10:44:24.983511+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/1: Disconnected while requesting ApiVersion: might be caused by incorrect security.protocol configuration (connecting to a SSL listener?) or broker version is < 0.10 (see api.version.request) (after 6195ms in state APIVERSION_QUERY)
+2021-05-15T10:44:24.984297+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:GroupCoordinator]: GroupCoordinator: r-kafka:9092: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 1ms in state CONNECT)
+2021-05-15T10:44:24.984374+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/1: Disconnected while requesting ApiVersion: might be caused by incorrect security.protocol configuration (connecting to a SSL listener?) or broker version is < 0.10 (see api.version.request) (after 6187ms in state APIVERSION_QUERY)
+2021-05-15T10:44:24.984454+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:GroupCoordinator]: GroupCoordinator: r-kafka:9092: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 1ms in state CONNECT)
+2021-05-15T10:44:24.985035+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/1: Disconnected while requesting ApiVersion: might be caused by incorrect security.protocol configuration (connecting to a SSL listener?) or broker version is < 0.10 (see api.version.request) (after 6195ms in state APIVERSION_QUERY)
+2021-05-15T10:44:24.985097+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/1: Disconnected while requesting ApiVersion: might be caused by incorrect security.protocol configuration (connecting to a SSL listener?) or broker version is < 0.10 (see api.version.request) (after 7087ms in state APIVERSION_QUERY)
+2021-05-15T10:44:24.985148+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): GroupCoordinator: r-kafka:9092: Disconnected (after 7091ms in state APIVERSION_QUERY, 1 identical error(s) suppressed)
+2021-05-15T10:44:24.985813+02:00 ERROR rdkafka::client - librdkafka: Global error: AllBrokersDown (Local: All broker connections are down): 1/1 brokers are down
+2021-05-15T10:44:24.985881+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/1: Disconnected while requesting ApiVersion: might be caused by incorrect security.protocol configuration (connecting to a SSL listener?) or broker version is < 0.10 (see api.version.request) (after 7094ms in state APIVERSION_QUERY)
+2021-05-15T10:44:24.985945+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:GroupCoordinator]: GroupCoordinator: r-kafka:9092: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:24.986460+02:00 ERROR rdkafka::client - librdkafka: Global error: AllBrokersDown (Local: All broker connections are down): 2/2 brokers are down
+2021-05-15T10:44:24.986540+02:00 ERROR rdkafka::client - librdkafka: Global error: AllBrokersDown (Local: All broker connections are down): 1/1 brokers are down
+2021-05-15T10:44:24.986653+02:00 ERROR rdkafka::client - librdkafka: Global error: AllBrokersDown (Local: All broker connections are down): 2/2 brokers are down
+2021-05-15T10:44:24.986717+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/1: Disconnected while requesting ApiVersion: might be caused by incorrect security.protocol configuration (connecting to a SSL listener?) or broker version is < 0.10 (see api.version.request) (after 7091ms in state APIVERSION_QUERY)
+2021-05-15T10:44:24.987179+02:00 ERROR rdkafka::client - librdkafka: Global error: AllBrokersDown (Local: All broker connections are down): 1/1 brokers are down
+2021-05-15T10:44:24.987269+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): GroupCoordinator: r-kafka:9092: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 1ms in state CONNECT)
+2021-05-15T10:44:24.987352+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): GroupCoordinator: r-kafka:9092: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 1ms in state CONNECT)
+2021-05-15T10:44:24.987415+02:00 ERROR rdkafka::client - librdkafka: Global error: AllBrokersDown (Local: All broker connections are down): 2/2 brokers are down
+2021-05-15T10:44:25.002834+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): GroupCoordinator: r-kafka:9092: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.002964+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/1: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.003212+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/1: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.135021+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:GroupCoordinator]: GroupCoordinator: r-kafka:9092: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.135311+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): GroupCoordinator: r-kafka:9092: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.160766+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/1: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.160948+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/1: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.195531+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/1: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.195720+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/1: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.197229+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:GroupCoordinator]: GroupCoordinator: r-kafka:9092: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.197378+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): GroupCoordinator: r-kafka:9092: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.197981+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/1: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.198097+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/1: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.247903+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:GroupCoordinator]: GroupCoordinator: r-kafka:9092: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.248109+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): GroupCoordinator: r-kafka:9092: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.256216+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/1: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.256441+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/1: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.349237+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/1: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.349420+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/1: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.399686+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/1: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.399894+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/1: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.484829+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:GroupCoordinator]: GroupCoordinator: r-kafka:9092: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.485101+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): GroupCoordinator: r-kafka:9092: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.496474+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/1: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.496704+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/1: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.667650+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:GroupCoordinator]: GroupCoordinator: r-kafka:9092: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.667943+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): GroupCoordinator: r-kafka:9092: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.769079+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:GroupCoordinator]: GroupCoordinator: r-kafka:9092: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.769413+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): GroupCoordinator: r-kafka:9092: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.769741+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/1: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.769970+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/1: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.803897+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/1: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 1ms in state CONNECT)
+2021-05-15T10:44:25.803977+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/1: Connect to ipv6#[::1]:9092 failed: Connection refused (after 1ms in state CONNECT)
+2021-05-15T10:44:25.804050+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/1: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 1ms in state CONNECT)
+2021-05-15T10:44:25.804110+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/1: Connect to ipv6#[::1]:9092 failed: Connection refused (after 1ms in state CONNECT)
+2021-05-15T10:44:25.809192+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/1: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.809456+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/1: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.849583+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/1: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.849919+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/1: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.900876+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/1: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.901161+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/1: Connect to ipv6#[::1]:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.996442+02:00 ERROR librdkafka - librdkafka: FAIL [thrd:r-kafka:9092/bootstrap]: r-kafka:9092/1: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 0ms in state CONNECT)
+2021-05-15T10:44:25.996731+02:00 ERROR rdkafka::client - librdkafka: Global error: BrokerTransportFailure (Local: Broker transport failure): r-kafka:9092/1: Connect to ipv4#127.0.0.1:9092 failed: Connection refused (after 0ms in state CONNECT)

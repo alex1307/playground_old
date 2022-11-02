@@ -1,0 +1,22 @@
+{
+    "sourceFile": "auth_model/Cargo.toml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1646918035817,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1646918234553,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,13 +7,13 @@\n # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html\n \n [dependencies]\n commons_lib={path = \"../commons_lib\"}\n-rust-crypto = {}\n-serde = {features = [\"derive\"] }\n-inner = {}\n-serde_json = {}\n-lazy_static = { }\n-chrono = { features = [\"serde\"] }\n-serial_test = { }\n-uuid = { features = [\"serde\", \"v4\"] }\n-bcrypt = { }\n\\ No newline at end of file\n+rust-crypto = {version = \"*\"}\n+serde = {version = \"*\",features = [\"derive\"] }\n+inner = {version = \"*\"}\n+serde_json = {version = \"*\"}\n+lazy_static = { version = \"*\"}\n+chrono = { version = \"*\",features = [\"serde\"] }\n+serial_test = { version = \"*\"}\n+uuid = { version = \"*\",features = [\"serde\", \"v4\"] }\n+bcrypt = { version = \"*\"}\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1646918035817,
+            "name": "Commit-0",
+            "content": "[package]\nname = \"auth_model\"\nversion = \"0.1.0\"\nauthors = [\"Ayagasha <alexander.todorov@ayagasha.com>\"]\nedition = \"2021\"\n\n# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html\n\n[dependencies]\ncommons_lib={path = \"../commons_lib\"}\nrust-crypto = {}\nserde = {features = [\"derive\"] }\ninner = {}\nserde_json = {}\nlazy_static = { }\nchrono = { features = [\"serde\"] }\nserial_test = { }\nuuid = { features = [\"serde\", \"v4\"] }\nbcrypt = { }"
+        }
+    ]
+}

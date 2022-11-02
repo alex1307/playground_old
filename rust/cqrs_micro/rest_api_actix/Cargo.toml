@@ -1,0 +1,26 @@
+[package]
+name = "rest_api_actix"
+version = "0.1.0"
+authors = ["Ayagasha <alexander.todorov@ayagasha.com>"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+mapper = {path = "../mapper"}
+domain_model = {path = "../domain_model"}
+auth_service = {path = "../auth_service"}
+auth_model = {path = "../auth_model" }
+futures = {version = "*"}
+serde = { version = "*", features = ["derive"] }
+serde_json = {version = "*"}
+log = { version = "*", features = ["max_level_warn", "release_max_level_warn"] }
+log4rs = { version = "*"}
+
+actix-web = { version = "4.0.1", features = ["openssl"] }
+actix-web-httpauth = "0.6.0"
+actix-rt = "2.2.0"
+actix-service = "2.0.0"
+actix-cors = "0.6.1"
+openssl = "0.10.36"
+http = "0.2.5"

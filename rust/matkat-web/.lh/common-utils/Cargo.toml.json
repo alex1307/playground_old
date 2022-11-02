@@ -1,0 +1,26 @@
+{
+    "sourceFile": "common-utils/Cargo.toml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1641556209528,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1641556814163,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,5 +5,5 @@\n edition = \"2018\"\n \n \n [dependencies]\n-commons_lib = {path = \"../common-libs\"}\n\\ No newline at end of file\n+common_libs = {path = \"../common_libs\"}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1641556920560,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n [package]\n-name = \"common-utils\"\n+name = \"common_utils\"\n version = \"1.0.0\"\n authors = [\"Ayagasha <alexander.todorov@ayagasha.com>\"]\n edition = \"2018\"\n \n"
+                }
+            ],
+            "date": 1641556209528,
+            "name": "Commit-0",
+            "content": "[package]\nname = \"common-utils\"\nversion = \"1.0.0\"\nauthors = [\"Ayagasha <alexander.todorov@ayagasha.com>\"]\nedition = \"2018\"\n\n\n[dependencies]\ncommons_lib = {path = \"../common-libs\"}"
+        }
+    ]
+}

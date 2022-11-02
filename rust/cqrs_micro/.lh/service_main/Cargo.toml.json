@@ -1,0 +1,18 @@
+{
+    "sourceFile": "service_main/Cargo.toml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1646918083303,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1646918083303,
+            "name": "Commit-0",
+            "content": "[package]\nname = \"service_main\"\nversion = \"0.1.0\"\nauthors = [\"Ayagasha <alexander.todorov@ayagasha.com>\"]\nedition = \"2021\"\n\n# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html\n\n[dependencies]\ncommons_lib = {path=\"../commons_lib\"}\nauth_model = {path=\"../auth_model\"}\nauth_service = {path=\"../auth_service\"}\ndomain_model = {path = \"../domain_model\"}\nmapper = {path = \"../mapper\"}\nrest_api_actix = {path = \"../rest_api_actix\"}\n"
+        }
+    ]
+}

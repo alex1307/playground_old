@@ -1,0 +1,20 @@
+[package]
+name = "mapper"
+version = "0.1.0"
+authors = ["Ayagasha <alexander.todorov@ayagasha.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+domain_model = {path = "../domain_model"}
+serde = {features = ["derive"] }
+serde_json = {}
+chrono = { features = ["serde"] }
+uuid = { features = ["serde", "v4"] }
+serial_test = { }
+lazy_static = { }
+avro-rs = { }
+inner = {}
+log = {}
+env_logger = { }
