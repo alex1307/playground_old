@@ -1,0 +1,163 @@
+==> 2022-03-10T09:42:17.786969+01:00 == WARN == - [4457811456 main:playground]:81 - SUCCESS: Loggers are configured with dir: _log/* 
+ ==> 2022-03-10T09:42:17.787246+01:00 == INFO == - [4457811456 main:playground]:85 - sending 1 
+ ==> 2022-03-10T09:42:17.787327+01:00 == INFO == - [123145464279040 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:17.787377+01:00 == INFO == - [123145462169600 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:17.787473+01:00 == INFO == - [123145466388480 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:17.787543+01:00 == INFO == - [4457811456 main:playground]:87 - sending 2 
+ ==> 2022-03-10T09:42:17.787826+01:00 == INFO == - [4457811456 main:playground]:90 - sending .... 
+ ==> 2022-03-10T09:42:17.788063+01:00 == INFO == - [4457811456 main:playground]:103 - sending [2, 113, 3, 123, 34, 102, 114, 111, 109, 34, 58, 91, 34, 99, 108, 105, 101, 110, 116, 49, 34, 44, 34, 99, 108, 105, 101, 110, 116, 50, 34, 93, 44, 34, 114, 111, 97, 100, 95, 109, 97, 112, 34, 58, 91, 93, 44, 34, 112, 97, 121, 108, 111, 97, 100, 34, 58, 91, 49, 49, 53, 44, 49, 49, 49, 44, 49, 48, 57, 44, 49, 48, 49, 44, 51, 50, 44, 49, 49, 53, 44, 49, 49, 54, 44, 49, 49, 52, 44, 49, 48, 53, 44, 49, 49, 48, 44, 49, 48, 51, 93, 44, 34, 99, 111, 114, 114, 101, 108, 97, 116, 105, 111, 110, 95, 105, 100, 34, 58, 34, 49, 50, 51, 34, 44, 34, 105, 110, 116, 101, 114, 110, 97, 108, 95, 99, 111, 109, 109, 97, 110, 100, 34, 58, 123, 34, 65, 99, 107, 34, 58, 49, 48, 49, 125, 44, 34, 99, 111, 109, 109, 97, 110, 100, 34, 58, 123, 34, 69, 120, 101, 99, 117, 116, 101, 34, 58, 34, 49, 50, 51, 34, 125, 125] to server1 
+ ==> 2022-03-10T09:42:17.788557+01:00 == INFO == - [123145462169600 unnamed:playground]:168 - SRV[server1] => Message: ClientRequest([123, 34, 102, 114, 111, 109, 34, 58, 91, 34, 99, 108, 105, 101, 110, 116, 49, 34, 44, 34, 99, 108, 105, 101, 110, 116, 50, 34, 93, 44, 34, 114, 111, 97, 100, 95, 109, 97, 112, 34, 58, 91, 93, 44, 34, 112, 97, 121, 108, 111, 97, 100, 34, 58, 91, 49, 49, 53, 44, 49, 49, 49, 44, 49, 48, 57, 44, 49, 48, 49, 44, 51, 50, 44, 49, 49, 53, 44, 49, 49, 54, 44, 49, 49, 52, 44, 49, 48, 53, 44, 49, 49, 48, 44, 49, 48, 51, 93, 44, 34, 99, 111, 114, 114, 101, 108, 97, 116, 105, 111, 110, 95, 105, 100, 34, 58, 34, 49, 50, 51, 34, 44, 34, 105, 110, 116, 101, 114, 110, 97, 108, 95, 99, 111, 109, 109, 97, 110, 100, 34, 58, 123, 34, 65, 99, 107, 34, 58, 49, 48, 49, 125, 44, 34, 99, 111, 109, 109, 97, 110, 100, 34, 58, 123, 34, 69, 120, 101, 99, 117, 116, 101, 34, 58, 34, 49, 50, 51, 34, 125, 125]) 
+ ==> 2022-03-10T09:42:17.789259+01:00 == INFO == - [123145462169600 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:17.789435+01:00 == INFO == - [123145462169600 unnamed:playground]:168 - SRV[server1] => Message: Monitoring([123, 34, 65, 99, 107, 34, 58, 49, 48, 49, 125]) 
+ ==> 2022-03-10T09:42:17.789674+01:00 == INFO == - [123145468497920 unnamed:playground]:124 - #1 process server request 
+ ==> 2022-03-10T09:42:17.790058+01:00 == INFO == - [123145470607360 unnamed:playground]:289 - let sleep for 5 sec 
+ ==> 2022-03-10T09:42:17.790120+01:00 == INFO == - [123145462169600 unnamed:playground]:154 - #INFO server command 
+ ==> 2022-03-10T09:42:17.790248+01:00 == INFO == - [123145462169600 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:17.790373+01:00 == INFO == - [123145462169600 unnamed:playground]:168 - SRV[server1] => Message: WorkerResponse([123, 34, 102, 114, 111, 109, 34, 58, 91, 34, 99, 108, 105, 101, 110, 116, 49, 34, 44, 34, 99, 108, 105, 101, 110, 116, 50, 34, 93, 44, 34, 112, 97, 121, 108, 111, 97, 100, 34, 58, 110, 117, 108, 108, 44, 34, 99, 111, 114, 114, 101, 108, 97, 116, 105, 111, 110, 95, 105, 100, 34, 58, 110, 117, 108, 108, 44, 34, 115, 101, 114, 118, 101, 114, 95, 114, 101, 115, 112, 111, 110, 115, 101, 34, 58, 110, 117, 108, 108, 44, 34, 115, 116, 97, 116, 117, 115, 34, 58, 123, 34, 79, 107, 34, 58, 34, 100, 111, 110, 101, 34, 125, 125]) 
+ ==> 2022-03-10T09:42:17.790657+01:00 == INFO == - [123145462169600 unnamed:playground]:191 - ATT! sending to client2 
+ ==> 2022-03-10T09:42:17.790834+01:00 == INFO == - [123145462169600 unnamed:playground]:196 - RESPONSE: Response { from: ["client1"], payload: None, correlation_id: None, server_response: None, status: Some(Ok("done")) } 
+ ==> 2022-03-10T09:42:17.790972+01:00 == INFO == - [123145462169600 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:17.791165+01:00 == INFO == - [123145466388480 unnamed:playground]:168 - SRV[client2] => Message: WorkerResponse([123, 34, 102, 114, 111, 109, 34, 58, 91, 34, 99, 108, 105, 101, 110, 116, 49, 34, 93, 44, 34, 112, 97, 121, 108, 111, 97, 100, 34, 58, 110, 117, 108, 108, 44, 34, 99, 111, 114, 114, 101, 108, 97, 116, 105, 111, 110, 95, 105, 100, 34, 58, 110, 117, 108, 108, 44, 34, 115, 101, 114, 118, 101, 114, 95, 114, 101, 115, 112, 111, 110, 115, 101, 34, 58, 110, 117, 108, 108, 44, 34, 115, 116, 97, 116, 117, 115, 34, 58, 123, 34, 79, 107, 34, 58, 34, 100, 111, 110, 101, 34, 125, 125]) 
+ ==> 2022-03-10T09:42:17.791453+01:00 == INFO == - [123145466388480 unnamed:playground]:191 - ATT! sending to client1 
+ ==> 2022-03-10T09:42:17.791608+01:00 == INFO == - [123145466388480 unnamed:playground]:196 - RESPONSE: Response { from: [], payload: None, correlation_id: None, server_response: None, status: Some(Ok("done")) } 
+ ==> 2022-03-10T09:42:17.791846+01:00 == INFO == - [123145466388480 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:17.792178+01:00 == INFO == - [123145464279040 unnamed:playground]:168 - SRV[client1] => Message: WorkerResponse([123, 34, 102, 114, 111, 109, 34, 58, 91, 93, 44, 34, 112, 97, 121, 108, 111, 97, 100, 34, 58, 110, 117, 108, 108, 44, 34, 99, 111, 114, 114, 101, 108, 97, 116, 105, 111, 110, 95, 105, 100, 34, 58, 110, 117, 108, 108, 44, 34, 115, 101, 114, 118, 101, 114, 95, 114, 101, 115, 112, 111, 110, 115, 101, 34, 58, 110, 117, 108, 108, 44, 34, 115, 116, 97, 116, 117, 115, 34, 58, 123, 34, 79, 107, 34, 58, 34, 100, 111, 110, 101, 34, 125, 125]) 
+ ==> 2022-03-10T09:42:17.792517+01:00 == INFO == - [123145464279040 unnamed:playground]:150 - #2 process server response 
+ ==> 2022-03-10T09:42:17.792637+01:00 == INFO == - [123145464279040 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:18.799593+01:00 == INFO == - [123145462169600 unnamed:playground]:226 - server [server1] is awaiting for something 
+ ==> 2022-03-10T09:42:18.799703+01:00 == INFO == - [123145464279040 unnamed:playground]:226 - server [client1] is awaiting for something 
+ ==> 2022-03-10T09:42:18.799843+01:00 == INFO == - [123145462169600 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:18.800162+01:00 == INFO == - [123145466388480 unnamed:playground]:226 - server [client2] is awaiting for something 
+ ==> 2022-03-10T09:42:18.800238+01:00 == INFO == - [123145464279040 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:18.800344+01:00 == INFO == - [123145466388480 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:19.803234+01:00 == INFO == - [123145466388480 unnamed:playground]:226 - server [client2] is awaiting for something 
+ ==> 2022-03-10T09:42:19.803408+01:00 == INFO == - [123145462169600 unnamed:playground]:226 - server [server1] is awaiting for something 
+ ==> 2022-03-10T09:42:19.803495+01:00 == INFO == - [123145466388480 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:19.803617+01:00 == INFO == - [123145464279040 unnamed:playground]:226 - server [client1] is awaiting for something 
+ ==> 2022-03-10T09:42:19.803712+01:00 == INFO == - [123145462169600 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:19.803810+01:00 == INFO == - [123145464279040 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:20.809133+01:00 == INFO == - [123145466388480 unnamed:playground]:226 - server [client2] is awaiting for something 
+ ==> 2022-03-10T09:42:20.809227+01:00 == INFO == - [123145464279040 unnamed:playground]:226 - server [client1] is awaiting for something 
+ ==> 2022-03-10T09:42:20.809334+01:00 == INFO == - [123145462169600 unnamed:playground]:226 - server [server1] is awaiting for something 
+ ==> 2022-03-10T09:42:20.809549+01:00 == INFO == - [123145466388480 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:20.809669+01:00 == INFO == - [123145464279040 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:20.809763+01:00 == INFO == - [123145462169600 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:21.748439+01:00 == INFO == - [123145462169600 unnamed:playground]:226 - server [server1] is awaiting for something 
+ ==> 2022-03-10T09:42:21.748553+01:00 == INFO == - [123145466388480 unnamed:playground]:226 - server [client2] is awaiting for something 
+ ==> 2022-03-10T09:42:21.748761+01:00 == INFO == - [123145464279040 unnamed:playground]:226 - server [client1] is awaiting for something 
+ ==> 2022-03-10T09:42:21.748902+01:00 == INFO == - [123145462169600 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:21.749004+01:00 == INFO == - [123145466388480 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:21.749150+01:00 == INFO == - [123145464279040 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:22.727304+01:00 == INFO == - [123145470607360 unnamed:playground]:291 - DONE. Lets finish.... 
+ ==> 2022-03-10T09:42:22.749403+01:00 == INFO == - [123145462169600 unnamed:playground]:226 - server [server1] is awaiting for something 
+ ==> 2022-03-10T09:42:22.749592+01:00 == INFO == - [123145462169600 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:22.758065+01:00 == INFO == - [123145466388480 unnamed:playground]:226 - server [client2] is awaiting for something 
+ ==> 2022-03-10T09:42:22.758266+01:00 == INFO == - [123145466388480 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:22.760660+01:00 == INFO == - [123145464279040 unnamed:playground]:226 - server [client1] is awaiting for something 
+ ==> 2022-03-10T09:42:22.760830+01:00 == INFO == - [123145464279040 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:23.750577+01:00 == INFO == - [123145462169600 unnamed:playground]:226 - server [server1] is awaiting for something 
+ ==> 2022-03-10T09:42:23.750983+01:00 == INFO == - [123145462169600 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:23.758905+01:00 == INFO == - [123145466388480 unnamed:playground]:226 - server [client2] is awaiting for something 
+ ==> 2022-03-10T09:42:23.759014+01:00 == INFO == - [123145466388480 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:23.765933+01:00 == INFO == - [123145464279040 unnamed:playground]:226 - server [client1] is awaiting for something 
+ ==> 2022-03-10T09:42:23.766116+01:00 == INFO == - [123145464279040 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:24.752153+01:00 == INFO == - [123145462169600 unnamed:playground]:226 - server [server1] is awaiting for something 
+ ==> 2022-03-10T09:42:24.752475+01:00 == INFO == - [123145462169600 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:24.762975+01:00 == INFO == - [123145466388480 unnamed:playground]:226 - server [client2] is awaiting for something 
+ ==> 2022-03-10T09:42:24.763161+01:00 == INFO == - [123145466388480 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:24.768423+01:00 == INFO == - [123145464279040 unnamed:playground]:226 - server [client1] is awaiting for something 
+ ==> 2022-03-10T09:42:24.768623+01:00 == INFO == - [123145464279040 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:25.754631+01:00 == INFO == - [123145462169600 unnamed:playground]:226 - server [server1] is awaiting for something 
+ ==> 2022-03-10T09:42:25.754812+01:00 == INFO == - [123145462169600 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:25.768184+01:00 == INFO == - [123145466388480 unnamed:playground]:226 - server [client2] is awaiting for something 
+ ==> 2022-03-10T09:42:25.768455+01:00 == INFO == - [123145466388480 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:25.770395+01:00 == INFO == - [123145464279040 unnamed:playground]:226 - server [client1] is awaiting for something 
+ ==> 2022-03-10T09:42:25.770676+01:00 == INFO == - [123145464279040 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:26.760405+01:00 == INFO == - [123145462169600 unnamed:playground]:226 - server [server1] is awaiting for something 
+ ==> 2022-03-10T09:42:26.760633+01:00 == INFO == - [123145462169600 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:26.773671+01:00 == INFO == - [123145466388480 unnamed:playground]:226 - server [client2] is awaiting for something 
+ ==> 2022-03-10T09:42:26.773782+01:00 == INFO == - [123145466388480 unnamed:playground]:165 - looping 
+ ==> 2022-03-10T09:42:26.775247+01:00 == INFO == - [123145464279040 unnamed:playground]:226 - server [client1] is awaiting for something 
+ ==> 2022-03-10T09:42:26.775355+01:00 == INFO == - [123145464279040 unnamed:playground]:165 - looping 
+ ==> 2022-03-16T16:47:42.877812+01:00 == WARN == - [4487794176 main:playground]:82 - SUCCESS: Loggers are configured with dir: _log/* 
+ ==> 2022-03-16T16:47:42.878579+01:00 == INFO == - [123145348218880 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:42.878661+01:00 == INFO == - [123145346109440 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:42.878740+01:00 == INFO == - [4487794176 main:playground]:86 - sending 1 
+ ==> 2022-03-16T16:47:42.878783+01:00 == INFO == - [123145350328320 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:42.878847+01:00 == INFO == - [4487794176 main:playground]:88 - sending 2 
+ ==> 2022-03-16T16:47:42.879043+01:00 == INFO == - [4487794176 main:playground]:91 - sending .... 
+ ==> 2022-03-16T16:47:42.879332+01:00 == INFO == - [4487794176 main:playground]:104 - sending [2, 113, 3, 123, 34, 102, 114, 111, 109, 34, 58, 91, 34, 99, 108, 105, 101, 110, 116, 49, 34, 44, 34, 99, 108, 105, 101, 110, 116, 50, 34, 93, 44, 34, 114, 111, 97, 100, 95, 109, 97, 112, 34, 58, 91, 93, 44, 34, 112, 97, 121, 108, 111, 97, 100, 34, 58, 91, 49, 49, 53, 44, 49, 49, 49, 44, 49, 48, 57, 44, 49, 48, 49, 44, 51, 50, 44, 49, 49, 53, 44, 49, 49, 54, 44, 49, 49, 52, 44, 49, 48, 53, 44, 49, 49, 48, 44, 49, 48, 51, 93, 44, 34, 99, 111, 114, 114, 101, 108, 97, 116, 105, 111, 110, 95, 105, 100, 34, 58, 34, 49, 50, 51, 34, 44, 34, 105, 110, 116, 101, 114, 110, 97, 108, 95, 99, 111, 109, 109, 97, 110, 100, 34, 58, 123, 34, 65, 99, 107, 34, 58, 49, 48, 49, 125, 44, 34, 99, 111, 109, 109, 97, 110, 100, 34, 58, 123, 34, 69, 120, 101, 99, 117, 116, 101, 34, 58, 34, 49, 50, 51, 34, 125, 125] to server1 
+ ==> 2022-03-16T16:47:42.879722+01:00 == INFO == - [123145346109440 unnamed:playground]:169 - SRV[server1] => Message: ClientRequest([123, 34, 102, 114, 111, 109, 34, 58, 91, 34, 99, 108, 105, 101, 110, 116, 49, 34, 44, 34, 99, 108, 105, 101, 110, 116, 50, 34, 93, 44, 34, 114, 111, 97, 100, 95, 109, 97, 112, 34, 58, 91, 93, 44, 34, 112, 97, 121, 108, 111, 97, 100, 34, 58, 91, 49, 49, 53, 44, 49, 49, 49, 44, 49, 48, 57, 44, 49, 48, 49, 44, 51, 50, 44, 49, 49, 53, 44, 49, 49, 54, 44, 49, 49, 52, 44, 49, 48, 53, 44, 49, 49, 48, 44, 49, 48, 51, 93, 44, 34, 99, 111, 114, 114, 101, 108, 97, 116, 105, 111, 110, 95, 105, 100, 34, 58, 34, 49, 50, 51, 34, 44, 34, 105, 110, 116, 101, 114, 110, 97, 108, 95, 99, 111, 109, 109, 97, 110, 100, 34, 58, 123, 34, 65, 99, 107, 34, 58, 49, 48, 49, 125, 44, 34, 99, 111, 109, 109, 97, 110, 100, 34, 58, 123, 34, 69, 120, 101, 99, 117, 116, 101, 34, 58, 34, 49, 50, 51, 34, 125, 125]) 
+ ==> 2022-03-16T16:47:42.880087+01:00 == INFO == - [123145346109440 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:42.880137+01:00 == INFO == - [123145352437760 unnamed:playground]:125 - #1 process server request 
+ ==> 2022-03-16T16:47:42.880257+01:00 == INFO == - [123145346109440 unnamed:playground]:169 - SRV[server1] => Message: Monitoring([123, 34, 65, 99, 107, 34, 58, 49, 48, 49, 125]) 
+ ==> 2022-03-16T16:47:42.880520+01:00 == INFO == - [123145346109440 unnamed:playground]:155 - #INFO server command 
+ ==> 2022-03-16T16:47:42.880867+01:00 == INFO == - [123145346109440 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:42.881184+01:00 == INFO == - [123145346109440 unnamed:playground]:169 - SRV[server1] => Message: WorkerResponse([123, 34, 102, 114, 111, 109, 34, 58, 91, 34, 99, 108, 105, 101, 110, 116, 49, 34, 44, 34, 99, 108, 105, 101, 110, 116, 50, 34, 93, 44, 34, 112, 97, 121, 108, 111, 97, 100, 34, 58, 110, 117, 108, 108, 44, 34, 99, 111, 114, 114, 101, 108, 97, 116, 105, 111, 110, 95, 105, 100, 34, 58, 110, 117, 108, 108, 44, 34, 115, 101, 114, 118, 101, 114, 95, 114, 101, 115, 112, 111, 110, 115, 101, 34, 58, 110, 117, 108, 108, 44, 34, 115, 116, 97, 116, 117, 115, 34, 58, 123, 34, 79, 107, 34, 58, 34, 100, 111, 110, 101, 34, 125, 125]) 
+ ==> 2022-03-16T16:47:42.881317+01:00 == INFO == - [123145354547200 unnamed:playground]:290 - let sleep for 5 sec 
+ ==> 2022-03-16T16:47:42.881434+01:00 == INFO == - [123145346109440 unnamed:playground]:192 - ATT! sending to client2 
+ ==> 2022-03-16T16:47:42.881591+01:00 == INFO == - [123145346109440 unnamed:playground]:197 - RESPONSE: Response { from: ["client1"], payload: None, correlation_id: None, server_response: None, status: Some(Ok("done")) } 
+ ==> 2022-03-16T16:47:42.881758+01:00 == INFO == - [123145346109440 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:42.881958+01:00 == INFO == - [123145350328320 unnamed:playground]:169 - SRV[client2] => Message: WorkerResponse([123, 34, 102, 114, 111, 109, 34, 58, 91, 34, 99, 108, 105, 101, 110, 116, 49, 34, 93, 44, 34, 112, 97, 121, 108, 111, 97, 100, 34, 58, 110, 117, 108, 108, 44, 34, 99, 111, 114, 114, 101, 108, 97, 116, 105, 111, 110, 95, 105, 100, 34, 58, 110, 117, 108, 108, 44, 34, 115, 101, 114, 118, 101, 114, 95, 114, 101, 115, 112, 111, 110, 115, 101, 34, 58, 110, 117, 108, 108, 44, 34, 115, 116, 97, 116, 117, 115, 34, 58, 123, 34, 79, 107, 34, 58, 34, 100, 111, 110, 101, 34, 125, 125]) 
+ ==> 2022-03-16T16:47:42.882197+01:00 == INFO == - [123145350328320 unnamed:playground]:192 - ATT! sending to client1 
+ ==> 2022-03-16T16:47:42.882332+01:00 == INFO == - [123145350328320 unnamed:playground]:197 - RESPONSE: Response { from: [], payload: None, correlation_id: None, server_response: None, status: Some(Ok("done")) } 
+ ==> 2022-03-16T16:47:42.882498+01:00 == INFO == - [123145350328320 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:42.882669+01:00 == INFO == - [123145348218880 unnamed:playground]:169 - SRV[client1] => Message: WorkerResponse([123, 34, 102, 114, 111, 109, 34, 58, 91, 93, 44, 34, 112, 97, 121, 108, 111, 97, 100, 34, 58, 110, 117, 108, 108, 44, 34, 99, 111, 114, 114, 101, 108, 97, 116, 105, 111, 110, 95, 105, 100, 34, 58, 110, 117, 108, 108, 44, 34, 115, 101, 114, 118, 101, 114, 95, 114, 101, 115, 112, 111, 110, 115, 101, 34, 58, 110, 117, 108, 108, 44, 34, 115, 116, 97, 116, 117, 115, 34, 58, 123, 34, 79, 107, 34, 58, 34, 100, 111, 110, 101, 34, 125, 125]) 
+ ==> 2022-03-16T16:47:42.882854+01:00 == INFO == - [123145348218880 unnamed:playground]:151 - #2 process server response 
+ ==> 2022-03-16T16:47:42.882981+01:00 == INFO == - [123145348218880 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:43.885658+01:00 == INFO == - [123145346109440 unnamed:playground]:227 - server [server1] is awaiting for something 
+ ==> 2022-03-16T16:47:43.885784+01:00 == INFO == - [123145346109440 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:43.887290+01:00 == INFO == - [123145350328320 unnamed:playground]:227 - server [client2] is awaiting for something 
+ ==> 2022-03-16T16:47:43.887411+01:00 == INFO == - [123145350328320 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:43.888287+01:00 == INFO == - [123145348218880 unnamed:playground]:227 - server [client1] is awaiting for something 
+ ==> 2022-03-16T16:47:43.888486+01:00 == INFO == - [123145348218880 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:44.888371+01:00 == INFO == - [123145346109440 unnamed:playground]:227 - server [server1] is awaiting for something 
+ ==> 2022-03-16T16:47:44.888616+01:00 == INFO == - [123145346109440 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:44.890938+01:00 == INFO == - [123145350328320 unnamed:playground]:227 - server [client2] is awaiting for something 
+ ==> 2022-03-16T16:47:44.891298+01:00 == INFO == - [123145350328320 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:44.893661+01:00 == INFO == - [123145348218880 unnamed:playground]:227 - server [client1] is awaiting for something 
+ ==> 2022-03-16T16:47:44.893827+01:00 == INFO == - [123145348218880 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:45.892790+01:00 == INFO == - [123145346109440 unnamed:playground]:227 - server [server1] is awaiting for something 
+ ==> 2022-03-16T16:47:45.892916+01:00 == INFO == - [123145346109440 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:45.895187+01:00 == INFO == - [123145350328320 unnamed:playground]:227 - server [client2] is awaiting for something 
+ ==> 2022-03-16T16:47:45.895307+01:00 == INFO == - [123145350328320 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:45.898138+01:00 == INFO == - [123145348218880 unnamed:playground]:227 - server [client1] is awaiting for something 
+ ==> 2022-03-16T16:47:45.898245+01:00 == INFO == - [123145348218880 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:46.896410+01:00 == INFO == - [123145346109440 unnamed:playground]:227 - server [server1] is awaiting for something 
+ ==> 2022-03-16T16:47:46.896708+01:00 == INFO == - [123145346109440 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:46.899337+01:00 == INFO == - [123145350328320 unnamed:playground]:227 - server [client2] is awaiting for something 
+ ==> 2022-03-16T16:47:46.899458+01:00 == INFO == - [123145350328320 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:46.902275+01:00 == INFO == - [123145348218880 unnamed:playground]:227 - server [client1] is awaiting for something 
+ ==> 2022-03-16T16:47:46.902419+01:00 == INFO == - [123145348218880 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:47.884633+01:00 == INFO == - [123145354547200 unnamed:playground]:292 - DONE. Lets finish.... 
+ ==> 2022-03-16T16:47:47.902548+01:00 == INFO == - [123145346109440 unnamed:playground]:227 - server [server1] is awaiting for something 
+ ==> 2022-03-16T16:47:47.902675+01:00 == INFO == - [123145346109440 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:47.909909+01:00 == INFO == - [123145350328320 unnamed:playground]:227 - server [client2] is awaiting for something 
+ ==> 2022-03-16T16:47:47.910107+01:00 == INFO == - [123145348218880 unnamed:playground]:227 - server [client1] is awaiting for something 
+ ==> 2022-03-16T16:47:47.910272+01:00 == INFO == - [123145350328320 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:47.910500+01:00 == INFO == - [123145348218880 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:48.907901+01:00 == INFO == - [123145346109440 unnamed:playground]:227 - server [server1] is awaiting for something 
+ ==> 2022-03-16T16:47:48.908865+01:00 == INFO == - [123145346109440 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:48.914762+01:00 == INFO == - [123145348218880 unnamed:playground]:227 - server [client1] is awaiting for something 
+ ==> 2022-03-16T16:47:48.914901+01:00 == INFO == - [123145350328320 unnamed:playground]:227 - server [client2] is awaiting for something 
+ ==> 2022-03-16T16:47:48.914965+01:00 == INFO == - [123145348218880 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:48.915017+01:00 == INFO == - [123145350328320 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:49.911391+01:00 == INFO == - [123145346109440 unnamed:playground]:227 - server [server1] is awaiting for something 
+ ==> 2022-03-16T16:47:49.911510+01:00 == INFO == - [123145346109440 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:49.915392+01:00 == INFO == - [123145348218880 unnamed:playground]:227 - server [client1] is awaiting for something 
+ ==> 2022-03-16T16:47:49.915641+01:00 == INFO == - [123145348218880 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:49.915733+01:00 == INFO == - [123145350328320 unnamed:playground]:227 - server [client2] is awaiting for something 
+ ==> 2022-03-16T16:47:49.915916+01:00 == INFO == - [123145350328320 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:50.914857+01:00 == INFO == - [123145346109440 unnamed:playground]:227 - server [server1] is awaiting for something 
+ ==> 2022-03-16T16:47:50.914959+01:00 == INFO == - [123145346109440 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:50.920621+01:00 == INFO == - [123145350328320 unnamed:playground]:227 - server [client2] is awaiting for something 
+ ==> 2022-03-16T16:47:50.920704+01:00 == INFO == - [123145348218880 unnamed:playground]:227 - server [client1] is awaiting for something 
+ ==> 2022-03-16T16:47:50.920789+01:00 == INFO == - [123145350328320 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:50.920869+01:00 == INFO == - [123145348218880 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:51.918081+01:00 == INFO == - [123145346109440 unnamed:playground]:227 - server [server1] is awaiting for something 
+ ==> 2022-03-16T16:47:51.918182+01:00 == INFO == - [123145346109440 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:51.924735+01:00 == INFO == - [123145350328320 unnamed:playground]:227 - server [client2] is awaiting for something 
+ ==> 2022-03-16T16:47:51.924978+01:00 == INFO == - [123145348218880 unnamed:playground]:227 - server [client1] is awaiting for something 
+ ==> 2022-03-16T16:47:51.925138+01:00 == INFO == - [123145350328320 unnamed:playground]:166 - looping 
+ ==> 2022-03-16T16:47:51.925435+01:00 == INFO == - [123145348218880 unnamed:playground]:166 - looping 
+ 

@@ -1,0 +1,22 @@
+{
+    "sourceFile": "Cargo.toml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1646901308431,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1646901557795,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,8 @@\n \n # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html\n \n [dependencies]\n-[dependencies]\n serde_json = \"1.0\"\n crossbeam = \"0.8.1\"\n serde = { version = \"1.0\", features = [\"derive\"] }\n lazy_static = \"1.4.0\"\n"
+                }
+            ],
+            "date": 1646901308431,
+            "name": "Commit-0",
+            "content": "[package]\nname = \"playground\"\nversion = \"0.1.0\"\nedition = \"2021\"\n\n# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html\n\n[dependencies]\n[dependencies]\nserde_json = \"1.0\"\ncrossbeam = \"0.8.1\"\nserde = { version = \"1.0\", features = [\"derive\"] }\nlazy_static = \"1.4.0\"\nlog = { version = \"0.4\", features = [\"max_level_info\", \"release_max_level_info\"] }\nlog4rs = \"1.0.0\"\n"
+        }
+    ]
+}

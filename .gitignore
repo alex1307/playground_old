@@ -1,6 +1,9 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
+### Go ###
+go/pkg/*
+
 ### STS ###
 .apt_generated
 .classpath

@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option go_package = "balistic-engine/pkg/balistic";
+
+package balistic;
+
+message BalisticRequest {
+    float velocity = 1;
+    float angle = 2;
+    float height = 3;
+}
+
+message BalisticResponse {
+    float max_distance = 1;
+    float max_height = 2;
+    float time = 3;
+}
+
+message Empty {}
+  
+message HelloResponse {
+    string my_message = 1;
+}
+
+
+service BalisticService {
+    rpc Calculate(BalisticRequest) returns (BalisticResponse) {}
+    rpc Hello (Empty) returns (HelloResponse) {}
+}
+
+
+  
+  

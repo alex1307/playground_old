@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+
+  cv-database:
+    image: postgres
+    restart: always
+    volumes:
+      - ./postgres-config:/docker-entrypoint-initdb.d
+      - ./pgdata:/var/lib/postgresql/data
+      - ./initial_data:/var/csv
+    environment:
+      - POSTGRES_PASSWORD=eclear@pwd.com
+      - POSTGRES_USER=eclear
+      - POSTGRES_DB=clearvat
+    ports:
+      - 5432:5432
+
+  cv-admin:
+    image: adminer
+    restart: always
+    ports:
+      - 9797:8080
+    depends_on:
+      - cv-database
+
+  cv-infra:
+#    image: cv-infra-poc
+    image: infra-docker
+    ports:
+      - "8077:8077"
+    environment:
+      - "SPRING_PROFILES_ACTIVE=docker"      
+    depends_on:
+      - cv-database
+
+  cv-taxing:
+    image: cv-taxing-poc
+    ports:
+      - "8088:8088"
+    environment:
+      - "SPRING_PROFILES_ACTIVE=docker"
+    depends_on:
+      - cv-infra
+      - cv-database
+
+
+
