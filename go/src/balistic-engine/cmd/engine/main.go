@@ -1,7 +1,7 @@
 package main
 
 import (
-	"balistic-engine/model"
+	"balistic-engine/pkg/math"
 	"encoding/json"
 
 	"go.uber.org/zap"
@@ -10,7 +10,7 @@ import (
 func main() {
 	logger := Setup()
 	logger.Info("Hello from visual code... This is the working engine")
-	velocity := model.Velocity{X: 8.0, Y: 0.0, T: 0.0}
+	velocity := math.Coordinates{X: 8.0, Y: 0.0, T: 0.0}
 	logger.Info("Y velocity: ", zap.Float64("Velocity_X", velocity.X),
 		zap.Float64("Velocity_Y", velocity.Y), zap.Float64("Velocity_Y", velocity.X))
 }
@@ -38,3 +38,12 @@ func Setup() *zap.Logger {
 	defer logger.Sync()
 	return logger
 }
+
+/*
+func main(){
+	if err := cmd.Execute(); err != nil {
+		log.Fatal(err)
+		os.Exit(1)
+	}
+}
+*/

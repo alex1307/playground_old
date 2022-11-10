@@ -3,93 +3,66 @@ package math
 import (
 	"fmt"
 	"math"
-
-	"balistic-engine/model"
 )
 
 const G_FORCE = 9.80665
 
-func Position(Velocity,
-	Radians,
-	Heigth,
-	Time float64) (model.Coordinates, error) {
+func Position(position Coordinates,
+	velocity,
+	radians,
+	time float64) (Coordinates, error) {
 	//x = cos(Θ)•V•t
 	//y = h + sin(Θ)•V•t - ½gt²
 
-	cos_angel := math.Cos(Radians)
-	sin_angle := math.Sin(Radians)
-	x := cos_angel * Velocity * Time
-	y := (Heigth + (sin_angle * Velocity * Time)) - 0.5*G_FORCE*math.Pow(Time, 2.0)
-	return model.Coordinates{X: x, Y: y, T: Time}, nil
+	cos_angel := math.Cos(radians)
+	sin_angle := math.Sin(radians)
+	x := position.X + cos_angel*velocity*time
+	y := (position.Y + (sin_angle * velocity * time)) - 0.5*G_FORCE*math.Pow(time, 2.0)
+	return Coordinates{X: x, Y: y, T: time}, nil
 }
 
 // Calculate elapsed projection time
 // (V *sin(θ) + SQRT(V * sin(θ) + 2 * G * h))/G
-func ElapsedTime(velocity, radians, height float64) (float64, error) {
+func ElapsedTime(position Coordinates, velocity, radians float64) (float64, error) {
 
 	if velocity <= 0 {
 		return 0.0, fmt.Errorf("invalid velocity param! Velocity must be a positive value m/s")
 	}
 
-	if height < 0 {
+	if position.Y < 0 {
 		return 0.0, fmt.Errorf("invalid parameter! The height is a positive number in meters")
 	}
 
 	v_sin := velocity * math.Sin(radians)
-	attr := 2 * G_FORCE * height
+	attr := 2 * G_FORCE * position.Y
 	result := math.Pow(v_sin, 2.0) + attr
 	Time := (v_sin + math.Sqrt(result)) / G_FORCE
 	return Time, nil
 }
 
-func MaxRange(Velocity, Radians, Height float64) (float64, error) {
-	ElapsedTime, err := ElapsedTime(Velocity, Radians, Height)
-	if err != nil {
-		return -1.0, err
-	}
-
-	return ElapsedTime * Velocity * math.Cos(Radians), nil
-
+func MaxRange(position Coordinates, elapsed_time, velocity, radians float64) (float64, error) {
+	return position.X + elapsed_time*velocity*math.Cos(radians), nil
 }
 
 // Max = h + ((V * V * sin(θ) * sin(θ))/2 * G)
-func MaxAltitude(velocity, degrees, height float64) (float64, error) {
+func MaxAltitude(position Coordinates, velocity, radians float64) (float64, error) {
 	if velocity <= 0 {
 		return 0.0, fmt.Errorf("invalid velocity param! The velocity must be a positive value m/s")
 	}
-	radians, err := DegreesToRadians(degrees)
-	if err != nil {
-		return 0.0, err
-	}
-	if height < 0 {
+	if position.Y < 0 {
 		return 0.0, fmt.Errorf("invalid parameter! The height is a positive number in meters")
 	}
 	Velocity_Y := velocity * math.Sin(radians)
 	Velocity_2 := math.Pow(Velocity_Y, 2)
 	Height_2 := 2 * G_FORCE
-	return height + (Velocity_2 / Height_2), nil
+	return position.Y + (Velocity_2 / Height_2), nil
 
 }
 
-func Velocity(Velocity, Radians, Height, Time float64) (model.Velocity, error) {
-	if Velocity <= 0 {
-		return model.Velocity{}, fmt.Errorf("invalid velocity param! The velocity must be a positive value m/s")
-	}
-
-	ElapsedTime, err := ElapsedTime(Velocity, Radians, Height)
-
-	if err != nil {
-		return model.Velocity{}, err
-	}
-
-	if Time >= ElapsedTime {
-		return model.Velocity{}, nil
-	}
-
-	Velocity_X := Velocity * math.Cos(Radians)
-	Velocity_Y := Velocity*math.Sin(Radians) - G_FORCE*Time
-
-	return model.Velocity{X: Velocity_X, Y: Velocity_Y}, nil
+func Velocity(velocity, radians, time float64) (Coordinates, error) {
+	Velocity_X := velocity * math.Cos(radians)
+	Velocity_Y := velocity*math.Sin(radians) - G_FORCE*time
+	return Coordinates{X: Velocity_X, Y: Velocity_Y}, nil
 }
 
 func DegreesToRadians(degree float64) (float64, error) {
@@ -114,13 +87,9 @@ func TimeInterval(elapsed_time float64, seed int) ([]float64, error) {
 	return result, nil
 }
 
-func CalculateTrajection(velocity, degrees, height float64, seed int) ([]model.Coordinates, error) {
-	radians, err := DegreesToRadians(degrees)
-	if err != nil {
-		return nil, err
-	}
+func CalculateTrajection(position Coordinates, velocity, radians float64, seed int) ([]Coordinates, error) {
 
-	max_time, err := ElapsedTime(velocity, radians, height)
+	max_time, err := ElapsedTime(position, velocity, radians)
 	if err != nil {
 		return nil, err
 	}
@@ -129,9 +98,9 @@ func CalculateTrajection(velocity, degrees, height float64, seed int) ([]model.C
 	if err != nil {
 		return nil, err
 	}
-	trajection := make([]model.Coordinates, len(intervals))
+	trajection := make([]Coordinates, len(intervals))
 	for i, time := range intervals {
-		position, errp := Position(velocity, radians, height, time)
+		position, errp := Position(position, velocity, radians, time)
 
 		if errp != nil {
 			return nil, errp
@@ -142,7 +111,7 @@ func CalculateTrajection(velocity, degrees, height float64, seed int) ([]model.C
 	return trajection, nil
 }
 
-func PositionToIndex(position, grid_initial_position model.Coordinates, grid_width, grid_height float64, grid_scale int) (int, error) {
+func PositionToIndex(position, grid_initial_position Coordinates, grid_width, grid_height float64, grid_scale int) (int, error) {
 	//grid := field.Grid
 	length := position.X - grid_initial_position.X
 	height := position.Y - grid_initial_position.Y

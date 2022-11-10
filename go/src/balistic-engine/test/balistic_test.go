@@ -11,12 +11,16 @@ import (
 
 const VELOCITY = 8.0
 const DEGREES = 60
-const HEIGTH = 1.0
+
+var RADIANS, _ = math.DegreesToRadians(DEGREES)
+var ELAPSED_TIME, _ = math.ElapsedTime(POSITION, VELOCITY, RADIANS)
+var POSITION = math.Coordinates{X: 0.0, Y: 1.0, T: 0.0}
 
 func TestPosition(t *testing.T) {
+
 	Time := 0.5
 	Radians, _ := math.DegreesToRadians(float64(DEGREES))
-	position, err := math.Position(VELOCITY, Radians, HEIGTH, Time)
+	position, err := math.Position(POSITION, VELOCITY, Radians, Time)
 	if err != nil {
 		t.Errorf("Invalid parameters")
 	}
@@ -24,17 +28,11 @@ func TestPosition(t *testing.T) {
 }
 
 func TestElapsedTime(t *testing.T) {
-	Radians, _ := math.DegreesToRadians(DEGREES)
-	ElapsedTime, err := math.ElapsedTime(VELOCITY, Radians, HEIGTH)
-	if err != nil {
-		t.Errorf("Invalid parameters")
-	}
-	fmt.Printf("Elapsed time: %fs\n", ElapsedTime)
+	fmt.Printf("Elapsed time: %fs\n", ELAPSED_TIME)
 }
 
 func TestMaxRange(t *testing.T) {
-	Radians, _ := math.DegreesToRadians(DEGREES)
-	MaxRange, err := math.MaxRange(VELOCITY, Radians, HEIGTH)
+	MaxRange, err := math.MaxRange(POSITION, ELAPSED_TIME, VELOCITY, RADIANS)
 	if err != nil {
 		t.Errorf("Invalid parameters")
 	}
@@ -42,8 +40,7 @@ func TestMaxRange(t *testing.T) {
 }
 
 func TestMaxAltitude(t *testing.T) {
-	Radians, _ := math.DegreesToRadians(DEGREES)
-	MaxAltitude, err := math.MaxAltitude(VELOCITY, Radians, HEIGTH)
+	MaxAltitude, err := math.MaxAltitude(POSITION, VELOCITY, DEGREES)
 	if err != nil {
 		t.Errorf("Invalid parameters")
 	}
@@ -52,9 +49,8 @@ func TestMaxAltitude(t *testing.T) {
 
 func TestVelocity(t *testing.T) {
 	logger := config.Setup()
-	Radians, _ := math.DegreesToRadians(DEGREES)
 	Time := 0.5
-	velocity, err := math.Velocity(VELOCITY, Radians, HEIGTH, Time)
+	velocity, err := math.Velocity(VELOCITY, RADIANS, Time)
 	if err != nil {
 		t.Errorf("Invalid parameters")
 	}
