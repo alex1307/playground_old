@@ -75,6 +75,16 @@ func DegreesToRadians(degree float64) (float64, error) {
 
 }
 
+func RadiansToDegrees(radians float64) (float64, error) {
+
+	if radians < 0 || radians > math.Pi {
+		return 0.0, fmt.Errorf("invalid parameter! Valid radians are in range (0, 3.14)")
+	}
+
+	return (180 * radians) / math.Pi, nil
+
+}
+
 func TimeInterval(elapsed_time float64, seed int) ([]float64, error) {
 	if elapsed_time <= 0 {
 		return nil, fmt.Errorf("")
