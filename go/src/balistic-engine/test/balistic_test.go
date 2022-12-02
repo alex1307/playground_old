@@ -48,7 +48,6 @@ func TestMaxAltitude(t *testing.T) {
 }
 
 func TestVelocity(t *testing.T) {
-	logger := config.Setup()
 	Time := 0.5
 	velocity, err := math.Velocity(VELOCITY, RADIANS, Time)
 	if err != nil {
@@ -56,7 +55,7 @@ func TestVelocity(t *testing.T) {
 	}
 	fmt.Println("Velocity:")
 	t.Log("Log velocity")
-	logger.Info("Velocity : ",
+	config.AppLogger.Info("Velocity : ",
 		zap.Float64("Velocity_X", velocity.X),
 		zap.Float64("Velocity_Y", velocity.Y))
 }

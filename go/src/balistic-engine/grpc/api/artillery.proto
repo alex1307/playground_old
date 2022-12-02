@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+option go_package = "balistic-engine/grpc/api";
+
+package api;
+
+message ShootingConfig{
+    int32 velocity = 1;
+    int32 degrees = 2;
+}
+
+message LoadRequest {
+    string system_name = 1;
+    int32 number_of_missles = 3;
+    optional string launcher_id = 2;
+    repeated ShootingConfig config = 4;
+}
+
+message LauncherRequest {
+    string system_name = 1;
+    Coordinates coordinate = 2;
+}
+
+message LauncherList {
+    repeated Launcher launchers = 1;
+}
+
+message Launcher {
+    string system_name = 1;
+    string id = 2;
+    Coordinates coordinate = 3;
+    int32 number_of_missles = 4;
+    repeated ShootingConfig config = 5;
+}
+
+message Request {
+    string name = 1;
+}
+message MissleSystem {
+    string name = 1;
+    repeated Launcher launchers = 2;
+}
+
+message ConfigurationRequest {
+    repeated Coordinates coordinates = 1;
+    int32 max_velocity = 2;
+    int32 max_angle = 3;
+    int32 max_capacity = 4;
+}
+
+message Coordinates {
+    float x = 1;
+    float y = 2;
+    optional float z = 3;
+    optional float t = 4;
+}
+
+message ConfigurationResponse {
+    int32 launchers = 1;
+    float max_distance = 2;
+    float max_height = 3;
+    float max_ttl = 4;
+    bool loaded = 5;
+}
+
+message Action {
+    string name = 1;
+    string command = 2;
+    optional string launcher_id = 3;
+    optional int32  velocity = 4;
+    optional int32  degrees = 5;
+}
+
+message Projectile {
+    string system = 1;
+    string id = 2;
+    Coordinates coordinates = 3;
+}
+
+message Empty {}
+
+service ArtilleryService {
+    rpc GetSystem(Empty) returns (MissleSystem) {}
+    rpc Filter(Request) returns (LauncherList) {}
+    rpc AddLauncher (LauncherRequest) returns (MissleSystem) {}
+    rpc LoadLauncher(LoadRequest) returns (LauncherList) {}
+    rpc Execute(Action) returns (stream Projectile) {}
+}
+
+
+  
+  

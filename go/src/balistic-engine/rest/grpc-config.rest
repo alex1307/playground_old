@@ -1,0 +1,24 @@
+@host = localhost:8080
+
+// Access a Secured API Endpoint
+GET https://{{host}}/api/secured/ping HTTP/1.1
+content-type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im11a2VzaC5tdXJ1Z2FuIiwiZW1haWwiOiJtdWtlc2hAZ28uY29tIiwiZXhwIjoxNjY3MzIwNzk2fQ.pejHUYpvpPioQGTtPSOhoCAVVB540MxVdnjfR44SiVQ
+
+###
+
+
+# @noStreamingLog
+
+GRPC localhost:50051 api.ArtilleryService/ConfigureMissleSystem
+{
+  "coordiantes": [{
+    "x": 1,
+    "y": 2,
+    "z": 3
+  }],
+    "max_velocity": 200,
+    "max_capacity": 100,
+    "max_angle": 75
+ 
+}
