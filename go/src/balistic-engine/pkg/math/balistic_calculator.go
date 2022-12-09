@@ -61,7 +61,8 @@ func MaxAltitude(position Coordinates, velocity, radians float64) (float64, erro
 
 func Velocity(velocity, radians, time float64) (Coordinates, error) {
 	Velocity_X := velocity * math.Cos(radians)
-	Velocity_Y := velocity*math.Sin(radians) - G_FORCE*time
+	Velocity_Y := velocity*math.
+		Sin(radians) - G_FORCE*time
 	return Coordinates{X: Velocity_X, Y: Velocity_Y}, nil
 }
 

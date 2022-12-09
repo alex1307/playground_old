@@ -3,6 +3,7 @@ package artillery
 import (
 	"balistic-engine/pkg/config"
 	"balistic-engine/pkg/math"
+	"balistic-engine/pkg/message"
 	"time"
 
 	"github.com/google/uuid"
@@ -18,24 +19,14 @@ var MAX_VELOCITY = 200
 var MIN_CAPACITY = 10
 var MAX_CAPACITY = 50
 
-type Launcher struct {
-	ID          string
-	Coordinates math.Coordinates
-	Configs     []ShootingConfiguration
-	loaded      int
-	fired       int
-	Active      []*Proectile
-	loadedAt    time.Time
-}
-
-type ShootingConfiguration struct {
-	Velocity float64
-	Radians  float64
-}
-
-func NewLauncher(coordinates math.Coordinates) *Launcher {
+func NewLauncher(teamId string, broker *message.Server, coordinates math.Coordinates) *Launcher {
+	source := make(chan message.Payload, 1)
+	broker.Subscribe("launcher", source)
 	return &Launcher{
+		TeamID:      teamId,
 		ID:          uuid.NewString(),
+		broker:      broker,
+		source:      source,
 		Coordinates: coordinates,
 		Configs:     nil,
 		loaded:      0,
@@ -72,8 +63,7 @@ func (l *Launcher) AutoFire(interval_time_ms int) []*Proectile {
 	for {
 		if l.IsReady() {
 			index := rr_counter % len(l.Configs)
-			projectile := l.Fire(uuid.Must(uuid.NewRandom()).String(), l.Configs[index].Velocity, l.Configs[index].Radians)
-			projectiles = append(projectiles, projectile)
+			l.Fire(uuid.NewString(), l.Configs[index].Velocity, l.Configs[index].Radians)
 			rr_counter++
 			time.Sleep(time.Duration(interval_time_ms) * time.Millisecond)
 		} else {
@@ -83,35 +73,23 @@ func (l *Launcher) AutoFire(interval_time_ms int) []*Proectile {
 	return projectiles
 }
 
-func (l *Launcher) Fire(id string, velocity float64, radians float64) *Proectile {
+func (l *Launcher) Fire(id string, velocity float64, radians float64) {
 	if l.IsReady() {
 		start := time.Now()
-		projectile := Fire(id, l.Coordinates, velocity, radians)
+		message := NewMessage("launcher", []string{"missle"}, &Missle{
+			ID:          id,
+			TeamID:      l.TeamID,
+			Coordinates: l.Coordinates,
+			Velocity:    velocity,
+			Radians:     radians})
+		l.broker.Send(message)
 		l.fired++
 		config.AppLogger.Info("*** Projectile fired", zap.String("Projectile ID: ", id),
 			zap.Duration("Duration: ", time.Since(start)))
-		l.Active = append(l.Active, projectile)
-		return projectile
+
 	}
 	config.AppLogger.Error("The weapone is not ready to fire(unloaded)",
 		zap.String("Launcher ID: ", l.ID),
 		zap.Time("Last loaded time: ", l.loadedAt))
-	return nil
-}
 
-func (l *Launcher) Destroy(id string) {
-	var projectile *Proectile = nil
-	for _, v := range l.Active {
-		if v.ID == id {
-			projectile = v
-			break
-		}
-	}
-	if projectile != nil {
-		if projectile.status == Fired {
-			projectile.Down()
-		}
-	} else {
-		config.AppLogger.Error("Projectile not found", zap.String("Projectile ID: ", id))
-	}
 }

@@ -254,8 +254,8 @@ func TestRadarStation(t *testing.T) {
 			T: 0,
 		}})
 
-	go cancel(18, cancel1)
-	go cancel(18, cancel2)
+	go Cancel(18, cancel1)
+	go Cancel(18, cancel2)
 	counter := 0
 	for cc := range radar.ProjectileMonitor() {
 		counter++
@@ -272,7 +272,7 @@ func TestRadarStation(t *testing.T) {
 	assert.Equal(t, 2*(artillery.TIME_INTERVALS+1), counter, "counter should be 202")
 }
 
-func cancel(wait_time int, cancel context.CancelFunc) {
+func Cancel(wait_time int, cancel context.CancelFunc) {
 	time.Sleep(time.Duration(wait_time) * time.Second)
 	cancel()
 }
