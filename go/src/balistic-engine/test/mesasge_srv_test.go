@@ -21,8 +21,8 @@ func TestSendAndRecive(t *testing.T) {
 	srv.Subscribe("r2", reciever2)
 	payload1 := &artillery.TrajectoryCoordinates{ID: uuid.NewString(), TeamID: "test", Coordinates: math.Coordinates{X: 1, Y: 1}}
 	payload2 := &artillery.TrajectoryCoordinates{ID: uuid.NewString(), TeamID: "test", Coordinates: math.Coordinates{X: 2, Y: 2}}
-	message1 := NewMessage("r1", []string{"r2"}, payload1)
-	message2 := NewMessage("r2", []string{"r1"}, payload2)
+	message1 := message.NewMessage("r1", []string{"r2"}, payload1)
+	message2 := message.NewMessage("r2", []string{"r1"}, payload2)
 	var wg sync.WaitGroup
 	srv.Send(message1)
 	srv.Send(message2)

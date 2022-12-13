@@ -53,30 +53,34 @@ func (l *Launcher) IsReady() bool {
 	return l.loaded-l.fired > 0
 }
 
-func (l *Launcher) AutoFire(interval_time_ms int) []*Proectile {
+func (l *Launcher) AutoFire(interval_time_ms int) {
 	if l.Configs == nil || len(l.Configs) == 0 {
 		config.AppLogger.Error("No shooting configurations found")
-		return nil
+		return
 	}
 	rr_counter := 0
-	var projectiles []*Proectile = make([]*Proectile, l.AvailableAmmunitions())
+
 	for {
 		if l.IsReady() {
 			index := rr_counter % len(l.Configs)
-			l.Fire(uuid.NewString(), l.Configs[index].Velocity, l.Configs[index].Radians)
+			id := uuid.NewString()
+			l.Fire(id, l.Configs[index].Velocity, l.Configs[index].Radians)
 			rr_counter++
 			time.Sleep(time.Duration(interval_time_ms) * time.Millisecond)
+			config.AppLogger.Info("Fired",
+				zap.Int("Fired: ", l.fired),
+				zap.String("uuid: ", id),
+			)
 		} else {
 			break
 		}
 	}
-	return projectiles
 }
 
 func (l *Launcher) Fire(id string, velocity float64, radians float64) {
 	if l.IsReady() {
-		start := time.Now()
-		message := NewMessage("launcher", []string{"missle"}, &Missle{
+		// start := time.Now()
+		message := message.NewMessage("launcher", []string{"missle"}, &Missle{
 			ID:          id,
 			TeamID:      l.TeamID,
 			Coordinates: l.Coordinates,
@@ -84,12 +88,13 @@ func (l *Launcher) Fire(id string, velocity float64, radians float64) {
 			Radians:     radians})
 		l.broker.Send(message)
 		l.fired++
-		config.AppLogger.Info("*** Projectile fired", zap.String("Projectile ID: ", id),
-			zap.Duration("Duration: ", time.Since(start)))
+		// config.AppLogger.Info("*** Projectile fired", zap.String("Projectile ID: ", id),
+		// 	zap.Duration("Duration: ", time.Since(start)))
 
+	} else {
+		config.AppLogger.Error("The weapone is not ready to fire(unloaded)",
+			zap.String("Launcher ID: ", l.ID),
+			zap.Time("Last loaded time: ", l.loadedAt))
 	}
-	config.AppLogger.Error("The weapone is not ready to fire(unloaded)",
-		zap.String("Launcher ID: ", l.ID),
-		zap.Time("Last loaded time: ", l.loadedAt))
 
 }

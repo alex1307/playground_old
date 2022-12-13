@@ -5,6 +5,7 @@ import (
 	"balistic-engine/pkg/math"
 	"time"
 
+	"github.com/google/uuid"
 	"go.uber.org/zap"
 )
 
@@ -28,6 +29,38 @@ type Server struct {
 	subscribers map[string]chan Payload
 	cached      map[string]Payload
 	failures    map[string]int
+}
+
+type MessageImpl struct {
+	id      string
+	from    string
+	to      []string
+	content Payload
+}
+
+func NewMessage(from string, to []string, content Payload) *MessageImpl {
+	return &MessageImpl{
+		id:      uuid.NewString(),
+		from:    from,
+		to:      to,
+		content: content,
+	}
+}
+
+func (m *MessageImpl) GetID() string {
+	return m.id
+}
+
+func (m *MessageImpl) From() string {
+	return m.from
+}
+
+func (m *MessageImpl) To() []string {
+	return m.to
+}
+
+func (m *MessageImpl) Content() Payload {
+	return m.content
 }
 
 func NewServer() *Server {
@@ -71,6 +104,11 @@ func (s *Server) delete_subscriber(subscriber string, message Payload) {
 	delete(s.subscribers, subscriber)
 }
 
+func (s *Server) IsSubscribed(name string) bool {
+	_, ok := s.subscribers[name]
+	return ok
+}
+
 func (s *Server) sendToAll(msg Payload) {
 	for k, ch := range s.subscribers {
 		go func(k string, ch chan Payload) {
@@ -95,11 +133,21 @@ func (s *Server) Send(msg Message) {
 			go func(ch chan Payload) {
 				select {
 				case ch <- msg.Content():
-
+					{
+						config.AppLogger.Info("Message sent",
+							zap.String("topic", reciever),
+							zap.String("message_uuid", msg.Content().GetID()))
+					}
 				default: // drop message if channel is full
-					s.retry(reciever, ch, msg.Content())
+					{
+						config.AppLogger.Error("retry. message has been dropped")
+						s.retry(reciever, ch, msg.Content())
+					}
+
 				}
 			}(ch)
+		} else {
+			config.AppLogger.Error("No subscriber found", zap.String("topic", reciever))
 		}
 	}
 }

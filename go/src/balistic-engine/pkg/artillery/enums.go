@@ -11,7 +11,8 @@ const INTERVALS = TIME_FACTOR * TIME_INTERVALS
 const (
 	Fired ProjectileStatus = iota + 1
 	Success
-	Failed
+	TakenDown
+	Missed
 )
 
 const (

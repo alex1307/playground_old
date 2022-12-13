@@ -13,19 +13,31 @@ import (
 )
 
 type Space struct {
-	seed          float64
-	corners       [2]math.Coordinates
-	lenght_seed   float64
-	height_seed   float64
-	broker        *message.Server
-	source        chan message.Payload
-	monitor       map[int][]artillery.TrajectoryCoordinates
-	active        map[string]int
-	notifications map[string]bool
-	callback      chan string
+	seed        float64
+	corners     [2]math.Coordinates
+	lenght_seed float64
+	height_seed float64
+	monitor     map[int][]artillery.TrajectoryCoordinates
+	active      map[string]int
 }
 
-func NewSpace(seed float64, corners [2]math.Coordinates, broker *message.Server) *Space {
+type Radar struct {
+	space  Space
+	broker *message.Server
+	source chan message.Payload
+}
+
+func NewRadar(broker *message.Server, space Space) *Radar {
+	source := make(chan message.Payload, 100)
+	broker.Subscribe("radar", source)
+	return &Radar{
+		space:  space,
+		broker: broker,
+		source: source,
+	}
+}
+
+func NewSpace(seed float64, corners [2]math.Coordinates) Space {
 
 	if corners[0].X == corners[1].X && corners[0].Y == corners[1].Y {
 		panic("points must be different")
@@ -42,41 +54,37 @@ func NewSpace(seed float64, corners [2]math.Coordinates, broker *message.Server)
 	if corners[0].Y > corners[1].Y {
 		corners[0].Y, corners[1].Y = corners[1].Y, corners[0].Y
 	}
-	source := make(chan message.Payload, 100)
-	broker.Subscribe("space", source)
-	return &Space{
-		seed:          seed,
-		corners:       corners,
-		lenght_seed:   (corners[1].X - corners[0].X) / seed,
-		height_seed:   (corners[1].Y - corners[0].Y) / seed,
-		monitor:       make(map[int][]artillery.TrajectoryCoordinates, 100),
-		active:        make(map[string]int, 100),
-		notifications: make(map[string]bool, 100),
-		broker:        broker,
-		source:        source,
+	return Space{
+		seed:        seed,
+		corners:     corners,
+		lenght_seed: (corners[1].X - corners[0].X) / seed,
+		height_seed: (corners[1].Y - corners[0].Y) / seed,
+		monitor:     make(map[int][]artillery.TrajectoryCoordinates, 100),
+		active:      make(map[string]int, 100),
 	}
 }
 
-func (s *Space) StartTracing(ctx context.Context) {
+func (r *Radar) StartTracing(ctx context.Context) {
 	go func(space *Space) {
 		for {
 			select {
-			case tc := <-s.source:
+			case tc := <-r.source:
 				{
-					var coordinates artillery.TrajectoryCoordinates = reflect.ValueOf(&tc).Elem().Interface().(artillery.TrajectoryCoordinates)
+					var coordinates artillery.TrajectoryCoordinates = reflect.ValueOf(tc).Elem().Interface().(artillery.TrajectoryCoordinates)
 					space.Move(coordinates)
 
 				}
 			case <-time.After(5 * time.Second):
 				{
-					config.AppLogger.Info("Space monitoring", zap.Int("Number of active projectiles", len(s.active)))
+					config.AppLogger.Info("Space monitoring",
+						zap.Int("Number of active projectiles", len(r.space.active)))
 					continue
 				}
 			case <-ctx.Done():
 				return
 			}
 		}
-	}(s)
+	}(&r.space)
 }
 
 func (s Space) CoordinatesToIndex(coordinate math.Coordinates) int {
@@ -97,12 +105,9 @@ func (s *Space) Move(trajectory artillery.TrajectoryCoordinates) {
 			}
 		}
 		if remove_idx > -1 {
-			projectile := projectiles[remove_idx]
 			updated := append(projectiles[:remove_idx], projectiles[remove_idx+1:]...)
 			s.monitor[index] = updated
 			delete(s.active, trajectory.ID)
-			s.notifications[trajectory.ID] = false
-			s.notifications[projectile.ID] = false
 			return
 		} else {
 			s.monitor[index] = append(projectiles, trajectory)
@@ -161,22 +166,11 @@ func (s *Space) GetAll() []artillery.TrajectoryCoordinates {
 	return all
 }
 
-func (s *Space) GetCallback() chan string {
-	return s.callback
-}
-
-func (s *Space) Notify(timeout_ms int, ctx context.Context) {
-	for {
-		select {
-		case <-time.After(time.Millisecond * time.Duration(timeout_ms)):
-			for k, v := range s.notifications {
-				if !v {
-					s.callback <- k
-					s.notifications[k] = true
-				}
-			}
-		case <-ctx.Done():
-			return
-		}
+func (r *Radar) GetDetectedProjectiles() []string {
+	config.AppLogger.Info("all active projectiles", zap.Int("count", len(r.space.active)))
+	keys := make([]string, 0)
+	for k := range r.space.active {
+		keys = append(keys, k)
 	}
+	return keys
 }
