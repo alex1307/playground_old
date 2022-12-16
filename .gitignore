@@ -18,6 +18,11 @@ go/pkg/*
 *.iml
 *.ipr
 out
+./erlang/*/_build
+./erlang/*/*.lock
+./erlang/*/*.ez
+./erlang/*/*.beam
+./erlang/*/*.dump
 
 ### NetBeans ###
 nbproject/private/
