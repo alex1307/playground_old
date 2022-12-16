@@ -15,47 +15,45 @@
 
 -record(state, {socket}).
 
+-spec start_link(Socket :: inet:socket()) -> {ok, Pid :: pid()} | ignore | {error, Reason :: term()}.
 start_link(Socket) ->
   gen_server:start_link({local, ?MODULE}, ?MODULE, Socket, []).
 
+-spec init(Socket :: inet:socket()) -> {ok, State :: #state{}}.
 init(Socket) ->
-  %% Start accepting requests
-  %% We must cast this to the worker's process, as it blocks it.
-  gen_server:cast(?MODULE, accept),
+   gen_server:cast(?MODULE, accept),
   {ok, #state{socket=Socket}}.
 
+-spec handle_cast(accept, State :: #state{}) -> {noreply, State :: #state{}}.
 handle_cast(accept, State = #state{socket=ListenSocket}) ->
   {ok, AcceptSocket} = gen_tcp:accept(ListenSocket),
-  send(AcceptSocket, "Hello", []),
+  ok = gen_tcp:send(AcceptSocket, "Connection established"),
   {noreply, State#state{socket=AcceptSocket}};
 handle_cast(_, State) ->
   {noreply, State}.
 
+-spec handle_call(Bin :: binary(), From :: {pid(), Tag :: term()}, State :: #state{}) -> {reply, ok, State :: #state{}}.
 handle_call(Bin, _From, State=#state{socket=Socket}) -> 
-  send(Socket, Bin, []),
-  {reply, ok, State};
+  case gen_tcp:send(Socket, Bin) of
+    ok -> {reply, ok, State};
+    {error, Reason} -> 
+        {reply, failed, State},
+        lager:info("Failed to send message: ~p", [Reason])
+  end;
 
 handle_call(_E, _From, State) -> {noreply, State}.
 
-handle_info({tcp, Socket, "quit"}, State) ->
-  lager:info("Client disconnected"),
-  gen_tcp:close(Socket),
-  {stop, normal, State};
+-spec handle_info({tcp, Socket :: inet:socket(), Msg :: binary()}, State :: #state{}) -> {noreply, State :: #state{}}.
 handle_info({tcp, Socket, Msg}, State) ->
-  send(Socket, Msg, []),
+  gen_tcp:send(Socket, Msg),
   {noreply, State};
 handle_info({tcp_closed, _Socket}, State) -> {stop, normal, State};
 handle_info({tcp_error, _Socket, _}, State) -> {stop, normal, State};
 handle_info(E, State) ->
-  io:fwrite("unexpected: ~p~n", [E]),
+  lager:info("unsupported: ~p~n", [E]),
   {noreply, State}.
 
 
 terminate(_Reason, _Tab) -> ok.
 code_change(_OldVersion, Tab, _Extra) -> {ok, Tab}.
 
-%% Send a message back to the client
-send(Socket, Str, Args) ->
-  ok = gen_tcp:send(Socket, io_lib:format(Str++"~n", Args)),
-  ok = inet:setopts(Socket, [{active, true}]),
-  ok.
