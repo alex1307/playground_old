@@ -1,0 +1,13 @@
+syntax = "proto3";
+package reader;
+option go_package = "balistic-engine/grpc/reader";
+
+message ListOfRecords {
+    repeated Record records = 1;
+}
+
+message Record {
+    string firstName = 1;
+	string lastName = 2;
+	int32 date = 3;
+}

@@ -1,10 +1,10 @@
 package test
 
 import (
-	"balistic-engine/pkg/artillery"
 	"balistic-engine/pkg/config"
 	"balistic-engine/pkg/math"
 	"balistic-engine/pkg/message"
+	"balistic-engine/pkg/projectile"
 	"sync"
 	"testing"
 
@@ -19,8 +19,8 @@ func TestSendAndRecive(t *testing.T) {
 	reciever2 := make(chan message.Payload, 10)
 	srv.Subscribe("r1", reciever1)
 	srv.Subscribe("r2", reciever2)
-	payload1 := &artillery.TrajectoryCoordinates{ID: uuid.NewString(), TeamID: "test", Coordinates: math.Coordinates{X: 1, Y: 1}}
-	payload2 := &artillery.TrajectoryCoordinates{ID: uuid.NewString(), TeamID: "test", Coordinates: math.Coordinates{X: 2, Y: 2}}
+	payload1 := &projectile.TrajectoryCoordinates{ID: uuid.NewString(), TeamID: "test", Coordinates: math.Coordinates{X: 1, Y: 1}}
+	payload2 := &projectile.TrajectoryCoordinates{ID: uuid.NewString(), TeamID: "test", Coordinates: math.Coordinates{X: 2, Y: 2}}
 	message1 := message.NewMessage("r1", []string{"r2"}, payload1)
 	message2 := message.NewMessage("r2", []string{"r1"}, payload2)
 	var wg sync.WaitGroup

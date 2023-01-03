@@ -1,10 +1,10 @@
 package test
 
 import (
-	"balistic-engine/pkg/artillery"
 	"balistic-engine/pkg/config"
 	"balistic-engine/pkg/math"
-	"balistic-engine/pkg/monitoring"
+	"balistic-engine/pkg/monitor"
+	"balistic-engine/pkg/projectile"
 	"testing"
 	"time"
 
@@ -12,7 +12,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var TimeSeries map[int][]artillery.TrajectoryCoordinates
+var TimeSeries map[int][]projectile.TrajectoryCoordinates
 
 func TestCoordinatesToRectangleSeed(t *testing.T) {
 	config.Setup()
@@ -32,13 +32,13 @@ func TestCoordinatesToRectangleSeed(t *testing.T) {
 func TestOneProjectile(t *testing.T) {
 	config.Setup()
 	team_ua := "Ukraine"
-	space := monitoring.NewSpace(10.0, [2]math.Coordinates{
+	space := monitor.NewSpace(10.0, [2]math.Coordinates{
 		{X: 0, Y: 0, T: 0},
 		{X: 10.0, Y: 10.0, T: 10.0},
 	})
 	projectile_id := uuid.NewString()
 	config.AppLogger.Info("Projectile ID: " + projectile_id)
-	space.Move(artillery.TrajectoryCoordinates{
+	space.Move(projectile.TrajectoryCoordinates{
 		ID:          projectile_id,
 		TeamID:      team_ua,
 		SystemTime:  time.Now().Unix() * 1000,
@@ -55,11 +55,11 @@ func TestSpaceTrajectories(t *testing.T) {
 	config.Setup()
 	team_ua := "Ukraine"
 	team_rs := "Russia"
-	space := monitoring.NewSpace(10.0, [2]math.Coordinates{
+	space := monitor.NewSpace(10.0, [2]math.Coordinates{
 		{X: 0, Y: 0, T: 0},
 		{X: 10.0, Y: 10.0, T: 10.0},
 	})
-	p1 := artillery.TrajectoryCoordinates{
+	p1 := projectile.TrajectoryCoordinates{
 		ID:          uuid.NewString(),
 		TeamID:      team_ua,
 		SystemTime:  time.Now().Unix() * 1000,
@@ -80,7 +80,7 @@ func TestSpaceTrajectories(t *testing.T) {
 	assert.Equal(t, 1, len(space.GetActiveProjectiles(index)))
 	assert.Equal(t, 0, len(space.GetActiveProjectiles(12)))
 
-	p2 := artillery.TrajectoryCoordinates{
+	p2 := projectile.TrajectoryCoordinates{
 		ID:          uuid.NewString(),
 		TeamID:      team_ua,
 		SystemTime:  time.Now().Unix() * 1000,
@@ -91,7 +91,7 @@ func TestSpaceTrajectories(t *testing.T) {
 	assert.Equal(t, 100, space.GetIndex(p1.ID))
 	assert.Equal(t, 100, space.GetIndex(p2.ID))
 	assert.Equal(t, 2, len(space.GetActiveProjectiles(index)))
-	p3 := artillery.TrajectoryCoordinates{
+	p3 := projectile.TrajectoryCoordinates{
 		ID:          uuid.NewString(),
 		TeamID:      team_rs,
 		SystemTime:  time.Now().Unix() * 1000,
@@ -99,7 +99,7 @@ func TestSpaceTrajectories(t *testing.T) {
 	}
 	space.Move(p3)
 	assert.Equal(t, 1, len(space.GetActiveProjectiles(index)))
-	p4 := artillery.TrajectoryCoordinates{
+	p4 := projectile.TrajectoryCoordinates{
 		ID:          uuid.NewString(),
 		TeamID:      team_rs,
 		SystemTime:  time.Now().Unix() * 1000,
@@ -112,13 +112,13 @@ func TestSpaceTrajectories(t *testing.T) {
 func TestOutOfMonitoredSpace(t *testing.T) {
 	config.Setup()
 	team_ua := "Ukraine"
-	space := monitoring.NewSpace(10.0, [2]math.Coordinates{
+	space := monitor.NewSpace(10.0, [2]math.Coordinates{
 		{X: 0, Y: 0, T: 0},
 		{X: 10.0, Y: 10.0, T: 10.0},
 	})
 	projectile_id := uuid.NewString()
 	config.AppLogger.Info("Projectile ID: " + projectile_id)
-	space.Move(artillery.TrajectoryCoordinates{
+	space.Move(projectile.TrajectoryCoordinates{
 		ID:          projectile_id,
 		TeamID:      team_ua,
 		SystemTime:  time.Now().Unix() * 1000,

@@ -17,7 +17,7 @@ func Position(position Coordinates,
 	cos_angel := math.Cos(radians)
 	sin_angle := math.Sin(radians)
 	x := position.X + cos_angel*velocity*time
-	y := (position.Y + (sin_angle * velocity * time)) - 0.5*G_FORCE*math.Pow(time, 2.0)
+	y := (position.Y + (sin_angle * math.Abs(velocity) * time)) - 0.5*G_FORCE*math.Pow(time, 2.0)
 	return Coordinates{X: x, Y: y, T: time}, nil
 }
 
@@ -25,15 +25,11 @@ func Position(position Coordinates,
 // (V *sin(θ) + SQRT(V * sin(θ) + 2 * G * h))/G
 func ElapsedTime(position Coordinates, velocity, radians float64) (float64, error) {
 
-	if velocity <= 0 {
-		return 0.0, fmt.Errorf("invalid velocity param! Velocity must be a positive value m/s")
-	}
-
 	if position.Y < 0 {
 		return 0.0, fmt.Errorf("invalid parameter! The height is a positive number in meters")
 	}
 
-	v_sin := velocity * math.Sin(radians)
+	v_sin := math.Abs(velocity) * math.Sin(radians)
 	attr := 2 * G_FORCE * position.Y
 	result := math.Pow(v_sin, 2.0) + attr
 	Time := (v_sin + math.Sqrt(result)) / G_FORCE
@@ -52,7 +48,7 @@ func MaxAltitude(position Coordinates, velocity, radians float64) (float64, erro
 	if position.Y < 0 {
 		return 0.0, fmt.Errorf("invalid parameter! The height is a positive number in meters")
 	}
-	Velocity_Y := velocity * math.Sin(radians)
+	Velocity_Y := math.Abs(velocity) * math.Sin(radians)
 	Velocity_2 := math.Pow(Velocity_Y, 2)
 	Height_2 := 2 * G_FORCE
 	return position.Y + (Velocity_2 / Height_2), nil
@@ -61,7 +57,7 @@ func MaxAltitude(position Coordinates, velocity, radians float64) (float64, erro
 
 func Velocity(velocity, radians, time float64) (Coordinates, error) {
 	Velocity_X := velocity * math.Cos(radians)
-	Velocity_Y := velocity*math.
+	Velocity_Y := math.Abs(velocity)*math.
 		Sin(radians) - G_FORCE*time
 	return Coordinates{X: Velocity_X, Y: Velocity_Y}, nil
 }
@@ -138,35 +134,3 @@ func PositionToIndex(position, grid_initial_position Coordinates, grid_width, gr
 
 	return x_index*grid_scale + y_index, nil
 }
-
-// func CalculateTrajectionToGrid(velocity, degrees, height float64, seed int, grid model.Grid) ([]int, error) {
-// 	trajection, err := CalculateTrajection(velocity, degrees, height, seed)
-// 	if err != nil {
-// 		return nil, err
-// 	}
-// 	result := make([]int, len(trajection))
-// 	for i, position := range trajection {
-// 		index, err := PositionToIndex(position, grid.InitialPosition, grid.Width, grid.Height, grid.Scale)
-// 		if err != nil {
-// 			return nil, err
-// 		}
-// 		result[i] = index
-// 	}
-// 	return result, nil
-// }
-
-// func CalculateTrajectionToGrid(velocity, degrees, height float64, seed int, grid model.Grid) ([]int, error) {
-// 	trajection, err := CalculateTrajection(velocity, degrees, height, seed)
-// 	if err != nil {
-// 		return nil, err
-// 	}
-// 	result := make([]int, len(trajection))
-// 	for i, position := range trajection {
-// 		index, err := PositionToIndex(position, grid.InitialPosition, grid.Width, grid.Height, grid.Scale)
-// 		if err != nil {
-// 			return nil, err
-// 		}
-// 		result[i] = index
-// 	}
-// 	return result, nil
-// }
