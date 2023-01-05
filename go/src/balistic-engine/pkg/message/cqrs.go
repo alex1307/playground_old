@@ -1,10 +1,8 @@
 package message
 
-var messages = map[string]string
-
-func init() {
-	messages = map[string]string{
-		"projectile.missed": "Projectile missed",
-		"projectile.hit":    "Projectile hit",
-	}
+type Topic struct {
+	Name        string
+	Threshold   int
+	messages    []byte
+	subscribers []string
 }
