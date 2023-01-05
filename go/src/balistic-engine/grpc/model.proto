@@ -10,6 +10,7 @@ message Record {
     string firstName = 1;
 	string lastName = 2;
 	int32 date = 3;
+<<<<<<< HEAD
 }
 
 message Person {
@@ -43,4 +44,6 @@ message Transaction {
     Currency Currency = 4;
     int64 amount = 5;
     int64 createdOn = 6;
+=======
+>>>>>>> 8ea2221 (Process big files)
 }
